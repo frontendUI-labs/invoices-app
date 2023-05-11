@@ -18,13 +18,18 @@ const Router = {
     if (addToHistory) {
       history.pushState({ route }, "", route);
     }
-    document.querySelectorAll("section.page").forEach((s) => (s.style.display = "none"));
+    document
+      .querySelectorAll("section.page")
+      .forEach((s) => (s.style.display = "none"));
     switch (route) {
       case "/":
         document.querySelector("section#home").style.display = "block";
         break;
       case "/details":
         document.querySelector("section#details").style.display = "block";
+        break;
+      case "/styleguide":
+        document.querySelector("section#styleguide").style.display = "block";
         break;
       default:
         break;
