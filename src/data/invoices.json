@@ -1,0 +1,105 @@
+[
+  {
+    "id": "RT3080",
+    "projectDescription": "Graphic Design",
+    "invoiceDate": "19 Aug 2021",
+    "paymentDueDate": "20 Sep 2021",
+    "status": "Paid",
+    "amount": 1800.9,
+    "billFromAddress": {
+      "street": "19 Union Terrace",
+      "city": "London",
+      "number": "E1 3EZ",
+      "country": "United Kingdom"
+    },
+    "billTo": {
+      "clientName": "Alex Grim",
+      "clientEmail": "alexgrim@mail.com",
+      "clientAddress": {
+        "street": "84 Church Way",
+        "city": "Bradford",
+        "postCode": "BD1 9PB",
+        "country": "United Kingdom"
+      }
+    },
+    "items": [
+      {
+        "name": "Banner Design",
+        "quantity": 1,
+        "amount": 156
+      },
+      {
+        "name": "Email Design",
+        "quantity": 2,
+        "amount": 200
+      }
+    ]
+  },
+  {
+    "id": "RT4080",
+    "projectDescription": "Software Development",
+    "invoiceDate": "1 Aug 2022",
+    "paymentDueDate": "2 Sep 2022",
+    "status": "Draft",
+    "amount": 800,
+    "billFromAddress": {
+      "street": "400 Deuw Mel",
+      "city": "Paris",
+      "number": "ER 2UX",
+      "country": "France"
+    },
+    "billTo": {
+      "clientName": "Polo Gru",
+      "clientEmail": "pologru@mail.com",
+      "clientAddress": {
+        "street": "84 Church Way",
+        "city": "Bradford",
+        "postCode": "BD1 9PB",
+        "country": "France"
+      }
+    },
+    "items": [
+      {
+        "name": "Landing pages",
+        "quantity": 4,
+        "amount": 3000
+      },
+      {
+        "name": "Email Automations",
+        "quantity": 1,
+        "amount": 100
+      }
+    ]
+  },
+  {
+    "id": "RT2080",
+    "projectDescription": "Marketing",
+    "invoiceDate": "01 Oct 2021",
+    "paymentDueDate": "02 Oct 2022",
+    "status": "Pending",
+    "amount": 18900,
+    "billFromAddress": {
+      "street": "400 Deuw Mel",
+      "city": "Paris",
+      "number": "ER 2UX",
+      "country": "France"
+    },
+    "billTo": {
+      "clientName": "John Morrison",
+      "clientEmail": "jhon@mail.com",
+      "clientAddress": {
+        "street": "1200 Newman",
+        "city": "Florida",
+        "postCode": "BF0 DF2",
+        "country": "United States"
+      }
+    },
+    "items": [
+      {
+        "name": "Email Marketing Campaigns",
+        "quantity": 10,
+        "amount": 600
+      }
+    ]
+  }
+]
