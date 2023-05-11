@@ -11,7 +11,6 @@ export const Menu = {
   data: null,
   load: async () => {
     Menu.data = await fetchInvoices();
-    console.log(Menu.data);
     Menu.render();
   },
   getProductById: async (id) => {
@@ -70,7 +69,7 @@ export const Menu = {
             <img src="/data/images/${product.image}">
             <p class="description">${product.description}</p>
             <p class="price">$ ${product.price.toFixed(2)} ea</p>
-            <button onclick="Order.add(${product.id}); Router.go('/order')">Add to cart</button>
+            <button onclick="Order.add(${product.id}); Router.go('/details')">Add to cart</button>
         `;
   },
 };
@@ -100,14 +99,10 @@ const Router = {
       case "/":
         document.querySelector("section#home").style.display = "block";
         break;
-      case "/order":
-        document.querySelector("section#order").style.display = "block";
+      case "/details":
+        document.querySelector("section#details").style.display = "block";
         break;
       default:
-        if (route.startsWith("/product-")) {
-          document.querySelector("section#details").style.display = "block";
-          Menu.renderDetails(route.substring(route.lastIndexOf("-") + 1));
-        }
         break;
     }
     window.scrollX = 0;
