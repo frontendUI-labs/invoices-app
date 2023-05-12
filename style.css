@@ -1,6 +1,7 @@
 /* TODO: remove it */
 @import url('./css-vars.css');
 @import url('./typography.css');
+@import url('./buttons.css');
 
 body {
   margin: 0;

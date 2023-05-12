@@ -1,0 +1,61 @@
+.button {
+  border: none;
+  color: var(--white-100);
+  border-radius: 24px;
+  padding-block: 17px;
+  padding-inline: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.button:focus {
+  outline: 3px solid var(--black-300);
+  outline-offset: 2px;
+}
+.button--primary {
+  background: var(--purple-400);
+  min-inline-size: 131px;
+}
+.button--icon {
+  padding: 8px;
+  min-inline-size: 150px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cirle-icon {
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: 50%;
+  background: var(--white-100);
+}
+.plus-icon {
+  padding: 11px;
+  inline-size: 10px;
+  inset-block: 10px;
+}
+.button--primary:hover {
+  background: var(--purple-100);
+}
+.button--secondary {
+  min-inline-size: 73px;
+  background: var(--white-300);
+  color: var(--grey-400);
+}
+.button--secondary:hover {
+  background: var(--grey-200);
+}
+.button--ternary {
+  min-inline-size: 133px;
+  background: var(--black-100);
+  color: var(--grey-300);
+}
+.button--ternary:hover {
+  background: var(--black-500);
+}
+.button--danger {
+  min-inline-size: 89px;
+  background: var(--red-100);
+}
+.button--danger:hover {
+  background: var(--red-200);
+}
