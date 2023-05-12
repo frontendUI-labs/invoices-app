@@ -1,0 +1,35 @@
+:root{
+
+    /* Escala purple */
+    --purple_dark: #7C5DFA;
+    --purlple_light: #9277FF;
+    /* pending - paid */
+
+    --pending_green: #33D69F;
+    --paid_orange: #FF8F00;
+
+
+    /* Escala grey */
+    --grey_10: linear-gradient(0deg, #888EB0, #888EB0),
+    linear-gradient(0deg, #F8F8FB, #F8F8FB);
+    --grey_20: #DFE3FA;
+    --grey_30: #888EB0;
+    --grey_40: #7E88C3;
+    /* Escala black */
+    --black_40: #0C0E16;
+    --black_30: #141625;
+    --black_20: #252945;
+    --black_10: #1E2139;
+    --olerlay: #141625;
+
+    /* font */
+    --main_title: 700 2rem/2.24rem Spartan;
+    --subtitle_main: 500 0.75rem/0.9375rem Spartan;
+    --button_icon: 700 0.75rem/0.9375rem Spartan;
+    --description_title: 700 0.75rem/0.9375rem Spartan;
+    --value_main: 700 1rem/1.5rem Spartan;
+    --total_value: 700 1.5rem/2rem Spartan;
+  
+
+
+}
