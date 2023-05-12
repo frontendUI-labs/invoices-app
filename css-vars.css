@@ -1,25 +1,28 @@
 :root{
 
-    /* Escala purple */
-    --purple-dark: #7C5DFA;
-    --purple-light: #9277FF;
+    /*  purple */
+    --purple-100: #9277FF;
+    --purple-400: #7C5DFA;
+
+    /* red */
+
     --red-100: #EC5757;
     --red-200: #FF9797;
 
 
-    /* pending - paid */
+    /* green - orange */
 
-    --pending-green: #33D69F;
-    --paid-orange: #FF8F00;
+    --green-400: #33D69F;
+    --orange-400: #FF8F00;
 
 
-    /* Escala grey */
+    /*  grey */
     --grey-100: linear-gradient(0deg, #888EB0, #888EB0),
     linear-gradient(0deg, #F8F8FB, #F8F8FB);
     --grey-200: #DFE3FA;
     --grey-300: #888EB0;
     --grey-400: #7E88C3;
-    /* Escala black */
+    /*  black */
     --black-100: #1E2139;
     --black-200: #252945;
     --black-300: #141625;
