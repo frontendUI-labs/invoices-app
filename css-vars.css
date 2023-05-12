@@ -1,0 +1,38 @@
+:root{
+
+    /*  purple */
+    --purple-100: #9277FF;
+    --purple-400: #7C5DFA;
+
+    /* red */
+
+    --red-100: #EC5757;
+    --red-200: #FF9797;
+
+
+    /* green - orange */
+
+    --green-400: #33D69F;
+    --orange-400: #FF8F00;
+
+
+    /*  grey */
+    --grey-100: linear-gradient(0deg, #888EB0, #888EB0),
+    linear-gradient(0deg, #F8F8FB, #F8F8FB);
+    --grey-200: #DFE3FA;
+    --grey-300: #888EB0;
+    --grey-400: #7E88C3;
+    /*  black */
+    --black-100: #1E2139;
+    --black-200: #252945;
+    --black-300: #141625;
+    --black-400: #0C0E16;
+    /* font */
+    --font-h1: 700 2rem/2.24rem Spartan;
+    --font-h2: 700 1.25rem/1.4rem Spartan;
+    --font-h3: 700 1rem/1.5rem Spartan;
+    --font-h4: 700 0.75rem/0.9375rem Spartan;
+    --font-body1: 500 0.75rem/0.9375rem Spartan;
+    --font-body2: 500 0.6875rem/1.125rem Spartan;
+
+}
