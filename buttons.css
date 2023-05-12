@@ -8,11 +8,15 @@
   text-align: center;
   cursor: pointer;
 }
-.primary {
+.button:focus {
+  outline: 3px solid blue;
+  outline-offset: 2px;
+}
+.button--primary {
   background: #7c5dfa;
   min-inline-size: 131px;
 }
-.icon {
+.button--icon {
   padding: 8px;
   min-inline-size: 150px;
   display: flex;
@@ -25,40 +29,34 @@
   border-radius: 50%;
   background: #fff;
 }
-.icon__mas {
+.plus-icon {
   padding: 11px;
   inline-size: 10px;
   inset-block: 10px;
 }
-.primary:hover {
+.button--primary:hover {
   background: #9277ff;
 }
-.secondary {
+.button--secondary {
   min-inline-size: 73px;
   background: #f9fafe;
   color: #7e88c3;
 }
-.secondary:hover {
+.button--secondary:hover {
   background: #dfe3fa;
 }
-.ternary {
+.button--ternary {
   min-inline-size: 133px;
   background-color: #373b53;
   color: #888eb0;
 }
-.ternary:hover {
+.button--ternary:hover {
   background: #0c0e16;
 }
-.danger {
+.button--danger {
   min-inline-size: 89px;
   background: #ec5757;
 }
-.danger:hover {
+.button--danger:hover {
   background: #ff9797;
-}
-.last {
-  min-inline-size: 100%;
-}
-.button {
-  content: prueba;
 }
