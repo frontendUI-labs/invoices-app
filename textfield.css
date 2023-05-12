@@ -1,0 +1,27 @@
+.textfield {
+  inline-size: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.textfield__label {
+  color: var(--grey-400);
+}
+
+.textfield__input {
+  padding-block: 17px;
+  padding-inline-start: 20px;
+  border-radius: 4px;
+  border: none;
+  background: var(--white-100);
+  border: 1px solid var(--grey-200);
+  font: var(--font-h4);
+  color: var(--black-500);
+}
+
+.textfield__input:hover,
+.textfield__input:focus {
+  border: 1px solid var(--purple-100);
+  outline: none;
+}

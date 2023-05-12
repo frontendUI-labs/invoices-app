@@ -27,11 +27,13 @@
   block-size: 32px;
   border-radius: 50%;
   background: var(--white-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .plus-icon {
-  padding: 11px;
+  block-size: 10px;
   inline-size: 10px;
-  inset-block: 10px;
 }
 .button--primary:hover {
   background: var(--purple-100);
