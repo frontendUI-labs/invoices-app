@@ -1,29 +1,29 @@
 .h1 {
-    font: var(--font-h1);
-    letter-spacing: -1px;
+  font: var(--font-h1);
+  letter-spacing: -1px;
 }
 
 .h2 {
-    font: var(--font-h2);
-    letter-spacing: -0.625px;
+  font: var(--font-h2);
+  letter-spacing: -0.625px;
 }
 
 .h3 {
-    font: var(--font-h3);
-    letter-spacing: -0.8px;
+  font: var(--font-h3);
+  letter-spacing: -0.8px;
 }
 
 .h4 {
-    font: var(--font-h4);
-    letter-spacing: -0.25px;
+  font: var(--font-h4);
+  letter-spacing: -0.25px;
 }
 
 .body1 {
-    font: var(--font-body1);
-    letter-spacing: -0.25px;
+  font: var(--font-body1);
+  letter-spacing: -0.25px;
 }
 
 .body2 {
-    font: var(--font-body2);
-    letter-spacing: -0.229167px;
+  font: var(--font-body2);
+  letter-spacing: -0.229167px;
 }

@@ -2,11 +2,11 @@
 @import url('./css-vars.css');
 @import url('./typography.css');
 
-
 body {
   margin: 0;
   padding: 24px;
 }
+
 nav {
   display: flex;
   gap: 20px;
