@@ -1,0 +1,35 @@
+:root{
+
+    /* Escala purple */
+    --purple-dark: #7C5DFA;
+    --purple-light: #9277FF;
+    /* pending - paid */
+
+    --pending_green: #33D69F;
+    --paid_orange: #FF8F00;
+
+
+    /* Escala grey */
+    --grey-100: linear-gradient(0deg, #888EB0, #888EB0),
+    linear-gradient(0deg, #F8F8FB, #F8F8FB);
+    --grey-200: #DFE3FA;
+    --grey-300: #888EB0;
+    --grey-400: #7E88C3;
+    /* Escala black */
+    --black-40: #0C0E16;
+    --black-30: #141625;
+    --black-20: #252945;
+    --black-10: #1E2139;
+    --overlay: #141625;
+
+    /* font */
+    --font-h1: 700 2rem/2.24rem Spartan;
+    --font-h2: 700 1.25rem/1.4rem Spartan;
+    --font-h3: 700 1rem/1.5rem Spartan;
+    --font-h4: 700 0.75rem/0.9375rem Spartan;
+    --font-body1: 500 0.75rem/0.9375rem Spartan;
+    --font-body2: 500 0.6875rem/1.125rem Spartan;
+    --font-button: 700 0.75rem/0.9375rem Spartan;  
+
+
+}
