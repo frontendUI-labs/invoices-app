@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 .button:focus {
-  outline: 3px solid blue;
+  outline: 3px solid var(--black-300);
   outline-offset: 2px;
 }
 .button--primary {
