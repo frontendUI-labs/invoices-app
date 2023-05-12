@@ -1,8 +1,9 @@
 /* TODO: remove it */
+@import url('./global.css');
 @import url('./css-vars.css');
 @import url('./typography.css');
 @import url('./buttons.css');
-@import url('./text-field.css');
+@import url('./textfield.css');
 
 body {
   margin: 0;

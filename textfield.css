@@ -6,7 +6,6 @@
 }
 
 .text_field__label {
-  font: var(--font-body1);
   color: var(--grey-400);
 }
 
