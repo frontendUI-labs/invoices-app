@@ -5,6 +5,7 @@
 @import url('./buttons.css');
 @import url('./textfield.css');
 @import url('./dropdown.css');
+@import url('./datepicker.css');
 
 body {
   margin: 0;

@@ -1,0 +1,78 @@
+.datepicker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  inline-size: 240px;
+}
+
+.datepicker__button {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.datepicker__button__label {
+  color: var(--grey-400);
+}
+
+.datepicker__button__button {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 17px;
+  padding-inline: 20px;
+  border-radius: 4px;
+  border: none;
+  background: var(--white-100);
+  border: 1px solid var(--grey-200);
+  font: var(--font-h4);
+  color: var(--black-500);
+}
+
+.datepicker__button__button:hover,
+.datepicker__button__button:focus {
+  border: 1px solid var(--purple-100);
+  outline: none;
+}
+
+/* calendar */
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  padding-block: 25px;
+}
+
+.calendar__month {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 20px;
+  width: 100%;
+}
+
+.calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1rem);
+  grid-template-rows: repeat(5, 1rem);
+  text-align: center;
+  padding-inline: 19px;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+.item-day:hover,
+.item-day:focus {
+  color: var(--purple-400);
+  outline: none;
+}
+
+
+.item-day.is-inactive{
+    color: red;
+    color: var(--grey-200);
+
+}
