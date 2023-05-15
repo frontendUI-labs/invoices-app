@@ -1,14 +1,25 @@
 .datepicker {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 24px;
   inline-size: 240px;
 }
 
-.datepicker__title{
+.datepicker__title {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.arrowLeft {
+  transform: rotate(90deg);
+}
+.arrowRight {
+  transform: rotate(-90deg);
+}
+.datepicker__month__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .datepicker__label {
@@ -42,6 +53,8 @@
   justify-content: center;
   align-items: center;
   padding-block: 25px;
+  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
+  border-radius: 8px;
 }
 
 .datepicker__month {
@@ -53,8 +66,7 @@
 
 .datepicker__days {
   display: grid;
-  grid-template-columns: repeat(7,minmax(0, 1fr));
-
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   text-align: center;
   padding-inline: 19px;
   align-items: center;
@@ -62,30 +74,24 @@
   width: 240px;
 }
 
-.datepicker-day{
+.datepicker-day {
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
   height: 100%;
-  
 }
-
-
 
 .datepicker-day:hover,
 .datepicker-day:focus {
   color: var(--purple-400);
   outline: none;
   background: #4b556363;
-  color: #fff;
   border-radius: 5px;
-  
+  cursor: pointer;
 }
 
-
-.datepicker-day.is-inactive{
-    color: var(--grey-200);
-
+.datepicker-day.is-inactive {
+  color: var(--grey-200);
+  cursor: not-allowed;
 }
