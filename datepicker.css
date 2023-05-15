@@ -67,6 +67,7 @@
 .datepicker__days {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-column-start: 5;
   text-align: center;
   padding-inline: 19px;
   align-items: center;
@@ -86,7 +87,7 @@
 .datepicker-day:focus {
   color: var(--purple-400);
   outline: none;
-  background: #4b556363;
+  background: #4b556334;
   border-radius: 5px;
   cursor: pointer;
 }
