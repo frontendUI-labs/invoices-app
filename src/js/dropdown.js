@@ -1,26 +1,29 @@
-const menuEl = document.querySelector('#menu');
-const selectorEl = document.querySelector('.selector');
-const buttonsSelectorEl = document.querySelectorAll('.selector button');
-const textMenu = document.querySelector('.menu__text');
+const dropDownEl = document.querySelector('.dropdown');
+const dropdownButton = dropDownEl.querySelector('.dropdown__button');
+const dropdownList = dropDownEl.querySelector('.dropdown__list');
+const dropdownListButton = dropDownEl.querySelectorAll(
+  '.dropdown__list button'
+);
+const dropdownText = dropDownEl.querySelector('.dropdown__text');
 
 function toogleMenu() {
-  selectorEl.classList.toggle('flex');
+  dropdownList.classList.toggle('flex');
 }
 function removeMenu() {
-  selectorEl.classList.remove('flex');
+  dropdownList.classList.remove('flex');
 }
 
-menuEl.addEventListener('click', toogleMenu);
-buttonsSelectorEl.forEach((button) => {
+dropdownButton.addEventListener('click', toogleMenu);
+dropdownListButton.forEach((button) => {
   button.addEventListener('click', (event) => {
     const selectedOption = event.target.textContent;
-    textMenu.textContent = selectedOption;
+    dropdownText.textContent = selectedOption;
     toogleMenu();
   });
 });
 
 document.body.addEventListener('click', (event) => {
-  const isContained = menuEl.contains(event.target);
+  const isContained = dropdownButton.contains(event.target);
   if (!isContained) {
     removeMenu();
   }
