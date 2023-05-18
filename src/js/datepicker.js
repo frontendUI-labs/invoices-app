@@ -10,8 +10,23 @@ import startOfMonth from 'date-fns/startOfMonth';
 // renderCalendarDays(month, year);
 const datepickerEl = document.querySelector('#datepicker');
 const daysEl = datepickerEl.querySelector('.datepicker__days');
+
+//TITLE CALENDAR//
+const calendarTitleEl = datepickerEl.querySelector('.calendar__title');
 let currentDateUserSelected = new Date(); //bota el dia que escoje el usuario//
 let currentDateCalendar = new Date(); //bota el dia actual//
+
+function renderCalendarTitle() {
+  const formattedCurrentDate = format(currentDateCalendar, '	MMM yyyy'); //formato de mes y a~o//
+  calendarTitleEl.textContent = formattedCurrentDate;
+}
+function renderCalendaValue(date) {
+  const datepickerTitleEl = datepickerEl.querySelector('.datepicker__value');
+
+  const allFormattedCurrentDate = format(date, 'd MMM yyyy'); //formato de dia mes y a~o//
+  datepickerTitleEl.textContent = allFormattedCurrentDate;
+}
+
 //DIAS//
 function renderCalendarDays() {
   const startDayInAMonth = startOfMonth(currentDateCalendar); // bota el primer del mes//
@@ -56,6 +71,15 @@ function renderCalendarDays() {
       idx >= prevDays.length + Number(lastDayCurrentDate);
 
     const spanEl = document.createElement('span');
+    spanEl.addEventListener('click', () => {
+      const test = format(currentDateCalendar, 'M');
+      const year = format(currentDateCalendar, 'yyyy');
+
+      currentDateUserSelected = new Date([year, test, item]);
+      currentDateCalendar;
+
+      renderCalendaValue(currentDateUserSelected);
+    });
 
     spanEl.setAttribute('role', 'button');
     spanEl.setAttribute('tabindex', 0);
@@ -81,25 +105,10 @@ function renderCalendarDays() {
   });
 }
 
-//TITLE CALENDAR//
-const calendarTitleEl = datepickerEl.querySelector('.calendar__title');
-function renderCalendarTitle() {
-  const formattedCurrentDate = format(currentDateCalendar, '	MMM yyyy'); //formato de mes y a~o//
-  calendarTitleEl.textContent = formattedCurrentDate;
-}
-function renderCalendaValue() {
-  const datepickerTitleEl = datepickerEl.querySelector('.datepicker__value');
-
-  const allFormattedCurrentDate = format(currentDateCalendar, 'd MMM yyyy'); //formato de dia mes y a~o//
-  datepickerTitleEl.textContent = allFormattedCurrentDate;
-  console.log(allFormattedCurrentDate);
-}
-
 //FUNCTIONS//
 renderCalendarTitle();
-
 renderCalendarDays();
-renderCalendaValue();
+renderCalendaValue(currentDateCalendar);
 
 //ARROWS//
 const prevMonthEl = datepickerEl.querySelector('#prevMonth');
