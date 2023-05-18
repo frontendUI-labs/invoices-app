@@ -4,16 +4,18 @@
   gap: 24px;
   inline-size: 240px;
 }
-
 .datepicker__form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.arrowLeft {
+.datepicker__label {
+  color: var(--grey-400);
+}
+.datepicker__prevButton {
   transform: rotate(90deg);
 }
-.arrowRight {
+.datepicker__nextButton {
   transform: rotate(-90deg);
 }
 .datepicker__month__button {
@@ -21,11 +23,6 @@
   border: none;
   cursor: pointer;
 }
-
-.datepicker__label {
-  color: var(--grey-400);
-}
-
 .datepicker__button {
   display: flex;
   justify-content: space-between;
@@ -38,7 +35,6 @@
   color: var(--black-500);
   cursor: pointer;
 }
-
 .datepicker__button:hover,
 .datepicker__button:focus {
   border: 1px solid var(--purple-100);
@@ -46,7 +42,6 @@
 }
 
 /* calendar */
-
 .datepicker__calendar {
   display: flex;
   flex-direction: column;
@@ -57,7 +52,6 @@
   border-radius: 8px;
   display: none;
 }
-
 .datepicker__month {
   margin-block-end: 30px;
   display: flex;
@@ -83,7 +77,6 @@
   block-size: 139px;
   width: 240px;
 }
-
 .datepicker-day {
   display: flex;
   justify-content: center;
@@ -93,7 +86,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
 .datepicker-day:hover,
 .datepicker-day:focus {
   color: var(--purple-400);
@@ -104,19 +96,21 @@
   color: var(--purple-400);
   background: #4b556334;
 }
-
 .datepicker-day.is-inactive {
   color: var(--grey-200);
   cursor: not-allowed;
 }
 
-.flex {
-  display: flex;
-}
+/* en modo disabled*/
 .datepicker__button:disabled {
   opacity: 0.5;
 }
 .datepicker__button:disabled:hover {
   border-color: var(--grey-200);
   cursor: not-allowed;
+}
+
+/* estilo que ayuda en js */
+.flex {
+  display: flex;
 }

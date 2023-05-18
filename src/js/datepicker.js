@@ -10,18 +10,19 @@ import startOfMonth from 'date-fns/startOfMonth';
 // renderCalendarDays(month, year);
 const datepickerEl = document.querySelector('#datepicker');
 const daysEl = datepickerEl.querySelector('.datepicker__days');
-
-//TITLE CALENDAR//
+const prevMonthEl = datepickerEl.querySelector('#prevMonth');
+const nextMonthEl = datepickerEl.querySelector('#nextMonth');
 const calendarTitleEl = datepickerEl.querySelector('.calendar__title');
-let currentDateUserSelected = new Date(); //bota el dia que escoje el usuario//
-let currentDateCalendar = new Date(); //bota el dia actual//
-
-//TOGGLE CALENDAR//
 const datepickerButtonEl = datepickerEl.querySelector('.datepicker__button');
 const datepickerCalendarEl = datepickerEl.querySelector(
   '.datepicker__calendar'
 );
 
+//TITLE CALENDAR//
+let currentDateUserSelected = new Date(); //bota el dia que escoje el usuario//
+let currentDateCalendar = new Date(); //bota el dia actual//
+
+//TOGGLE CALENDAR//
 function toogleCalendar() {
   datepickerCalendarEl.classList.toggle('flex'); // muestra y remueve el calendar//
 }
@@ -45,7 +46,6 @@ function renderCalendarTitle() {
 }
 function renderCalendaValue(date) {
   const datepickerTitleEl = datepickerEl.querySelector('.datepicker__value');
-
   const allFormattedCurrentDate = format(date, 'd MMM yyyy'); //formato de dia mes y a~o//
   datepickerTitleEl.textContent = allFormattedCurrentDate;
 }
@@ -92,7 +92,7 @@ function renderCalendarDays() {
       idx < starDayOfMonth ||
       idx >= prevDays.length + Number(lastDayCurrentDate);
 
-    // se debe crear un span esta opcion para poder agregar un evento//
+    // se debe crear un span con esta opcion para poder agregarles un evento//
     const spanEl = document.createElement('span');
     spanEl.addEventListener('click', () => {
       const month = format(currentDateCalendar, 'M');
@@ -127,14 +127,7 @@ function renderCalendarDays() {
   });
 }
 
-//FUNCTIONS//
-renderCalendarTitle();
-renderCalendarDays();
-renderCalendaValue(currentDateCalendar);
-
 //ARROWS//
-const prevMonthEl = datepickerEl.querySelector('#prevMonth');
-const nextMonthEl = datepickerEl.querySelector('#nextMonth');
 nextMonthEl.addEventListener('click', () => {
   currentDateCalendar = addMonths(currentDateCalendar, 1); // agrega una cantidad de meses posteriores al actual//
   renderCalendarTitle();
@@ -150,3 +143,8 @@ prevMonthEl.addEventListener('click', () => {
   daysEl.innerHTML = ''; //limpia el append//
   renderCalendarDays();
 });
+
+//FUNCTIONS//
+renderCalendarTitle();
+renderCalendarDays();
+renderCalendaValue(currentDateCalendar);
