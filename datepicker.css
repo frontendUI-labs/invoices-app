@@ -12,13 +12,13 @@
 .datepicker__label {
   color: var(--grey-400);
 }
-.datepicker__prevButton {
+.datepicker__prevButtonImg {
   transform: rotate(90deg);
 }
-.datepicker__nextButton {
+.datepicker__nextButtonImg {
   transform: rotate(-90deg);
 }
-.datepicker__month__button {
+.datepicker__monthButton {
   background-color: transparent;
   border: none;
   cursor: pointer;

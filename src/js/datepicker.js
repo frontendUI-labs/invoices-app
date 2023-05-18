@@ -7,11 +7,10 @@ import weeksToDays from 'date-fns/weeksToDays';
 import addMonths from 'date-fns/addMonths';
 import startOfMonth from 'date-fns/startOfMonth';
 
-// renderCalendarDays(month, year);
 const datepickerEl = document.querySelector('#datepicker');
 const daysEl = datepickerEl.querySelector('.datepicker__days');
-const prevMonthEl = datepickerEl.querySelector('#prevMonth');
-const nextMonthEl = datepickerEl.querySelector('#nextMonth');
+const prevMonthEl = datepickerEl.querySelector('.datepicker__prevButton');
+const nextMonthEl = datepickerEl.querySelector('.datepicker__nextButton');
 const calendarTitleEl = datepickerEl.querySelector('.calendar__title');
 const datepickerButtonEl = datepickerEl.querySelector('.datepicker__button');
 const datepickerCalendarEl = datepickerEl.querySelector(
@@ -19,8 +18,9 @@ const datepickerCalendarEl = datepickerEl.querySelector(
 );
 
 //TITLE CALENDAR//
-let currentDateUserSelected = new Date(); //bota el dia que escoje el usuario//
-let currentDateCalendar = new Date(); //bota el dia actual//
+const calendarDate = null;
+let currentDateUserSelected = calendarDate ?? new Date(); // nullish operator// compara si es nulo o undefined el primer elemento
+let currentDateCalendar = currentDateUserSelected; //bota el dia actual//
 
 //TOGGLE CALENDAR//
 function toogleCalendar() {
@@ -50,7 +50,7 @@ function renderCalendaValue(date) {
   datepickerTitleEl.textContent = allFormattedCurrentDate;
 }
 
-//DIAS//
+//DAYS//
 function renderCalendarDays() {
   const startDayInAMonth = startOfMonth(currentDateCalendar); // bota el primer del mes//
   const starDayOfMonth = getDay(startDayInAMonth); // bota la posicion que cae el primer dia//
@@ -98,7 +98,6 @@ function renderCalendarDays() {
       const month = format(currentDateCalendar, 'M');
       const year = format(currentDateCalendar, 'yyyy');
       currentDateUserSelected = new Date([year, month, item]);
-      currentDateCalendar;
       renderCalendaValue(currentDateUserSelected);
     });
 
@@ -147,4 +146,4 @@ prevMonthEl.addEventListener('click', () => {
 //FUNCTIONS//
 renderCalendarTitle();
 renderCalendarDays();
-renderCalendaValue(currentDateCalendar);
+renderCalendaValue(currentDateUserSelected);
