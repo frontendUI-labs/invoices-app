@@ -16,6 +16,29 @@ const calendarTitleEl = datepickerEl.querySelector('.calendar__title');
 let currentDateUserSelected = new Date(); //bota el dia que escoje el usuario//
 let currentDateCalendar = new Date(); //bota el dia actual//
 
+//TOGGLE CALENDAR//
+const datepickerButtonEl = datepickerEl.querySelector('.datepicker__button');
+const datepickerCalendarEl = datepickerEl.querySelector(
+  '.datepicker__calendar'
+);
+
+function toogleCalendar() {
+  datepickerCalendarEl.classList.toggle('flex'); // muestra y remueve el calendar//
+}
+function removeCalendar() {
+  datepickerCalendarEl.classList.remove('flex'); //solo remueve el calendar
+}
+
+datepickerButtonEl.addEventListener('click', toogleCalendar);
+//el calendar se removera si se hace click fuera del calendar//
+document.body.addEventListener('click', (event) => {
+  const isContained = datepickerEl.contains(event.target);
+  if (!isContained) {
+    removeCalendar();
+  }
+});
+
+//DAYS FUNCTION//
 function renderCalendarTitle() {
   const formattedCurrentDate = format(currentDateCalendar, '	MMM yyyy'); //formato de mes y a~o//
   calendarTitleEl.textContent = formattedCurrentDate;
@@ -44,7 +67,6 @@ function renderCalendarDays() {
   const lastCurrentDate = lastDayOfMonth(currentDateCalendar); //bota el ultimo dia del mes//
   const lastDayCurrentDate = format(lastCurrentDate, 'd'); //formato de los dias agarrados//
   const getCurrentLastDay = getDay(lastCurrentDate); //bota la posicion del ultimo dia del mes//
-  console.log('getCurrentLastDay', getCurrentLastDay);
 
   //dias previos al mes actual//
   const prevDays = [...Array(starDayOfMonth).keys()].map(
@@ -70,17 +92,17 @@ function renderCalendarDays() {
       idx < starDayOfMonth ||
       idx >= prevDays.length + Number(lastDayCurrentDate);
 
+    // se debe crear un span esta opcion para poder agregar un evento//
     const spanEl = document.createElement('span');
     spanEl.addEventListener('click', () => {
-      const test = format(currentDateCalendar, 'M');
+      const month = format(currentDateCalendar, 'M');
       const year = format(currentDateCalendar, 'yyyy');
-
-      currentDateUserSelected = new Date([year, test, item]);
+      currentDateUserSelected = new Date([year, month, item]);
       currentDateCalendar;
-
       renderCalendaValue(currentDateUserSelected);
     });
 
+    // se debe dar el atributo al span para traer los estilos//
     spanEl.setAttribute('role', 'button');
     spanEl.setAttribute('tabindex', 0);
     spanEl.classList.add('text-h4', 'datepicker-day');
@@ -88,7 +110,7 @@ function renderCalendarDays() {
     if (isInactiveDay) {
       spanEl.classList.add('is-inactive');
     }
-
+    //iguala los dias, mese y a~o del calenadar con la fecha seleccionada por el usuario//
     if (
       format(currentDateUserSelected, 'd') == item &&
       format(currentDateUserSelected, 'M') ==
@@ -116,8 +138,7 @@ const nextMonthEl = datepickerEl.querySelector('#nextMonth');
 nextMonthEl.addEventListener('click', () => {
   currentDateCalendar = addMonths(currentDateCalendar, 1); // agrega una cantidad de meses posteriores al actual//
   renderCalendarTitle();
-  daysEl.innerHTML = '';
-
+  daysEl.innerHTML = ''; //limpia el append//
   renderCalendarDays();
 });
 prevMonthEl.addEventListener('click', () => {
@@ -126,7 +147,6 @@ prevMonthEl.addEventListener('click', () => {
     months: 1,
   });
   renderCalendarTitle();
-  daysEl.innerHTML = '';
-
+  daysEl.innerHTML = ''; //limpia el append//
   renderCalendarDays();
 });
