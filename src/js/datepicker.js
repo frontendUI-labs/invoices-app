@@ -19,8 +19,9 @@ const datepickerCalendarEl = datepickerEl.querySelector(
 
 //TITLE CALENDAR//
 const calendarDate = null;
-let currentDateUserSelected = calendarDate ?? new Date(); // nullish operator// compara si es nulo o undefined el primer elemento
+let currentDateUserSelected = new Date() ?? calendarDate; // nullish operator// compara si es nulo o undefined el primer elemento
 let currentDateCalendar = currentDateUserSelected; //bota el dia actual//
+console.log(currentDateUserSelected);
 
 //TOGGLE CALENDAR//
 function toogleCalendar() {
@@ -87,6 +88,13 @@ function renderCalendarDays() {
   //(...) junta a los dias previos + actuales + posteriores//
   const allDays = [...prevDays, ...currentDays, ...nextDays];
 
+  function cleanSpans() {
+    const allSpans = document.querySelectorAll('.datepicker-day');
+    allSpans.forEach((span) => {
+      span.classList.remove('current');
+    });
+  }
+
   allDays.forEach((item, idx) => {
     const isInactiveDay =
       idx < starDayOfMonth ||
@@ -94,12 +102,6 @@ function renderCalendarDays() {
 
     // se debe crear un span con esta opcion para poder agregarles un evento//
     const spanEl = document.createElement('span');
-    spanEl.addEventListener('click', () => {
-      const month = format(currentDateCalendar, 'M');
-      const year = format(currentDateCalendar, 'yyyy');
-      currentDateUserSelected = new Date([year, month, item]);
-      renderCalendaValue(currentDateUserSelected);
-    });
 
     // se debe dar el atributo al span para traer los estilos//
     spanEl.setAttribute('role', 'button');
@@ -122,6 +124,35 @@ function renderCalendarDays() {
     }
 
     spanEl.textContent = item;
+    spanEl.addEventListener('click', (event) => {
+      // no permitir escogerprevDays ni nextDays//
+      if (isInactiveDay) {
+        return;
+      }
+      const month = format(currentDateCalendar, 'M');
+      const year = format(currentDateCalendar, 'yyyy');
+      currentDateUserSelected = new Date([year, month, item]);
+      renderCalendaValue(currentDateUserSelected);
+
+      cleanSpans();
+      event.target.classList.add('current');
+      //integrar la clase current
+    });
+
+    spanEl.addEventListener('keypress', (event) => {
+      // no permitir escogerprevDays ni nextDays//
+      if (isInactiveDay) {
+        return;
+      }
+      const month = format(currentDateCalendar, 'M');
+      const year = format(currentDateCalendar, 'yyyy');
+      currentDateUserSelected = new Date([year, month, item]);
+      renderCalendaValue(currentDateUserSelected);
+
+      cleanSpans();
+      event.target.classList.add('current');
+      //integrar la clase current
+    });
     daysEl.append(spanEl);
   });
 }
