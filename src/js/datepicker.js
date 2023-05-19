@@ -21,7 +21,6 @@ const datepickerCalendarEl = datepickerEl.querySelector(
 const calendarDate = null;
 let currentDateUserSelected = new Date() ?? calendarDate; // nullish operator// compara si es nulo o undefined el primer elemento
 let currentDateCalendar = currentDateUserSelected; //bota el dia actual//
-console.log(currentDateUserSelected);
 
 //TOGGLE CALENDAR//
 function toogleCalendar() {
@@ -42,7 +41,7 @@ document.body.addEventListener('click', (event) => {
 
 //DAYS FUNCTION//
 function renderCalendarTitle() {
-  const formattedCurrentDate = format(currentDateCalendar, '	MMM yyyy'); //formato de mes y a~o//
+  const formattedCurrentDate = format(currentDateCalendar, 'MMM yyyy'); //formato de mes y a~o//
   calendarTitleEl.textContent = formattedCurrentDate;
 }
 function renderCalendaValue(date) {
@@ -94,6 +93,20 @@ function renderCalendarDays() {
       span.classList.remove('current');
     });
   }
+  function handleSpanElClick(isInactiveDay, item, event) {
+    if (isInactiveDay) {
+      // no permitir escogerprevDays ni nextDays//
+      return;
+    }
+    const month = format(currentDateCalendar, 'M');
+    const year = format(currentDateCalendar, 'yyyy');
+    currentDateUserSelected = new Date(year, month - 1, item);
+    renderCalendaValue(currentDateUserSelected);
+
+    cleanSpans();
+    event.target.classList.add('current');
+    //integrar la clase current
+  }
 
   allDays.forEach((item, idx) => {
     const isInactiveDay =
@@ -123,35 +136,17 @@ function renderCalendarDays() {
       spanEl.classList.add('current');
     }
 
+    //EVENTO CLICK//
     spanEl.textContent = item;
     spanEl.addEventListener('click', (event) => {
-      // no permitir escogerprevDays ni nextDays//
-      if (isInactiveDay) {
-        return;
-      }
-      const month = format(currentDateCalendar, 'M');
-      const year = format(currentDateCalendar, 'yyyy');
-      currentDateUserSelected = new Date([year, month, item]);
-      renderCalendaValue(currentDateUserSelected);
-
-      cleanSpans();
-      event.target.classList.add('current');
-      //integrar la clase current
+      handleSpanElClick(isInactiveDay, item, event);
     });
 
+    //EVENTO KEWDOWN//
     spanEl.addEventListener('keypress', (event) => {
-      // no permitir escogerprevDays ni nextDays//
-      if (isInactiveDay) {
-        return;
+      if (event.code === 'Enter') {
+        handleSpanElClick(isInactiveDay, item, event);
       }
-      const month = format(currentDateCalendar, 'M');
-      const year = format(currentDateCalendar, 'yyyy');
-      currentDateUserSelected = new Date([year, month, item]);
-      renderCalendaValue(currentDateUserSelected);
-
-      cleanSpans();
-      event.target.classList.add('current');
-      //integrar la clase current
     });
     daysEl.append(spanEl);
   });
