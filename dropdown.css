@@ -1,3 +1,10 @@
+.dropdown {
+  /*  espacio solo par ver  */
+  margin-block-start: 20px;
+  /*  espacio solo par ver  */
+  position: relative;
+}
+
 .dropdown__label {
   color: var(--grey-400);
 }
@@ -29,6 +36,7 @@
   overflow: hidden;
   flex-direction: column;
   display: none;
+  position: absolute;
 }
 .dropdown__option {
   padding-block: 15px;

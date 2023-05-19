@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
 
     <title>Invoice App</title>
   </head>
@@ -48,9 +47,38 @@
           <input class="text-h4 textfield__input" type="text" />
         </div>
         <hr />
-        <div class="textfield">
-          <label class="text-body1 textfield__label">Street Address</label>
-          <input class="text-h4 textfield__input" type="text" />
+        <div class="datepicker" id="datepicker">
+          <div class="datepicker__form">
+            <span class="text-body1 datepicker__label">Issue Date</span>
+            <button class="text-h4 datepicker__button">
+              <span class="datepicker__value"></span>
+              <img src="./icon/Shape.svg" alt="boton-de-calendario" />
+            </button>
+          </div>
+          <div class="datepicker__calendar">
+            <div class="datepicker__month">
+              <button class="datepicker__monthButton datepicker__prevButton">
+                <img
+                  class="datepicker__prevButtonImg"
+                  src="./icon/arrowdown.svg"
+                  alt="boton-de-calendario" />
+              </button>
+              <span class="text-h4 calendar__title"></span>
+              <button class="datepicker__monthButton datepicker__nextButton">
+                <img
+                  class="datepicker__nextButtonImg"
+                  src="./icon/arrowdown.svg"
+                  alt="boton-de-calendario" />
+              </button>
+            </div>
+            <div class="text-h4 datepicker__weekdays">
+              <span class="text-h4">Sun</span><span class="text-h4">Mon</span
+              ><span class="text-h4">Tue</span><span class="text-h4">Wed</span
+              ><span class="text-h4">Thu</span><span class="text-h4">Fri</span
+              ><span class="text-h4">Sat</span>
+            </div>
+            <div class="datepicker__days"></div>
+          </div>
         </div>
         <div class="dropdown">
           <span class="text-body1 dropdown__label">Payment Terms</span>
