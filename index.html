@@ -43,124 +43,202 @@
             <img src="./icon/calendar.svg" alt="boton-de-calendario" />
           </button>
         </div>
-        <div class="datepicker__calendar">
-          <div class="datepicker__month">
-            <button class="datepicker__monthButton datepicker__prevButton">
+        <hr />
+        <div class="textfield">
+          <label class="text-body1 textfield__label">Street Address</label>
+          <input class="text-h4 textfield__input" type="text" />
+        </div>
+        <hr />
+        <div class="datepicker" id="datepicker">
+          <div class="datepicker__form">
+            <span class="text-body1 datepicker__label">Issue Date</span>
+            <button class="text-h4 datepicker__button">
+              <span class="datepicker__value"></span>
+              <img src="./icon/Shape.svg" alt="boton-de-calendario" />
+            </button>
+          </div>
+          <div class="datepicker__calendar">
+            <div class="datepicker__month">
+              <button class="datepicker__monthButton datepicker__prevButton">
+                <img
+                  class="datepicker__prevButtonImg"
+                  src="./icon/arrowdown.svg"
+                  alt="boton-de-calendario" />
+              </button>
+              <span class="text-h4 calendar__title"></span>
+              <button class="datepicker__monthButton datepicker__nextButton">
+                <img
+                  class="datepicker__nextButtonImg"
+                  src="./icon/arrowdown.svg"
+                  alt="boton-de-calendario" />
+              </button>
+            </div>
+            <div class="text-h4 datepicker__weekdays">
+              <span class="text-h4">Sun</span><span class="text-h4">Mon</span
+              ><span class="text-h4">Tue</span><span class="text-h4">Wed</span
+              ><span class="text-h4">Thu</span><span class="text-h4">Fri</span
+              ><span class="text-h4">Sat</span>
+            </div>
+            <div class="datepicker__days"></div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span class="text-body1 dropdown__label">Payment Terms</span>
+          <button class="text-h4 dropdown__button" id="menu">
+            <span class="dropdown__text">Next 30 Days</span>
+            <img src="./icon/arrowdown.svg" alt="" />
+          </button>
+          <div class="dropdown__list">
+            <button class="dropdown__option">Next 1 Day</button>
+            <button class="dropdown__option">Next 7 Days</button>
+            <button class="dropdown__option">Next 14 Days</button>
+            <button class="dropdown__option">Next 30 Days</button>
+          </div>
+        </div>
+      </section>
+      <section class="page" id="home">
+        <h2>List of Invoices</h2>
+        <ul id="menu"></ul>
+      </section>
+      <section class="page" id="details">
+        <h2>Invoice Details</h2>
+        <article>
+          <div class="viewInvoice">
+            <a
+              href="https://www.google.com/"
+              class="text-h4 viewInvoice__returnButton__title">
               <img
                 class="datepicker__prevButtonImg"
                 src="./icon/arrowdown.svg"
-                alt="boton-de-calendario" />
-            </button>
-            <span class="text-h4 calendar__title"></span>
-            <button class="datepicker__monthButton datepicker__nextButton">
-              <img
-                class="datepicker__nextButtonImg"
-                src="./icon/arrowdown.svg"
-                alt="boton-de-calendario" />
-            </button>
-          </div>
-          <div class="text-h4 datepicker__weekdays">
-            <span class="text-h4">Sun</span><span class="text-h4">Mon</span
-            ><span class="text-h4">Tue</span><span class="text-h4">Wed</span
-            ><span class="text-h4">Thu</span><span class="text-h4">Fri</span
-            ><span class="text-h4">Sat</span>
-          </div>
-          <div class="datepicker__days"></div>
-        </div>
-      </div>
-      <div class="dropdown">
-        <span class="text-body1 dropdown__label">Payment Terms</span>
-        <button class="text-h4 dropdown__button" id="menu">
-          <span class="dropdown__text">Next 30 Days</span>
-          <img src="./icon/arrowdown.svg" alt="" />
-        </button>
-        <div class="dropdown__list">
-          <button class="dropdown__option">Next 1 Day</button>
-          <button class="dropdown__option">Next 7 Days</button>
-          <button class="dropdown__option">Next 14 Days</button>
-          <button class="dropdown__option">Next 30 Days</button>
-        </div>
-      </div>
-    </section>
-    <section class="page" id="home">
-      <div class="listinvoice">
-        <nav class="nav__bar">
-          <div class="nav__background">
-            <img class="nav__logo" src="./icon/Logo.svg" alt="" />
-            <div class="nav__background--second"></div>
-          </div>
-          <div class="nav__profile">
-            <img class="profile__icon" src="./icon/dark-mode.svg" alt="" />
-            <span class="nav__profile__line"></span>
-            <img class="profile__icon icon2" src="./icon/profile.svg" alt="" />
-          </div>
-        </nav>
-        <div class="list__content__wraper">
-          <div class="list__content">
-            <div class="list__content__header">
-              <div>
-                <h1 class="text-h2 content__header__title">Invoices</h1>
-                <p class="text-body1 content__header__p">
-                  <span class="text__adition__desk">There are </span> 7
-                  <span class="text__adition__desk">total</span> invoices
-                </p>
+                alt="" />
+              Go back
+            </a>
+
+            <div class="viewInvoice__status">
+              <div class="viewInvoice__summary">
+                <h2 class="text-body1 viewInvoice__summary__title">Status</h2>
+                <div class="viewInvoice__summary__button">
+                  <div class="viewInvoice__summary__button__icon"></div>
+                  <p class="text-h4 viewInvoice__summary__status">Pending</p>
+                </div>
               </div>
-              <div class="list__content__buttons">
-                <div class="filter__button__wrapper">
-                  <div class="filter__selected">
-                    <span class="text-h4 filter__selected__number"></span>
+              <div class="viewInvoice__details">
+                <div class="viewInvoice__details__information">
+                  <div class="viewInvoice__details__top">
+                    <dl class="viewInvoice__details__title">
+                      <span class="text-h4 viewInvoice__details__hash">#</span>
+                      <dt class="text-h4 viewInvoice__details__number">
+                        XM9141
+                      </dt>
+                    </dl>
+                    <dd class="text-body1 viewInvoice__details__text">
+                      Graphic Design
+                    </dd>
                   </div>
-                  <button class="filter__button">
-                    <span class="text-h4"
-                      >Filter<span class="text__adition__desk">
-                        by status</span
-                      ></span
-                    >
-                    <img
-                      class="arrowrotate"
-                      src="./icon/arrowdown.svg"
-                      alt="" />
-                  </button>
-                  <div class="filter__checkbox">
-                    <label class="text-h4 filter__option">
-                      <input
-                        type="checkbox"
-                        class="sr-only checkbox"
-                        id="status-draft" />
-                      <span tabindex="0" class="checkbox__container">
-                        <img
-                          class="checkbox__icon"
-                          src="./icon/check.svg"
-                          alt="" />
-                      </span>
-                      Draft
-                    </label>
-                    <label class="text-h4 filter__option">
-                      <input
-                        type="checkbox"
-                        class="sr-only checkbox"
-                        id="status-pending" />
-                      <span tabindex="0" class="checkbox__container">
-                        <img
-                          class="checkbox__icon"
-                          src="./icon/check.svg"
-                          alt="" />
-                      </span>
-                      Pending
-                    </label>
-                    <label class="text-h4 filter__option">
-                      <input
-                        type="checkbox"
-                        class="sr-only checkbox"
-                        id="status-paid" />
-                      <span tabindex="0" class="checkbox__container">
-                        <img
-                          class="checkbox__icon"
-                          src="./icon/check.svg"
-                          alt="" />
-                      </span>
-                      Paid
-                    </label>
+                  <dd class="text-body1 viewInvoice__ditails__address">
+                    19 Union Terrace<br />
+                    London<br />
+                    E1 3EZ<br />
+                    United Kingdom
+                  </dd>
+                </div>
+                <div class="viewInvoice__details__date__bill">
+                  <div class="viewInvoice__details__date">
+                    <dl class="viewInvoice__details__initialDate">
+                      <dt
+                        class="text-body1 viewInvoice__details__initialDate__title">
+                        Invoice Date
+                      </dt>
+                      <dd
+                        class="text-h3 viewInvoice__details__initialDate__text">
+                        21 Aug 2021
+                      </dd>
+                    </dl>
+                    <div class="viewInvoice__details__dueDate">
+                      <dt
+                        class="text-body1 viewInvoice__details__dueDate__title">
+                        Payment Due
+                      </dt>
+                      <dd class="text-h3 viewInvoice__details__dueDate__text">
+                        20 Sep 2021
+                      </dd>
+                    </div>
+                  </div>
+                  <dl class="viewInvoice__details__bill">
+                    <dt class="text-body1 viewInvoice__details__bill__title">
+                      Bill To
+                    </dt>
+                    <dd class="text-h3 viewInvoice__details__bill__name">
+                      Alex Grim
+                    </dd>
+                    <dd class="text-body1 viewInvoice__details__bill__addreess">
+                      84 Church Way<br />
+                      Bradford<br />
+                      BD1 9PB<br />
+                      United Kingdom
+                    </dd>
+                  </dl>
+                </div>
+                <dl class="viewInvoice__details__sent">
+                  <dt class="text-body1 viewInvoice__details__sent__title">
+                    Sent to
+                  </dt>
+                  <dd class="text-h3 viewInvoice__details__sent__mail">
+                    alexgrim@mail.com
+                  </dd>
+                </dl>
+                <div class="viewInvoice__details__billing">
+                  <div class="viewInvoice__details__billing__firstSecond">
+                    <div class="viewInvoice__details__first__billing">
+                      <dl
+                        class="viewInvoice__details__first__billing__information">
+                        <dt
+                          class="text-h4 viewInvoice__details__first__billing__information__title">
+                          Banner Design
+                        </dt>
+                        <dd
+                          class="text-h4 viewInvoice__details__first__billing__information__unitPrice">
+                          1 x £ 156.00
+                        </dd>
+                      </dl>
+                      <div class="viewInvoice__details__billing__price">
+                        <dd
+                          class="text-h3 viewInvoice__details__billing__totalPrice">
+                          £ 156.00
+                        </dd>
+                      </div>
+                    </div>
+                    <div class="viewInvoice__details__second__billing">
+                      <dl
+                        class="viewInvoice__details__second__billing__information">
+                        <dt
+                          class="text-h4 viewInvoice__details__second__billing__information__title">
+                          Email Design
+                        </dt>
+                        <dd
+                          class="text-h4 viewInvoice__details__second__billing__information__unitPrice">
+                          2 x £ 200.00
+                        </dd>
+                      </dl>
+                      <dl class="viewInvoice__details__billing__price">
+                        <dd
+                          class="text-h3 viewInvoice__details__billing__totalPrice">
+                          £ 400.00
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                  <div class="viewInvoice__details__total__billing__section">
+                    <dl class="viewInvoice__details__total__billing">
+                      <dt
+                        class="text-body2 viewInvoice__details__total__billing__title">
+                        Grand Total
+                      </dt>
+                      <dd
+                        class="text-h2 viewInvoice__details__total__billing__final">
+                        £ 556.00
+                      </dd>
+                    </dl>
                   </div>
                 </div>
                 <button class="text-h4 button button--primary button--icon">
