@@ -63,7 +63,11 @@ a {
   align-items: center;
   justify-content: space-between;
 }
-.content__header__p {
+.list__content_invoice {
+  display: flex;
+  flex-direction: column;
+}
+.content__invoice__summary {
   color: var(--grey-300);
 }
 .list__content__buttons {
@@ -150,6 +154,14 @@ a {
 .checkbox:checked + .checkbox__container .checkbox__icon {
   display: block;
 }
+.list__buttons__filter {
+  align-self: center;
+  gap: 12px;
+}
+.filter__button {
+  cursor: pointer;
+  border: none;
+}
 .list__content__cards {
   display: flex;
   flex-direction: column;
@@ -162,6 +174,7 @@ a {
   justify-content: space-between;
   gap: 24px;
   border: 1px solid var(--white-100);
+  justify-content: space-between;
   background: var(--white-100);
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
@@ -200,12 +213,27 @@ a {
   flex-direction: column;
   gap: 8px;
 }
+.list__details__numeral {
+  color: var(--grey-400);
+}
+.list__details__number {
+  color: var(--black-500);
+}
 .list__details__date {
   color: var(--grey-400);
 }
 .list__details__check {
   inline-size: 104px;
   margin-block: 3px;
+}
+.list__code {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.list__code__check {
+  inline-size: 104px;
   padding-block: 12px;
   border-radius: 6px;
   display: flex;
