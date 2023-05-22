@@ -1,11 +1,12 @@
 /* TODO: remove it */
-@import url('./global.css');
-@import url('./css-vars.css');
-@import url('./typography.css');
-@import url('./buttons.css');
-@import url('./textfield.css');
-@import url('./dropdown.css');
-@import url('./datepicker.css');
+@import url('./src/css/global.css');
+@import url('./src/css/css-vars.css');
+@import url('./src/css/typography.css');
+@import url('./src/css/buttons.css');
+@import url('./src/css/textfield.css');
+@import url('./src/css/dropdown.css');
+@import url('./src/css/datepicker.css');
+@import url('./src/css/listofinvoices.css');
 
 body {
   margin: 0;

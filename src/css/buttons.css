@@ -13,11 +13,11 @@
 }
 .button--primary {
   background: var(--purple-400);
-  min-inline-size: 131px;
+  min-inline-size: 190px;
 }
 .button--icon {
   padding: 8px;
-  min-inline-size: 150px;
+  min-inline-size: 95px;
   display: flex;
   align-items: center;
   gap: 16px;
