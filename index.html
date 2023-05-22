@@ -111,18 +111,57 @@
           </nav>
           <div class="list__content">
             <div class="list__content__header">
-              <div class="text-h2 list__content_invoice">
-                Invoices
-                <span class="text-body1 content__invoice__summary"
-                  >7 invoices</span
-                >
+              <div>
+                <h1 class="text-h2">Invoices</h1>
+                <p class="text-body1 content__header__p">7 invoices</p>
               </div>
               <div class="list__content__buttons">
-                <div class="list__buttons__filter">
-                  <span class="text-h4">Filter</span>
+                <div class="filter__button__wrapper">
                   <button class="filter__button">
+                    <span class="text-h4">Filter</span>
                     <img src="./icon/arrowdown.svg" alt="" />
                   </button>
+                  <div class="filter__checkbox">
+                    <label for="draft" class="text-h4 filter__option"
+                      >Draft
+                      <input
+                        type="checkbox"
+                        id="draft"
+                        class="sr-only checkbox" />
+                      <span tabindex="0" class="checkbox__container">
+                        <img
+                          class="checkbox__icon"
+                          src="./icon/check.svg"
+                          alt="" />
+                      </span>
+                    </label>
+                    <label for="pending" class="text-h4 filter__option"
+                      >Pending
+                      <input
+                        type="checkbox"
+                        id="pending"
+                        class="sr-only checkbox" />
+                      <span tabindex="0" class="checkbox__container">
+                        <img
+                          class="checkbox__icon"
+                          src="./icon/check.svg"
+                          alt="" />
+                      </span>
+                    </label>
+                    <label for="paid" class="text-h4 filter__option"
+                      >Paid
+                      <input
+                        type="checkbox"
+                        id="paid"
+                        class="sr-only checkbox" />
+                      <span tabindex="0" class="checkbox__container">
+                        <img
+                          class="checkbox__icon"
+                          src="./icon/check.svg"
+                          alt="" />
+                      </span>
+                    </label>
+                  </div>
                 </div>
                 <button class="text-h4 button button--primary button--icon">
                   <span class="cirle-icon">

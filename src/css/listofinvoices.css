@@ -4,11 +4,11 @@
 }
 .nav__bar {
   block-size: 72px;
-  background-color: var(--black-100);
+  background: var(--black-100);
   display: flex;
   justify-content: space-between;
   position: sticky;
-  top: 0px;
+  inset-block-start: 0px;
 }
 .nav__background {
   block-size: 72px;
@@ -54,25 +54,74 @@
   align-items: center;
   justify-content: space-between;
 }
-.list__content_invoice {
-  display: flex;
-  flex-direction: column;
-}
-.content__invoice__summary {
+.content__header__p {
   color: var(--grey-300);
 }
 .list__content__buttons {
   display: flex;
+  align-items: center;
   gap: 18px;
 }
-.list__buttons__filter {
-  align-self: center;
-  gap: 12px;
+.filter__button__wrapper {
+  position: relative;
 }
 .filter__button {
+  background: transparent;
+  display: flex;
+  gap: 12px;
+  align-items: center;
   cursor: pointer;
   border: none;
 }
+.filter__checkbox {
+  min-inline-size: 192px;
+  padding: 24px;
+  margin-block-start: 20px;
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+.filter__button:hover {
+  opacity: 80%;
+}
+.filter__option {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 12px;
+}
+.checkbox__container {
+  inline-size: 16px;
+  block-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  border: 1px solid var(--grey-200);
+  background: var(--grey-200);
+}
+.checkbox__container:hover {
+  border-color: var(--purple-400);
+}
+.checkbox:checked + .checkbox__container {
+  background: var(--purple-400);
+  border-color: var(--purple-400);
+}
+.checkbox__icon {
+  display: none;
+}
+.checkbox:checked + .checkbox__container .checkbox__icon {
+  display: block;
+}
+
 .list__content__cards {
   display: flex;
   flex-direction: column;
@@ -154,4 +203,7 @@
 }
 .list__check__checkpage--draft {
   color: var(--black-100);
+}
+.flex {
+  display: flex;
 }
