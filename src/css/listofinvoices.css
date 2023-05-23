@@ -63,7 +63,24 @@
   gap: 18px;
 }
 .filter__button__wrapper {
+  display: flex;
+  align-items: center;
   position: relative;
+}
+.filter__selected {
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 50%;
+  background: var(--purple-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset-inline-start: -20px;
+  display: none;
+}
+.filter__selected__number {
+  color: var(--white-100);
 }
 .filter__button {
   background: transparent;
@@ -84,6 +101,7 @@
   flex-direction: column;
   gap: 16px;
   position: absolute;
+  inset-block-start: 10px;
   inset-inline-start: 50%;
   transform: translateX(-50%);
   display: none;
@@ -121,7 +139,6 @@
 .checkbox:checked + .checkbox__container .checkbox__icon {
   display: block;
 }
-
 .list__content__cards {
   display: flex;
   flex-direction: column;

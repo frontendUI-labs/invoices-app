@@ -15,17 +15,8 @@
   </head>
 
   <body>
-    <header>
-      <h1>Welcome to Invoices</h1>
-      <nav>
-        <a class="navlink" id="linkHome" href="/"> Home </a>
-        <a class="navlink" id="linkOrder" href="/details"> Details </a>
-        <a class="navlink" id="linkOrder" href="/styleguide"> styleguide </a>
-      </nav>
-    </header>
     <main>
       <section class="page" id="styleguide">
-        <h2>styleguide</h2>
         <div class="buttons">
           <button class="text-h4 button button--primary button--icon">
             <span class="cirle-icon">
@@ -95,8 +86,6 @@
         </div>
       </section>
       <section class="page" id="home">
-        <h2>List of Invoices</h2>
-        <ul id="menu"></ul>
         <div class="listinvoice">
           <nav class="nav__bar">
             <div class="nav__background">
@@ -117,17 +106,23 @@
               </div>
               <div class="list__content__buttons">
                 <div class="filter__button__wrapper">
+                  <div class="filter__selected">
+                    <span class="text-h4 filter__selected__number"></span>
+                  </div>
                   <button class="filter__button">
                     <span class="text-h4">Filter</span>
-                    <img src="./icon/arrowdown.svg" alt="" />
+                    <img
+                      class="arrowrotate"
+                      src="./icon/arrowdown.svg"
+                      alt="" />
                   </button>
                   <div class="filter__checkbox">
-                    <label for="draft" class="text-h4 filter__option"
+                    <label class="text-h4 filter__option"
                       >Draft
                       <input
                         type="checkbox"
-                        id="draft"
-                        class="sr-only checkbox" />
+                        class="sr-only checkbox"
+                        id="status-draft" />
                       <span tabindex="0" class="checkbox__container">
                         <img
                           class="checkbox__icon"
@@ -135,12 +130,12 @@
                           alt="" />
                       </span>
                     </label>
-                    <label for="pending" class="text-h4 filter__option"
+                    <label class="text-h4 filter__option"
                       >Pending
                       <input
                         type="checkbox"
-                        id="pending"
-                        class="sr-only checkbox" />
+                        class="sr-only checkbox"
+                        id="status-pending" />
                       <span tabindex="0" class="checkbox__container">
                         <img
                           class="checkbox__icon"
@@ -148,12 +143,12 @@
                           alt="" />
                       </span>
                     </label>
-                    <label for="paid" class="text-h4 filter__option"
+                    <label class="text-h4 filter__option"
                       >Paid
                       <input
                         type="checkbox"
-                        id="paid"
-                        class="sr-only checkbox" />
+                        class="sr-only checkbox"
+                        id="status-paid" />
                       <span tabindex="0" class="checkbox__container">
                         <img
                           class="checkbox__icon"
@@ -249,7 +244,6 @@
         </div>
       </section>
       <section class="page" id="details">
-        <h2>Invoice Details</h2>
         <article></article>
       </section>
     </main>
