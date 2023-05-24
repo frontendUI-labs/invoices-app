@@ -199,10 +199,8 @@ a {
 }
 .filter__option {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
   align-items: flex-end;
-  gap: 12px;
+  gap: 8px;
 }
 .checkbox__container {
   inline-size: 16px;
@@ -298,7 +296,7 @@ a {
   align-items: flex-end;
   justify-content: space-between;
 }
-.list__code__check {
+.list__code__check,
 .list__code,
 .list__details {
   display: flex;
@@ -392,7 +390,7 @@ a {
     display: contents;
   }
   .button--icon {
-    min-inline-size: 130px;
+    min-inline-size: 140px;
   }
   .list__cards,
   .list__details__count {
@@ -450,11 +448,10 @@ a {
     inline-size: 40px;
   }
   .list__content__wraper {
+    margin: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
     flex: 1;
-    margin-block-end: 20px;
   }
   .list__content {
     min-inline-size: 730px;
@@ -464,10 +461,22 @@ a {
     margin-block: 70px;
   }
   .list__content__cards {
-    margin-block-end: 70px;}
+    margin-block-end: 70px;
+  }
   .list__cards:hover {
-    border: 1px solid var(--purple-400);
+    border-color: var(--purple-400);
     cursor: pointer;
+  }
+  .list__cards {
+    position: relative;
+  }
+  .link__details::before {
+    content: ' ';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
+    block-size: 100%;
   }
   .list__details__check,
   .list__code__name {
