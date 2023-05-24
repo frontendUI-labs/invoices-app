@@ -71,3 +71,8 @@ h6 {
   white-space: nowrap;
   border-width: 0;
 }
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}

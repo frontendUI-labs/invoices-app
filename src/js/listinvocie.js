@@ -33,6 +33,7 @@ document.body.addEventListener('click', (event) => {
   const isContained = filterWraperEl.contains(event.target);
   if (!isContained) {
     removeCheckboxDropdown();
+    rotateArrow();
   }
 });
 

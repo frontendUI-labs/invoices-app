@@ -128,8 +128,7 @@
                         alt="" />
                     </button>
                     <div class="filter__checkbox">
-                      <label class="text-h4 filter__option"
-                        >Draft
+                      <label class="text-h4 filter__option">
                         <input
                           type="checkbox"
                           class="sr-only checkbox"
@@ -140,9 +139,9 @@
                             src="./icon/check.svg"
                             alt="" />
                         </span>
+                        Draft
                       </label>
-                      <label class="text-h4 filter__option"
-                        >Pending
+                      <label class="text-h4 filter__option">
                         <input
                           type="checkbox"
                           class="sr-only checkbox"
@@ -153,9 +152,9 @@
                             src="./icon/check.svg"
                             alt="" />
                         </span>
+                        Pending
                       </label>
-                      <label class="text-h4 filter__option"
-                        >Paid
+                      <label class="text-h4 filter__option">
                         <input
                           type="checkbox"
                           class="sr-only checkbox"
@@ -166,6 +165,7 @@
                             src="./icon/check.svg"
                             alt="" />
                         </span>
+                        Paid
                       </label>
                     </div>
                   </div>
@@ -177,8 +177,8 @@
                   </button>
                 </div>
               </div>
-              <div class="list__content__cards">
-                <div class="list__cards paid">
+              <ul class="list__content__cards">
+                <li class="list__cards paid">
                   <div class="list__code">
                     <div class="text-body1">
                       <span class="list__code__numeral">#</span
@@ -201,9 +201,12 @@
                         class="list__check__point list__check__point--paid"></div>
                       <span class="text-h4 list__check__checkpage">Paid</span>
                     </div>
+                    <a
+                      class="link__details"
+                      href="http://localhost:5173/details"></a>
                   </div>
-                </div>
-                <div class="list__cards pending">
+                </li>
+                <li class="list__cards pending">
                   <div class="list__code">
                     <div class="text-body1">
                       <span class="list__code__numeral">#</span
@@ -226,9 +229,12 @@
                         >Pending</span
                       >
                     </div>
+                    <a
+                      class="link__details"
+                      href="http://localhost:5173/details"></a>
                   </div>
-                </div>
-                <div class="list__cards draft">
+                </li>
+                <li class="list__cards draft">
                   <div class="list__code">
                     <div class="text-body1">
                       <span class="list__code__numeral">#</span
@@ -253,163 +259,12 @@
                         >Draft</span
                       >
                     </div>
+                    <a
+                      class="link__details"
+                      href="http://localhost:5173/details"></a>
                   </div>
-                </div>
-                <div class="list__cards paid">
-                  <div class="list__code">
-                    <div class="text-body1">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">RT3038</span>
-                    </div>
-                    <span class="text-body1 list__code__name"
-                      >Jensen Huang</span
-                    >
-                  </div>
-                  <div class="list__details">
-                    <div class="list__details__count">
-                      <span class="text-body1 list__details__date"
-                        >Due 19 Aug 2021</span
-                      >
-                      <span class="text-h3">£ 1,800.90</span>
-                    </div>
-                    <div
-                      class="list__details__check list__details__check--paid">
-                      <div
-                        class="list__check__point list__check__point--paid"></div>
-                      <span class="text-h4 list__check__checkpage">Paid</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="list__cards pending">
-                  <div class="list__code">
-                    <div class="text-body1">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">XM9141</span>
-                    </div>
-                    <span class="text-body1 list__code__name">Alex Grim</span>
-                  </div>
-                  <div class="list__details">
-                    <div class="list__details__count">
-                      <span class="text-body1 list__details__date"
-                        >Due 20 Sep 2021</span
-                      >
-                      <span class="text-h3">£ 556.00</span>
-                    </div>
-                    <div
-                      class="list__details__check list__details__check--pending">
-                      <div
-                        class="list__check__point list__check__point--pending"></div>
-                      <span class="text-h4 list__check__checkpage--pending"
-                        >Pending</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="list__cards draft">
-                  <div class="list__code">
-                    <div class="text-body1">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">FV2353</span>
-                    </div>
-                    <span class="text-body1 list__code__name"
-                      >Anita Wainwright</span
-                    >
-                  </div>
-                  <div class="list__details">
-                    <div class="list__details__count">
-                      <span class="text-body1 list__details__date"
-                        >Due 12 Nov 2021</span
-                      >
-                      <span class="text-h3">£ 3,102.04</span>
-                    </div>
-                    <div
-                      class="list__details__check list__details__check--draft">
-                      <div
-                        class="list__check__point list__check__point--draft"></div>
-                      <span class="text-h4 list__check__checkpage--draft"
-                        >Draft</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="list__cards paid">
-                  <div class="list__code">
-                    <div class="text-body1">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">RT3038</span>
-                    </div>
-                    <span class="text-body1 list__code__name"
-                      >Jensen Huang</span
-                    >
-                  </div>
-                  <div class="list__details">
-                    <div class="list__details__count">
-                      <span class="text-body1 list__details__date"
-                        >Due 19 Aug 2021</span
-                      >
-                      <span class="text-h3">£ 1,800.90</span>
-                    </div>
-                    <div
-                      class="list__details__check list__details__check--paid">
-                      <div
-                        class="list__check__point list__check__point--paid"></div>
-                      <span class="text-h4 list__check__checkpage">Paid</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="list__cards pending">
-                  <div class="list__code">
-                    <div class="text-body1">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">XM9141</span>
-                    </div>
-                    <span class="text-body1 list__code__name">Alex Grim</span>
-                  </div>
-                  <div class="list__details">
-                    <div class="list__details__count">
-                      <span class="text-body1 list__details__date"
-                        >Due 20 Sep 2021</span
-                      >
-                      <span class="text-h3">£ 556.00</span>
-                    </div>
-                    <div
-                      class="list__details__check list__details__check--pending">
-                      <div
-                        class="list__check__point list__check__point--pending"></div>
-                      <span class="text-h4 list__check__checkpage--pending"
-                        >Pending</span
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="list__cards draft">
-                  <div class="list__code">
-                    <div class="text-body1">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">FV2353</span>
-                    </div>
-                    <span class="text-body1 list__code__name"
-                      >Anita Wainwright</span
-                    >
-                  </div>
-                  <div class="list__details">
-                    <div class="list__details__count">
-                      <span class="text-body1 list__details__date"
-                        >Due 12 Nov 2021</span
-                      >
-                      <span class="text-h3">£ 3,102.04</span>
-                    </div>
-                    <div
-                      class="list__details__check list__details__check--draft">
-                      <div
-                        class="list__check__point list__check__point--draft"></div>
-                      <span class="text-h4 list__check__checkpage--draft"
-                        >Draft</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
