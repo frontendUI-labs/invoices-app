@@ -1,6 +1,8 @@
 .listinvoice {
   background: #f2f2f2;
   padding-block-end: 90px;
+  display: flex;
+  flex-direction: column;
 }
 .nav__bar {
   block-size: 72px;
@@ -37,12 +39,15 @@
 }
 .nav__profile {
   display: flex;
-  padding-inline: 24px;
+  margin-inline-end: 24px;
   align-items: center;
   gap: 24px;
 }
+.profile__icon {
+  cursor: pointer;
+}
 .nav__profile__line {
-  min-block-size: 72px;
+  block-size: 100%;
   border: 1px solid #494e6e;
 }
 .list__content {
@@ -89,6 +94,9 @@
   align-items: center;
   cursor: pointer;
   border: none;
+}
+.text__adition__desk {
+  display: none;
 }
 .filter__checkbox {
   min-inline-size: 192px;
@@ -147,41 +155,38 @@
 .list__cards {
   padding: 24px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 24px;
   background: var(--white-100);
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
 }
+.list__code,
 .list__details {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.list__details__count {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.list__details__numeral {
-  color: var(--grey-400);
-}
-.list__details__number {
-  color: var(--black-500);
-}
-.list__details__date {
-  color: var(--grey-400);
-}
-.list__code {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   justify-content: space-between;
+}
+.list__code__numeral {
+  color: var(--grey-400);
+}
+.list__code__number {
+  color: var(--black-500);
 }
 .list__code__name {
   color: var(--grey-300);
 }
-.list__code__check {
+.list__details__count {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.list__details__date {
+  color: var(--grey-400);
+}
+.list__details__check {
   inline-size: 104px;
+  margin-block: 3px;
   padding-block: 12px;
   border-radius: 6px;
   display: flex;
@@ -189,7 +194,7 @@
   align-items: center;
   justify-content: center;
 }
-.list__code__check--paid {
+.list__details__check--paid {
   background: rgba(51, 214, 159, 0.1);
 }
 .list__check__point {
@@ -203,7 +208,7 @@
 .list__check__checkpage {
   color: var(--green-400);
 }
-.list__code__check--pending {
+.list__details__check--pending {
   background-color: rgba(255, 143, 0, 0.1);
 }
 .list__check__point--pending {
@@ -212,7 +217,7 @@
 .list__check__checkpage--pending {
   color: var(--orange-400);
 }
-.list__code__check--draft {
+.list__details__check--draft {
   background: rgba(55, 59, 83, 0.1);
 }
 .list__check__point--draft {
@@ -223,4 +228,105 @@
 }
 .flex {
   display: flex;
+}
+@media (min-width: 640px) {
+  .list__content {
+    padding-inline: 140px;
+  }
+}
+@media (min-width: 768px) {
+  .list__content {
+    padding-inline: 48px;
+    align-self: center;
+  }
+  .list__content__header {
+    margin-block: 56px;
+  }
+  .content__header__title {
+    font: var(--font-h1);
+  }
+  .text__adition__desk {
+    display: contents;
+  }
+  .button--icon {
+    min-inline-size: 130px;
+  }
+  .list__cards,
+  .list__details__count {
+    align-items: center;
+    flex-direction: row;
+  }
+  .list__details__check,
+  .list__code__name {
+    margin-inline-start: 30px;
+  }
+  .list__details__date {
+    margin-inline-end: 30px;
+  }
+  .list__details::after {
+    content: url(../../icon/arrowdown.svg);
+    margin-inline-start: 25px;
+    transform: rotate(-90deg);
+  }
+}
+@media (min-width: 1024px) {
+  .listinvoice {
+    padding: unset;
+    flex-direction: row;
+  }
+  .nav__bar {
+    border-radius: 0px 20px 20px 0px;
+    min-inline-size: 105px;
+    flex-direction: column;
+    block-size: 100vh;
+    position: sticky;
+  }
+  .nav__background {
+    min-inline-size: 100%;
+    block-size: 105px;
+  }
+  .nav__logo {
+    max-inline-size: 40px;
+    min-block-size: 40px;
+  }
+  .nav__profile {
+    flex-direction: column;
+    margin: unset;
+    justify-content: flex-end;
+    padding-block-end: 24px;
+  }
+  .nav__profile__line {
+    inline-size: 100%;
+  }
+  .icon2 {
+    inline-size: 40px;
+  }
+  .list__content__wraper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-block-end: 20px;
+  }
+  .list__content {
+    min-inline-size: 730px;
+    padding: unset;
+  }
+  .list__content__header {
+    margin-block: 70px;
+  }
+  .list__cards:hover {
+    border: 1px solid var(--purple-400);
+    cursor: pointer;
+  }
+  .list__details__check,
+  .list__code__name {
+    margin-inline-start: 45px;
+  }
+  .list__details__date {
+    margin-inline-end: 45px;
+  }
+  .list__details::after {
+    margin-inline-start: 30px;
+  }
 }

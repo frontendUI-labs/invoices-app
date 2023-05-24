@@ -13,7 +13,6 @@
 }
 .button--primary {
   background: var(--purple-400);
-  min-inline-size: 190px;
 }
 .button--icon {
   padding: 8px;
