@@ -308,6 +308,14 @@ a {
 .list__code__number {
   color: var(--black-500);
 }
+.link__details::before {
+  content: ' ';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
 .list__code__name {
   color: var(--grey-300);
 }
@@ -462,21 +470,6 @@ a {
   }
   .list__content__cards {
     margin-block-end: 70px;
-  }
-  .list__cards:hover {
-    border-color: var(--purple-400);
-    cursor: pointer;
-  }
-  .list__cards {
-    position: relative;
-  }
-  .link__details::before {
-    content: ' ';
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    inline-size: 100%;
-    block-size: 100%;
   }
   .list__details__check,
   .list__code__name {

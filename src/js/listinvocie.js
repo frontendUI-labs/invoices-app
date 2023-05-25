@@ -15,12 +15,13 @@ function toggleCheckboxDropdown() {
 function removeCheckboxDropdown() {
   filterCheckboxEl.classList.remove('flex');
 }
+
 // rotacion del icono//
-let rotation = 0;
-const angle = 180;
 function rotateArrow() {
-  rotation = (rotation + angle) % 360;
-  arrowRotateEl.style.transform = `rotate(${rotation}deg)`;
+  arrowRotateEl.classList.toggle('rotate');
+}
+function dontRotateArrow() {
+  arrowRotateEl.classList.remove('rotate');
 }
 
 // rotacion del icono//
