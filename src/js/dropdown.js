@@ -14,6 +14,7 @@ function removeMenu() {
 }
 
 dropdownButtonEl.addEventListener('click', toogleMenu);
+//trae la eleccion escogida al campo/
 dropdownListButtonEl.forEach((button) => {
   button.addEventListener('click', (event) => {
     const selectedOption = event.target.textContent;
@@ -22,6 +23,7 @@ dropdownListButtonEl.forEach((button) => {
   });
 });
 
+//remueve el bloque cuando se hace click afuera de el//
 document.body.addEventListener('click', (event) => {
   const isContained = dropdownButtonEl.contains(event.target);
   if (!isContained) {
