@@ -1,8 +1,12 @@
+a {
+  text-decoration: none;
+}
 .listinvoice {
   background: #f2f2f2;
   padding-block-end: 90px;
   display: flex;
   flex-direction: column;
+  block-size: 100%;
 }
 .nav__bar {
   block-size: 72px;
@@ -109,6 +113,7 @@
   flex-direction: column;
   gap: 16px;
   position: absolute;
+  z-index: 1;
   inset-block-start: 10px;
   inset-inline-start: 50%;
   transform: translateX(-50%);
@@ -161,6 +166,13 @@
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
 }
+.list__cards:hover {
+  border-color: var(--purple-400);
+  cursor: pointer;
+}
+.list__cards {
+  position: relative;
+}
 .list__code,
 .list__details {
   display: flex;
@@ -171,6 +183,14 @@
 }
 .list__code__number {
   color: var(--black-500);
+}
+.link__details::before {
+  content: ' ';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
 }
 .list__code__name {
   color: var(--grey-300);
@@ -225,8 +245,14 @@
 .list__check__checkpage--draft {
   color: var(--black-100);
 }
+.anchor {
+  overflow: hidden;
+}
 .flex {
   display: flex;
+}
+.rotate {
+  transform: rotate(180deg);
 }
 @media (min-width: 640px) {
   .list__content {
@@ -320,21 +346,6 @@
   }
   .list__content__cards {
     margin-block-end: 70px;
-  }
-  .list__cards:hover {
-    border-color: var(--purple-400);
-    cursor: pointer;
-  }
-  .list__cards {
-    position: relative;
-  }
-  .link__details::before {
-    content: ' ';
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    inline-size: 100%;
-    block-size: 100%;
   }
   .list__details__check,
   .list__code__name {
