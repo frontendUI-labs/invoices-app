@@ -18,10 +18,18 @@
   background: var(--white-100);
   padding: 1rem;
   display: flex;
+  block-size: 5.5rem;
   align-items: center;
   justify-content: space-between;
   border-radius: 8px;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+}
+
+.viewInvoice__summary__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .viewInvoice__summary__button {
@@ -108,6 +116,11 @@
 .viewInvoice__details__date__bill {
   display: flex;
 }
+.invoiceID__desktop {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
 .viewInvoice__details__bill {
   width: 50%;
@@ -151,7 +164,9 @@
 .viewInvoice__details__sent {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 0.75rem;
+  margin-block-start: 30px;
 }
 
 .viewInvoice__details__sent__title {
@@ -166,29 +181,58 @@
   background-color: var(--white-300);
   border-radius: 8px 8px 0px 0px;
 }
+
+/* grid de lista de precios */
 .viewInvoice__details__billing__firstSecond {
   padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-.viewInvoice__details__second__billing,
 .viewInvoice__details__first__billing {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.viewInvoice__details__first__billing__information,
-.viewInvoice__details__second__billing__information {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'title price' 'unit price';
   gap: 0.5rem;
+  align-items: center;
 }
 
-.viewInvoice__details__first__billing__information__unitPrice,
-.viewInvoice__details__second__billing__information__unitPrice {
+.viewInvoice__details__first__billing__title {
+  grid-area: title;
+}
+
+.viewInvoice__details__first__billing__totalPrice {
+  grid-area: price;
+  text-align: right;
+}
+
+.viewInvoice__details__first__billing__unit {
+  grid-area: unit;
+  color: var(--grey-400);
+}
+
+.viewInvoice__details__second__billing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'title price' 'unit price';
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.viewInvoice__details__second__billing__title {
+  grid-area: title;
+}
+
+.viewInvoice__details__second__billing__totalPrice {
+  text-align: right;
+  grid-area: price;
+}
+
+.viewInvoice__details__second__billing__unit {
+  grid-area: unit;
   color: var(--grey-400);
 }
 
@@ -213,11 +257,187 @@
 
 .viewInvoice__buttons {
   padding-inline: 1.5rem;
-  padding-block: 22px;
+  padding-block: 18px;
   display: flex;
   gap: 0.5rem;
   justify-content: center;
   position: sticky;
   bottom: 0;
   background: var(--white-100);
+}
+
+/* displays nones */
+
+.viewInvoice__details__total__billing__title.desktop {
+  display: none;
+}
+
+.viewInvoice__buttons.desktop {
+  display: none;
+}
+
+.viewInvoice__details__billing__title.desktop {
+  display: none;
+}
+.viewInvoice__details__second__billing__cant.desktop,
+.viewInvoice__details__second__billing__price.desktop {
+  display: none;
+}
+
+.viewInvoice__details__first__billing__cant.desktop,
+.viewInvoice__details__first__billing__price.desktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .viewInvoice__details__date__bill {
+    width: 60%;
+  }
+  .viewInvoice__summary {
+    padding-inline: 2rem;
+  }
+
+  .viewInvoice__buttons {
+    padding-inline: 0;
+  }
+  .detail__billing_mail1 {
+    display: flex;
+  }
+  .invoiceID__desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .viewInvoice__summary {
+    display: flex;
+    justify-content: flex-start;
+
+    justify-content: space-between;
+  }
+
+  .viewInvoice__summary__main {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .viewInvoice__details__billing__title {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+    color: var(--grey-400);
+  }
+  .viewInvoice__details__billing__quantity,
+  .viewInvoice__details__billing__itemPrice,
+  .viewInvoice__details__billing__total {
+    text-align: right;
+  }
+
+  .viewInvoice__details__billing__firstSecond {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .viewInvoice__details__billing__description {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: right;
+  }
+
+  .viewInvoice__details__second__billing {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-areas: 'title unit price totalPrice';
+    grid-template-rows: none;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .viewInvoice__details__second__billing__title {
+    grid-area: title;
+  }
+  .viewInvoice__details__second__billing__price {
+    text-align: right;
+    grid-area: price;
+  }
+
+  .viewInvoice__details__second__billing__totalPrice {
+    text-align: right;
+    grid-area: totalPrice;
+  }
+
+  .viewInvoice__details__second__billing__cant {
+    grid-area: unit;
+    text-align: right;
+    color: var(--grey-400);
+  }
+
+  .viewInvoice__details__first__billing {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-areas: 'title unit price totalPrice';
+    grid-template-rows: none;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .viewInvoice__details__first__billing__title {
+    grid-area: title;
+  }
+  .viewInvoice__details__first__billing__price {
+    text-align: right;
+    grid-area: price;
+  }
+
+  .viewInvoice__details__first__billing__totalPrice {
+    text-align: right;
+    grid-area: totalPrice;
+  }
+
+  .viewInvoice__details__first__billing__cant {
+    grid-area: unit;
+    text-align: right;
+    color: var(--grey-400);
+  }
+  .viewInvoice__details__sent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-block-start: 30px;
+    margin-top: 0;
+  }
+
+  /* display nones */
+
+  .viewInvoice__buttons.mobile {
+    display: none;
+  }
+  .viewInvoice__details__total__billing__title.mobile {
+    display: none;
+  }
+  .viewInvoice__details__total__billing__title.desktop {
+    display: flex;
+  }
+  .viewInvoice__buttons.desktop {
+    display: flex;
+  }
+  .viewInvoice__details__billing__title.desktop {
+    display: grid;
+  }
+  .viewInvoice__details__second__billing__unit.mobile,
+  .viewInvoice__details__first__billing__unit.mobile {
+    display: none;
+  }
+  .viewInvoice__details__second__billing__cant.desktop,
+  .viewInvoice__details__second__billing__price.desktop {
+    display: grid;
+  }
+  .viewInvoice__details__first__billing__cant.desktop,
+  .viewInvoice__details__first__billing__price.desktop {
+    display: grid;
+  }
 }
