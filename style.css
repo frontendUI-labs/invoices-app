@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import url('./src/css/global.css');
 @import url('./src/css/css-vars.css');
 @import url('./src/css/typography.css');
@@ -7,24 +6,4 @@
 @import url('./src/css/dropdown.css');
 @import url('./src/css/datepicker.css');
 @import url('./src/css/listofinvoices.css');
-=======
-/* TODO: remove it */
-@import url('./global.css');
-@import url('./css-vars.css');
-@import url('./typography.css');
-@import url('./buttons.css');
-@import url('./textfield.css');
-@import url('./dropdown.css');
-@import url('./datepicker.css');
 @import url('./viewInvoice.css');
-
-body {
-  margin: 0;
-  padding: 24px;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-}
->>>>>>> 5b8ed25 (feat:viewInvoice-mobile)
