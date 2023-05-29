@@ -243,14 +243,12 @@ a {
   background: var(--white-100);
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
+  position: relative;
 }
 .list__cards:hover {
   border-color: var(--purple-400);
   cursor: pointer;
 }
-.list__cards {
-  position: relative;
-}
 .list__code,
 .list__details {
   display: flex;
@@ -262,52 +260,8 @@ a {
 .list__code__number {
   color: var(--black-500);
 }
-.link__details::before {
-  content: ' ';
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  inline-size: 100%;
-  block-size: 100%;
-}
 .list__code__name {
   color: var(--grey-300);
-}
-.list__details__count {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.list__details__numeral {
-  color: var(--grey-400);
-}
-.list__details__number {
-  color: var(--black-500);
-}
-.list__details__date {
-  color: var(--grey-400);
-}
-.list__details__check {
-  inline-size: 104px;
-  margin-block: 3px;
-}
-.list__code {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-.list__code__check,
-.list__code,
-.list__details {
-  display: flex;
-  justify-content: space-between;
-}
-.list__code__numeral {
-  color: var(--grey-400);
-}
-.list__code__number {
-  color: var(--black-500);
 }
 .link__details::before {
   content: ' ';
@@ -316,9 +270,6 @@ a {
   inset-inline-start: 0;
   inline-size: 100%;
   block-size: 100%;
-}
-.list__code__name {
-  color: var(--grey-300);
 }
 .list__details__count {
   display: flex;

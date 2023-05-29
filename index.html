@@ -10,10 +10,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
       rel="stylesheet" />
-
     <title>Invoice App</title>
   </head>
-
   <body>
     <section class="page" id="styleguide">
       <div class="buttons">
@@ -57,18 +55,6 @@
                 class="datepicker__nextButtonImg"
                 src="./icon/arrowdown.svg"
                 alt="boton-de-calendario" />
-        <hr />
-        <div class="textfield">
-          <label class="text-body1 textfield__label">Street Address</label>
-          <input class="text-h4 textfield__input" type="text" />
-        </div>
-        <hr />
-        <div class="datepicker" id="datepicker">
-          <div class="datepicker__form">
-            <span class="text-body1 datepicker__label">Issue Date</span>
-            <button class="text-h4 datepicker__button">
-              <span class="datepicker__value"></span>
-              <img src="./icon/calendar.svg" alt="boton-de-calendario" />
             </button>
           </div>
           <div class="text-h4 datepicker__weekdays">
@@ -100,172 +86,6 @@
           <div class="nav__background">
             <img class="nav__logo" src="./icon/Logo.svg" alt="" />
             <div class="nav__background--second"></div>
-          </div>
-          <div class="nav__profile">
-            <img class="profile__icon" src="./icon/dark-mode.svg" alt="" />
-            <span class="nav__profile__line"></span>
-            <img class="profile__icon icon2" src="./icon/profile.svg" alt="" />
-          </div>
-        </nav>
-        <div class="list__content__wraper">
-          <div class="list__content">
-            <div class="list__content__header">
-              <div>
-                <h1 class="text-h2 content__header__title">Invoices</h1>
-                <p class="text-body1 content__header__p">
-                  <span class="text__adition__desk">There are </span> 7
-                  <span class="text__adition__desk">total</span> invoices
-                </p>
-              </div>
-              <div class="list__content__buttons">
-                <div class="filter__button__wrapper">
-                  <div class="filter__selected">
-                    <span class="text-h4 filter__selected__number"></span>
-                  </div>
-                  <button class="filter__button">
-                    <span class="text-h4"
-                      >Filter<span class="text__adition__desk">
-                        by status</span
-                      ></span
-                    >
-                    <img
-                      class="arrowrotate"
-                      src="./icon/arrowdown.svg"
-                      alt="" />
-                  </button>
-                  <div class="filter__checkbox">
-                    <label class="text-h4 filter__option">
-                      <input
-                        type="checkbox"
-                        class="sr-only checkbox"
-                        id="DRAFT" />
-                      <span tabindex="0" class="checkbox__container">
-                        <img
-                          class="checkbox__icon"
-                          src="./icon/check.svg"
-                          alt="" />
-                      </span>
-                      Draft
-                    </label>
-                    <label class="text-h4 filter__option">
-                      <input
-                        type="checkbox"
-                        class="sr-only checkbox"
-                        id="PENDING" />
-                      <span tabindex="0" class="checkbox__container">
-                        <img
-                          class="checkbox__icon"
-                          src="./icon/check.svg"
-                          alt="" />
-                      </span>
-                      Pending
-                    </label>
-                    <label class="text-h4 filter__option">
-                      <input
-                        type="checkbox"
-                        class="sr-only checkbox"
-                        id="PAID" />
-                      <span tabindex="0" class="checkbox__container">
-                        <img
-                          class="checkbox__icon"
-                          src="./icon/check.svg"
-                          alt="" />
-                      </span>
-                      Paid
-                    </label>
-                  </div>
-                </div>
-                <button class="text-h4 button button--primary button--icon">
-                  <span class="cirle-icon">
-                    <img class="plus-icon" src="./icon/+.svg" alt="" />
-                  </span>
-                  New <span class="text__adition__desk">Invoice</span>
-                </button>
-              </div>
-            </div>
-            <ul class="list__content__cards">
-              <!-- <li class="list__cards paid">
-                <div class="list__code">
-                  <div class="text-body1">
-                    <a class="link__details" href="/details">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">RT3038</span>
-                    </a>
-                  </div>
-                  <span class="text-body1 list__code__name">Jensen Huang</span>
-                </div>
-                <div class="list__details">
-                  <div class="list__details__count">
-                    <span class="text-body1 list__details__date"
-                      >Due 19 Aug 2021</span
-                    >
-                    <span class="text-h3">£ 1,800.90</span>
-                  </div>
-                  <div class="list__details__check list__details__check--paid">
-                    <div
-                      class="list__check__point list__check__point--paid"></div>
-                    <span class="text-h4 list__check__checkpage--paid"
-                      >Paid</span
-                    >
-                  </div>
-                </div>
-              </li>
-              <li class="list__cards pending">
-                <div class="list__code">
-                  <div class="text-body1">
-                    <a class="link__details" href="/details">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">XM9141</span>
-                    </a>
-                  </div>
-                  <span class="text-body1 list__code__name">Alex Grim</span>
-                </div>
-                <div class="list__details">
-                  <div class="list__details__count">
-                    <span class="text-body1 list__details__date"
-                      >Due 20 Sep 2021</span
-                    >
-                    <span class="text-h3">£ 556.00</span>
-                  </div>
-                  <div
-                    class="list__details__check list__details__check--pending">
-                    <div
-                      class="list__check__point list__check__point--pending"></div>
-                    <span class="text-h4 list__check__checkpage--pending"
-                      >Pending
-                    </span>
-                  </div>
-                </div>
-              </li>
-              <li class="list__cards draft">
-                <div class="list__code">
-                  <div class="text-body1">
-                    <a class="link__details" href="/details">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">FV2353</span>
-                    </a>
-                  </div>
-                  <span class="text-body1 list__code__name"
-                    >Anita Wainwright</span
-                  >
-                </div>
-                <div class="list__details">
-                  <div class="list__details__count">
-                    <span class="text-body1 list__details__date"
-                      >Due 12 Nov 2021</span
-                    >
-                    <span class="text-h3">£ 3,102.04</span>
-                  </div>
-                  <div class="list__details__check list__details__check--draft">
-                    <div
-                      class="list__check__point list__check__point--draft"></div>
-                    <span class="text-h4 list__check__checkpage--draft"
-                      >Draft</span
-                    >
-                  </div>
-                </div>
-              </li> -->
-            </ul>
           </div>
           <div class="nav__profile">
             <img class="profile__icon" src="./icon/dark-mode.svg" alt="" />
@@ -367,10 +187,13 @@
                     >
                     <span class="text-h3">£ 1,800.90</span>
                   </div>
-                  <div class="list__details__check list__details__check--paid">
+                  <div
+                    class="list__details__status list__details__status--paid">
                     <div
-                      class="list__check__point list__check__point--paid"></div>
-                    <span class="text-h4 list__check__checkpage">Paid</span>
+                      class="list__status__point list__status__point--paid"></div>
+                    <span class="text-h4 list__status__statuspage--paid"
+                      >Paid</span
+                    >
                   </div>
                 </div>
               </li>
@@ -392,10 +215,10 @@
                     <span class="text-h3">£ 556.00</span>
                   </div>
                   <div
-                    class="list__details__check list__details__check--pending">
+                    class="list__details__status list__details__status--pending">
                     <div
-                      class="list__check__point list__check__point--pending"></div>
-                    <span class="text-h4 list__check__checkpage--pending"
+                      class="list__status__point list__status__point--pending"></div>
+                    <span class="text-h4 list__status__statuspage--pending"
                       >Pending
                     </span>
                   </div>
@@ -420,10 +243,11 @@
                     >
                     <span class="text-h3">£ 3,102.04</span>
                   </div>
-                  <div class="list__details__check list__details__check--draft">
+                  <div
+                    class="list__details__status list__details__status--draft">
                     <div
-                      class="list__check__point list__check__point--draft"></div>
-                    <span class="text-h4 list__check__checkpage--draft"
+                      class="list__status__point list__status__point--draft"></div>
+                    <span class="text-h4 list__status__statuspage--draft"
                       >Draft</span
                     >
                   </div>

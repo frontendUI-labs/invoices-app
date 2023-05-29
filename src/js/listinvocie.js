@@ -1,5 +1,3 @@
-import { getDate } from 'date-fns';
-
 const listInvoiceEl = document.querySelector('.listinvoice');
 const filterButtonEl = listInvoiceEl.querySelector('.filter__button');
 const filterCheckboxEl = listInvoiceEl.querySelector('.filter__checkbox');
@@ -73,70 +71,70 @@ checkboxList.forEach((checbox) => {
   });
 });
 
-const statusClassNamesMap = {
-  PENDING: 'pending',
-  PAID: 'paid',
-  DRAFT: 'draft',
-};
+// const statusClassNamesMap = {
+//   PENDING: 'pending',
+//   PAID: 'paid',
+//   DRAFT: 'draft',
+// };
 
-fetch('https://invoice-services.onrender.com/api/invoice')
-  .then((response) => {
-    return response.json().then((data) => {
-      const invoices = data.data;
+// fetch('https://invoice-services.onrender.com/api/invoice')
+//   .then((response) => {
+//     return response.json().then((data) => {
+//       const invoices = data.data;
 
-      const invoicesEl = invoices.map((invoice) => {
-        const status = invoice.status.toLowerCase();
-        const upperCaseId = invoice.id.substr(0, 8).toUpperCase();
-        const formatDate = new Date(invoice.dueDate);
-        const gettDay = formatDate.getDate();
-        const dueDatee = formatDate.toLocaleDateString('en-US', {
-          month: 'short',
-          year: 'numeric',
-        });
-        const allFormatDate = gettDay + 1 + ' ' + dueDatee;
+//       const invoicesEl = invoices.map((invoice) => {
+//         const status = invoice.status.toLowerCase();
+//         const upperCaseId = invoice.id.substr(0, 8).toUpperCase();
+//         const formatDate = new Date(invoice.dueDate);
+//         const gettDay = formatDate.getDate();
+//         const dueDatee = formatDate.toLocaleDateString('en-US', {
+//           month: 'short',
+//           year: 'numeric',
+//         });
+//         const allFormatDate = gettDay + 1 + ' ' + dueDatee;
 
-        return ` 
-        <li class="list__cards">
-                <div class="list__code">
-                  <div class="text-body1">
-                    <a class="link__details" href="/details">
-                      <span class="list__code__numeral">#</span
-                      ><span class="list__code__number">${upperCaseId}</span>
-                    </a>
-                  </div>
-                  <span class="text-body1 list__code__name">${invoice.clientName}</span>
-                </div>
-                <div class="list__details">
-                  <div class="list__details__count">
-                    <span class="text-body1 list__details__date"
-                      >Due ${allFormatDate}</span
-                    >
-                    <span class="text-h3">$ ${invoice.amount}</span>
-                  </div>
-                  <div class="list__details__status list__details__status--${status}">
-                    <div
-                      class="list__status__point list__status__point--${status}"></div>
-                    <span class="text-h4 list__status__statuspage--${status}">${invoice.status}</span>
-                  </div>
-                </div>   
-        </li>`;
-      });
-      const allInvoicesEl = invoicesEl.join('');
-      const invoiceRenderEl = listInvoiceEl.querySelector(
-        '.list__content__cards'
-      );
-      invoiceRenderEl.innerHTML = allInvoicesEl;
+//         return `
+//         <li class="list__cards">
+//                 <div class="list__code">
+//                   <div class="text-body1">
+//                     <a class="link__details" href="/details">
+//                       <span class="list__code__numeral">#</span
+//                       ><span class="list__code__number">${upperCaseId}</span>
+//                     </a>
+//                   </div>
+//                   <span class="text-body1 list__code__name">${invoice.clientName}</span>
+//                 </div>
+//                 <div class="list__details">
+//                   <div class="list__details__count">
+//                     <span class="text-body1 list__details__date"
+//                       >Due ${allFormatDate}</span
+//                     >
+//                     <span class="text-h3">$ ${invoice.amount}</span>
+//                   </div>
+//                   <div class="list__details__status list__details__status--${status}">
+//                     <div
+//                       class="list__status__point list__status__point--${status}"></div>
+//                     <span class="text-h4 list__status__statuspage--${status}">${invoice.status}</span>
+//                   </div>
+//                 </div>
+//         </li>`;
+//       });
+//       const allInvoicesEl = invoicesEl.join('');
+//       const invoiceRenderEl = listInvoiceEl.querySelector(
+//         '.list__content__cards'
+//       );
+//       invoiceRenderEl.innerHTML = allInvoicesEl;
 
-      filterCheckboxEl.addEventListener('click', () => {
-        const filteredInvoice = invoices.filter((invoice) => {
-          return statusOptions.every((opcion) => {
-            return invoice.includes(opcion);
-          });
-        });
-        console.log(filteredInvoice, invoices);
-      });
-    });
-  })
-  .catch((error) => {
-    document.body.textContent = 'Ups, salio algo mal!';
-  });
+//       filterCheckboxEl.addEventListener('click', () => {
+//         const filteredInvoice = invoices.filter((invoice) => {
+//           return statusOptions.every((opcion) => {
+//             return invoice.includes(opcion);
+//           });
+//         });
+//         console.log(filteredInvoice, invoices);
+//       });
+//     });
+//   })
+//   .catch((error) => {
+//     document.body.textContent = 'Ups, salio algo mal!';
+//   });
