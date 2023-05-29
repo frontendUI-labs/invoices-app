@@ -1,5 +1,6 @@
 .viewInvoice {
   padding: 1.5rem;
+  padding-top: 2.5rem;
   min-block-size: 100%;
   background-color: #f2f2f2;
   max-inline-size: 768px;
@@ -299,8 +300,16 @@
   body{
     background: #f2f2f2;
   }
+  .nav__bar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
   .viewInvoice__details__date__bill {
     width: 60%;
+  }
+  .viewInvoice{
+    margin-block-start: 90px;
   }
   .viewInvoice__summary {
     padding-inline: 2rem;
@@ -462,10 +471,19 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   body {
     block-size: 100%;
     background-color: #f2f2f2;
+    margin: auto;
+  }
+  .nav__bar{
+    position: fixed;
+    left: 0;
+    width: 103px;
+  }
+  .viewInvoice{
+    padding: 64px;
     margin: auto;
   }
 }
