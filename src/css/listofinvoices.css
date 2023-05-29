@@ -6,7 +6,7 @@ a {
   padding-block-end: 90px;
   display: flex;
   flex-direction: column;
-  block-size: 100%;
+  min-block-size: 100%;
 }
 .nav__bar {
   block-size: 72px;
@@ -15,6 +15,7 @@ a {
   justify-content: space-between;
   position: sticky;
   inset-block-start: 0px;
+  z-index: 3;
 }
 .nav__background {
   block-size: 72px;
@@ -113,7 +114,7 @@ a {
   flex-direction: column;
   gap: 16px;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   inset-block-start: 10px;
   inset-inline-start: 50%;
   transform: translateX(-50%);
@@ -327,7 +328,7 @@ a {
 .list__details__date {
   color: var(--grey-400);
 }
-.list__details__check {
+.list__details__status {
   inline-size: 104px;
   margin-block: 3px;
   padding-block: 12px;
@@ -337,36 +338,36 @@ a {
   align-items: center;
   justify-content: center;
 }
-.list__details__check--paid {
+.list__details__status--paid {
   background: rgba(51, 214, 159, 0.1);
 }
-.list__check__point {
+.list__status__point {
   block-size: 8px;
   inline-size: 8px;
   border-radius: 50%;
 }
-.list__check__point--paid {
+.list__status__point--paid {
   background: var(--green-400);
 }
-.list__check__checkpage {
+.list__status__statuspage--paid {
   color: var(--green-400);
 }
-.list__details__check--pending {
+.list__details__status--pending {
   background-color: rgba(255, 143, 0, 0.1);
 }
-.list__check__point--pending {
+.list__status__point--pending {
   background: var(--orange-400);
 }
-.list__check__checkpage--pending {
+.list__status__statuspage--pending {
   color: var(--orange-400);
 }
-.list__details__check--draft {
+.list__details__status--draft {
   background: rgba(55, 59, 83, 0.1);
 }
-.list__check__point--draft {
+.list__status__point--draft {
   background: var(--black-100);
 }
-.list__check__checkpage--draft {
+.list__status__statuspage--draft {
   color: var(--black-100);
 }
 .anchor {
@@ -405,7 +406,7 @@ a {
     align-items: center;
     flex-direction: row;
   }
-  .list__details__check,
+  .list__details__status,
   .list__code__name {
     margin-inline-start: 30px;
   }
@@ -471,7 +472,7 @@ a {
   .list__content__cards {
     margin-block-end: 70px;
   }
-  .list__details__check,
+  .list__details__status,
   .list__code__name {
     margin-inline-start: 45px;
   }
