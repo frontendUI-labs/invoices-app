@@ -324,7 +324,7 @@ a {
 .anchor {
   overflow: hidden;
 }
-#error {
+.error {
   text-align: center;
   color: var(--grey-300);
 }
@@ -335,16 +335,17 @@ a {
   gap: 40px;
   padding-block: 102px;
 }
-.empty__p {
+.empty.flex,
+.filter__checkbox.flex {
+  display: flex;
+}
+.empty__description {
   text-align: center;
   color: var(--grey-300);
   margin-block-start: 24px;
 }
 .rotate {
   transform: rotate(180deg);
-}
-.flex {
-  display: flex;
 }
 @media (min-width: 640px) {
   .list__content {

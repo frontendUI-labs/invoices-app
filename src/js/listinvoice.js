@@ -132,7 +132,6 @@ checkboxList.forEach((checbox) => {
 // loader
 fetch('https://invoice-services.onrender.com/api/invoice')
   .then((response) => {
-    loaderEl.remove();
     return response.json().then((data) => {
       currentInvoices = data.data;
       // currentInvoices = [];
@@ -145,8 +144,9 @@ fetch('https://invoice-services.onrender.com/api/invoice')
       }
     });
   })
-
   .catch((error) => {
     errorEl.textContent = 'Ups, salio algo mal!';
+  })
+  .finally(() => {
     loaderEl.remove();
   });
