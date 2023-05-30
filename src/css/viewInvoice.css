@@ -280,8 +280,6 @@
   display: none;
 }
 
-
-
 .viewInvoice__details__billing__title.desktop {
   display: none;
 }
@@ -296,10 +294,10 @@
 }
 
 @media screen and (min-width: 640px) {
-  body{
+  body {
     background: #f2f2f2;
   }
-  .nav__bar{
+  .nav__bar {
     position: fixed;
     top: 0;
     width: 100%;
@@ -307,11 +305,10 @@
   .viewInvoice__details__date__bill {
     width: 60%;
   }
-  .viewInvoice{
+  .viewInvoice {
     margin-block-start: 120px;
     max-width: 730px;
     padding: 0;
-
   }
 
   .viewInvoice__buttons {
@@ -443,7 +440,6 @@
 
   /* display nones */
 
-
   .viewInvoice__details__total__billing__title.mobile {
     display: none;
   }
@@ -473,12 +469,12 @@
     background-color: #f2f2f2;
     margin: auto;
   }
-  .nav__bar{
+  .nav__bar {
     position: fixed;
     left: 0;
     width: 103px;
   }
-  .viewInvoice{
+  .viewInvoice {
     padding: 0;
     padding-top: 64px;
     max-width: 730px;
