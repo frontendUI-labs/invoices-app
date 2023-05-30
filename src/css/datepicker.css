@@ -116,7 +116,6 @@
   border-color: var(--grey-200);
   cursor: not-allowed;
 }
-
 /* estilo que ayuda en js */
 .flex {
   display: flex;

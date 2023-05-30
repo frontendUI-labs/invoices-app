@@ -54,6 +54,6 @@
 .dropdown__option:hover {
   color: var(--purple-400);
 }
-.flex {
+.dropdown__list.flex {
   display: flex;
 }
