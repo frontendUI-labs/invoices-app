@@ -489,5 +489,6 @@
     padding: 0;
     padding-top: 64px;
     max-width: 730px;
+    margin: auto;
   }
 }
