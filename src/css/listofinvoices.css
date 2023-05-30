@@ -324,11 +324,27 @@ a {
 .anchor {
   overflow: hidden;
 }
-.flex {
-  display: flex;
+#error {
+  text-align: center;
+  color: var(--grey-300);
+}
+.empty {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-block: 102px;
+}
+.empty__p {
+  text-align: center;
+  color: var(--grey-300);
+  margin-block-start: 24px;
 }
 .rotate {
   transform: rotate(180deg);
+}
+.flex {
+  display: flex;
 }
 @media (min-width: 640px) {
   .list__content {
