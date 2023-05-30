@@ -265,10 +265,11 @@
   padding-inline: 1.5rem;
   padding-block: 18px;
   display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
   gap: 0.5rem;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
   width: 100%;
   background: var(--white-100);
 }
@@ -279,9 +280,7 @@
   display: none;
 }
 
-.viewInvoice__buttons.desktop {
-  display: none;
-}
+
 
 .viewInvoice__details__billing__title.desktop {
   display: none;
@@ -319,9 +318,8 @@
   }
 
   .viewInvoice__buttons {
-    position: relative;
     padding-inline: 0;
-    display: flex;
+    position: relative;
     justify-content: flex-end;
   }
   .detail__billing_mail1 {
@@ -445,18 +443,14 @@
 
   /* display nones */
 
-  .viewInvoice__buttons.mobile {
-    display: none;
-  }
+
   .viewInvoice__details__total__billing__title.mobile {
     display: none;
   }
   .viewInvoice__details__total__billing__title.desktop {
     display: flex;
   }
-  .viewInvoice__buttons.desktop {
-    display: flex;
-  }
+
   .viewInvoice__details__billing__title.desktop {
     display: grid;
   }
@@ -476,7 +470,6 @@
 
 @media screen and (min-width: 1024px) {
   body {
-    block-size: 100%;
     background-color: #f2f2f2;
     margin: auto;
   }
