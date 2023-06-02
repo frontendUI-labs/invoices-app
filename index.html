@@ -244,7 +244,11 @@
                 <dt class="text-body1 viewInvoice__summary__title">Status</dt>
                 <div class="viewInvoice__summary__button">
                   <div class="viewInvoice__summary__button__icon"></div>
-                  <dd class="text-h4 viewInvoice__summary__status">Pending</dd>
+                  <dd
+                    class="text-h4 viewInvoice__summary__status"
+                    id="statusInvoice">
+                    Pending
+                  </dd>
                 </div>
               </div>
 
@@ -256,76 +260,10 @@
                 </button>
               </div>
             </div>
-            <div class="viewInvoice__details">
-              <div class="viewInvoice__details__information">
-                <div class="invoiceID__desktop">
-                  <div class="viewInvoice__details__top">
-                    <div class="viewInvoice__details__title">
-                      <span class="text-h4 viewInvoice__details__hash">#</span>
-                      <dd class="text-h4 viewInvoice__details__number">
-                        XM9141
-                      </dd>
-                    </div>
-                    <dd class="text-body1 viewInvoice__details__text">
-                      Graphic Design
-                    </dd>
-                  </div>
-                  <dd class="text-body1 viewInvoice__ditails__address">
-                    19 Union Terrace<br />
-                    London<br />
-                    E1 3EZ<br />
-                    United Kingdom
-                  </dd>
-                </div>
+            <div class="viewInvoice__details" >
+               <div class="viewInvoice_top" id="viewInvoiceDetails">
+                
               </div>
-              <div class="detail__billing_mail1">
-                <div class="viewInvoice__details__date__bill">
-                  <div class="viewInvoice__details__date">
-                    <div class="viewInvoice__details__initialDate">
-                      <dt
-                        class="text-body1 viewInvoice__details__initialDate__title">
-                        Invoice Date
-                      </dt>
-                      <dd
-                        class="text-h3 viewInvoice__details__initialDate__text">
-                        21 Aug 2021
-                      </dd>
-                    </div>
-                    <div class="viewInvoice__details__dueDate">
-                      <dt
-                        class="text-body1 viewInvoice__details__dueDate__title">
-                        Payment Due
-                      </dt>
-                      <dd class="text-h3 viewInvoice__details__dueDate__text">
-                        20 Sep 2021
-                      </dd>
-                    </div>
-                  </div>
-                  <div class="viewInvoice__details__bill">
-                    <dt class="text-body1 viewInvoice__details__bill__title">
-                      Bill To
-                    </dt>
-                    <dd class="text-h3 viewInvoice__details__bill__name">
-                      Alex Grim
-                    </dd>
-                    <dd class="text-body1 viewInvoice__details__bill__addreess">
-                      84 Church Way<br />
-                      Bradford<br />
-                      BD1 9PB<br />
-                      United Kingdom
-                    </dd>
-                  </div>
-                </div>
-                <div class="viewInvoice__details__sent">
-                  <dt class="text-body1 viewInvoice__details__sent__title">
-                    Sent to
-                  </dt>
-                  <dd class="text-h3 viewInvoice__details__sent__mail">
-                    alexgrim@mail.com
-                  </dd>
-                </div>
-              </div>
-
               <div class="viewInvoice__details__billing">
                 <div class="viewInvoice__details__billing__title desktop">
                   <h3
@@ -345,10 +283,10 @@
                     Total
                   </h3>
                 </div>
-                <ul class="viewInvoice__details__billing__firstSecond">
-                  <li class="viewInvoice__details__first__billing">
+                <ul class="viewInvoice__details__billing__firstSecond" id="detailLists">
+                  <!-- <li class="viewInvoice__details__first__billing">
                     <p
-                      class="text-h4 viewInvoice__details__first__billing__title">
+                      class="text-h4 viewInvoice__details__first__billing__title" id="lala">
                       Banner Design
                     </p>
                     <dd
@@ -364,11 +302,11 @@
                       £ 156.00
                     </dd>
                     <dd
-                      class="text-h3 viewInvoice__details__first__billing__totalPrice">
+                      class="text-h3 viewInvoice__details__first__billing__totalPrice" id="totalPrice">
                       £ 156.00
                     </dd>
-                  </li>
-                  <li class="viewInvoice__details__second__billing">
+                  </li> -->
+                  <!-- <li class="viewInvoice__details__second__billing">
                     <p
                       class="text-h4 viewInvoice__details__second__billing__title">
                       Email Design
@@ -387,10 +325,10 @@
                       £ 200.00
                     </dd>
                     <dd
-                      class="text-h3 viewInvoice__details__second__billing__totalPrice">
+                      class="text-h3 viewInvoice__details__second__billing__totalPrice" id="totalItemPrice">
                       £ 400.00
                     </dd>
-                  </li>
+                  </li> -->
                 </ul>
 
                 <div class="viewInvoice__details__total__billing__section">
@@ -404,7 +342,7 @@
                       Amount Due
                     </dt>
                     <dd
-                      class="text-h2 viewInvoice__details__total__billing__final">
+                      class="text-h2 viewInvoice__details__total__billing__final" id="totalInvoicesPrices">
                       £ 556.00
                     </dd>
                   </div>

@@ -13,7 +13,6 @@ const loaderEl = listInvoiceEl.querySelector('#loader');
 const invoiceRenderEl = listInvoiceEl.querySelector('.list__content__cards');
 const invoicesCountSelected = listInvoiceEl.querySelector('.counOfInvoices');
 const emptyEl = listInvoiceEl.querySelector('.empty');
-console.log(emptyEl);
 
 function toggleCheckboxDropdown() {
   filterCheckboxEl.classList.toggle('flex');

@@ -8,6 +8,10 @@
   margin-block: none;
 }
 
+.Invoice__Address{
+  display: block;
+}
+
 .viewInvoice__status {
   display: flex;
   flex-direction: column;
@@ -110,12 +114,18 @@
   gap: 30px;
 }
 
-.viewInvoice__details__text,
-.viewInvoice__ditails__address {
+.viewInvoice__details__text {
   color: var(--grey-400);
   line-height: 18px;
   width: 94px;
 }
+.viewInvoice__ditails__address{
+  color: var(--grey-400);
+  line-height: 18px;
+  width: 94px;
+  margin-bottom: 36px;
+}
+
 
 /* dates */
 
