@@ -1,37 +1,64 @@
-let currentInvoice;
+const ID_API = 'd618a117-46c0-4651-8246-a2d455c3b18e';
 
-fetch(
-  `https://invoice-services.onrender.com/api/invoice/f1c9b66d-b75d-4fe0-8885-17b8f9d676ea`
-)
-  .then((response) => {
-    return response.json().then((data) => {
-      currentInvoice = data.data;
-      statusName();
-      templateDetails();
-      itemSummary();
-    });
-  })
-  .catch((error) => {
-    console.log('Ups, salio algo mal!');
-  });
-
-
-  
-
-function statusName() {
-  const status = document.querySelector('#statusInvoice');
-  status.textContent = currentInvoice.status;
+const loading = document.querySelector('#loaderDetails');
+async function getInvoices() {
+  try {
+    const response = await fetch(
+      `https://invoice-services.onrender.com/api/invoice/${ID_API}`
+    );
+    const data = await response.json();
+    return data.data;
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    loading.remove();
+  }
 }
 
-function templateDetails() {
-  const itemCode = currentInvoice.id.substr(0, 8).toUpperCase();
-  const description = currentInvoice.description;
-  const address = currentInvoice.streetAddress;
-  const city = currentInvoice.city;
-  const postalCode = currentInvoice.postCode;
-  const country = currentInvoice.country;
+async function configInvoices() {
+  const GetInvoicebyID = await getInvoices();
+
+  templateDetails();
+  UserDetails();
+  itemSummary();
+  totalPriceofInvoice();
+  return GetInvoicebyID;
+}
+
+async function templateDetails() {
+  const GetInvoicebyID = await getInvoices();
+
+  const statusClassNamesMap = {
+    PENDING: 'pending',
+    PAID: 'paid',
+    DRAFT: 'draft',
+  };
+  const statusInvoice = GetInvoicebyID.status.toLowerCase();
+  const HTMLStatus = `<dt class="text-body1 viewInvoice__summary__title">Status</dt>
+    <div class="viewInvoice__summary__button list__details__status--${statusInvoice}" >
+      <div class="viewInvoice__summary__button__icon list__status__point--${statusInvoice}"></div>
+      <dd
+        class="text-h4 list__status__statuspage--${statusInvoice}"
+        id="statusInvoice">
+        ${statusInvoice.toUpperCase()}
+      </dd>
+    </div>`;
+
+  const statusOfEachInvoice = document.querySelector('#statusOfEachInvoice');
+  statusOfEachInvoice.innerHTML = HTMLStatus;
+}
+
+async function UserDetails() {
+  const GetInvoicebyID = await getInvoices();
+
+  const itemCode = GetInvoicebyID.id.substr(0, 8).toUpperCase();
+  const description = GetInvoicebyID.description;
+  const address = GetInvoicebyID.streetAddress;
+  const city = GetInvoicebyID.city;
+  const postalCode = GetInvoicebyID.postCode;
+  const country = GetInvoicebyID.country;
   // fecha de inicial de invoice
-  const InvoiceDate = new Date(currentInvoice.invoiceDate);
+  const InvoiceDate = new Date(GetInvoicebyID.invoiceDate);
   const getDay = InvoiceDate.getDate();
   const $invoiceDate = InvoiceDate.toLocaleDateString('en-US', {
     month: 'short',
@@ -39,7 +66,7 @@ function templateDetails() {
   });
   const allformatInvoice = getDay + 1 + ' ' + $invoiceDate;
   // fecha final de invoice
-  const InvoiceDue = new Date(currentInvoice.dueDate);
+  const InvoiceDue = new Date(GetInvoicebyID.dueDate);
   const getdueDate = InvoiceDue.getDate();
   const $invoiceDue = InvoiceDue.toLocaleDateString('en-US', {
     month: 'short',
@@ -47,15 +74,14 @@ function templateDetails() {
   });
   const allformatInvoiceDue = getdueDate + 1 + ' ' + $invoiceDue;
   // client information
-  const userName = currentInvoice.clientName;
-  const userAddress = currentInvoice.clientStreetAddress;
-  const userCity = currentInvoice.clientCity;
-  const userPostalCode = currentInvoice.clientPostCode;
-  const userCountry = currentInvoice.clientCountry;
-  const userMail = currentInvoice.clientEmail;
+  const userName = GetInvoicebyID.clientName;
+  const userAddress = GetInvoicebyID.clientStreetAddress;
+  const userCity = GetInvoicebyID.clientCity;
+  const userPostalCode = GetInvoicebyID.clientPostCode;
+  const userCountry = GetInvoicebyID.clientCountry;
+  const userMail = GetInvoicebyID.clientEmail;
 
-  const invoiceContainer = document.querySelector('#viewInvoiceDetails');
-  const HTML = `<div class="viewInvoice__details__information">
+  const HTMLUserInfo = `<div class="viewInvoice__details__information">
     <div class="invoiceID__desktop">
       <div class="viewInvoice__details__top">
         <div class="viewInvoice__details__title">
@@ -140,24 +166,20 @@ function templateDetails() {
     </div>
   </div>`;
 
-  return (invoiceContainer.innerHTML = HTML);
+  const invoiceContainer = document.querySelector('#viewInvoiceDetails');
+
+  invoiceContainer.innerHTML = HTMLUserInfo;
 }
 
-function itemSummary() {
-  const renderItems = currentInvoice.invoiceItems.map((item)=>{
+async function itemSummary() {
+  const GetInvoicebyID = await getInvoices();
 
-    // fisrt item summary
-  
-   
-  // second item summary
-  
-    const itemName = item.name;
-    const itemQuantity = item.quantity;
-    const itemPrice = item.price;
-    const totalPriceNumber = parseInt(itemPrice * itemQuantity)
+  const itemName = GetInvoicebyID.invoiceItems[0].name;
+  const itemQuantity = GetInvoicebyID.invoiceItems[0].quantity;
+  const itemPrice = GetInvoicebyID.invoiceItems[0].price;
+  const totalPriceNumber = parseInt(itemPrice * itemQuantity);
 
-
-    return `<li class="viewInvoice__details__first__billing">
+  const HTMLDestails = `<li class="viewInvoice__details__first__billing">
     <p
       class="text-h4 viewInvoice__details__first__billing__title" id="lala">
       ${itemName}
@@ -178,18 +200,37 @@ function itemSummary() {
       class="text-h3 viewInvoice__details__first__billing__totalPrice" id="totalPrice">
       £ ${totalPriceNumber}
     </dd>
-  </li>`
-  })
-  const productLists = document.querySelector('#detailLists')
-  const joinProductList = renderItems.join('')
-  productLists.innerHTML = joinProductList
-  
-  const totalInvoiceAmount = document.querySelector('#totalInvoicesPrices')
-  const totalInvoicesPrice = currentInvoice.amount
-  totalInvoiceAmount.innerHTML = '£ ' + totalInvoicesPrice
+  </li>`;
 
+  const productLists = document.querySelector('#detailLists');
+  productLists.innerHTML = HTMLDestails;
 }
 
+async function totalPriceofInvoice() {
+  const GetInvoicebyID = await getInvoices();
+
+  const totalInvoicesPrice = GetInvoicebyID.amount;
+
+  const HTMLPrices = `<div class="viewInvoice__details__total__billing" >
+    <dt
+      class="text-body2 viewInvoice__details__total__billing__title mobile">
+      Grand Total
+    </dt>
+    <dt
+      class="text-body2 viewInvoice__details__total__billing__title desktop">
+      Amount Due
+    </dt>
+    <dd
+      class="text-h2 viewInvoice__details__total__billing__final"
+      >
+      £ ${totalInvoicesPrice}
+    </dd>
+  </div>`;
+
+  const totalInvoiceAmount = document.querySelector('#totalInvoicesPrices');
+  totalInvoiceAmount.innerHTML = HTMLPrices;
+}
+configInvoices();
 
 // function statusName() {
 //   const status = document.querySelector('#statusInvoice');

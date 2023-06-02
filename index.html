@@ -229,7 +229,10 @@
             <img class="profile__icon icon2" src="./icon/profile.svg" alt="" />
           </div>
         </nav>
+      
+        
         <dl class="viewInvoice">
+
           <a href="/" class="text-h4 viewInvoice__returnButton__title">
             <img
               class="viewInvoice__returnButton__icon"
@@ -238,11 +241,38 @@
             Go back
           </a>
 
+          <div id="loaderDetails">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              style="margin: auto; display: block; shape-rendering: auto"
+              width="50px"
+              height="50px"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="xMidYMid">
+              <circle
+                cx="50"
+                cy="50"
+                fill="none"
+                stroke="#7c5dfa"
+                stroke-width="10"
+                r="35"
+                stroke-dasharray="164.93361431346415 56.97787143782138">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  repeatCount="indefinite"
+                  dur="1s"
+                  values="0 50 50;360 50 50"
+                  keyTimes="0;1" />
+              </circle>
+            </svg>
+          </div>
           <div class="viewInvoice__status">
-            <div class="viewInvoice__summary">
-              <div class="viewInvoice__summary__main">
+            <div class="viewInvoice__summary" id="loading">
+              <div class="viewInvoice__summary__main" id="statusOfEachInvoice">
                 <dt class="text-body1 viewInvoice__summary__title">Status</dt>
-                <div class="viewInvoice__summary__button">
+                <div class="viewInvoice__summary__button" >
                   <div class="viewInvoice__summary__button__icon"></div>
                   <dd
                     class="text-h4 viewInvoice__summary__status"
@@ -260,10 +290,8 @@
                 </button>
               </div>
             </div>
-            <div class="viewInvoice__details" >
-               <div class="viewInvoice_top" id="viewInvoiceDetails">
-                
-              </div>
+            <div class="viewInvoice__details">
+              <div class="viewInvoice_top" id="viewInvoiceDetails"></div>
               <div class="viewInvoice__details__billing">
                 <div class="viewInvoice__details__billing__title desktop">
                   <h3
@@ -283,7 +311,9 @@
                     Total
                   </h3>
                 </div>
-                <ul class="viewInvoice__details__billing__firstSecond" id="detailLists">
+                <ul
+                  class="viewInvoice__details__billing__firstSecond"
+                  id="detailLists">
                   <!-- <li class="viewInvoice__details__first__billing">
                     <p
                       class="text-h4 viewInvoice__details__first__billing__title" id="lala">
@@ -331,8 +361,8 @@
                   </li> -->
                 </ul>
 
-                <div class="viewInvoice__details__total__billing__section">
-                  <div class="viewInvoice__details__total__billing">
+                <div class="viewInvoice__details__total__billing__section" id="totalInvoicesPrices">
+                  <!-- <div class="viewInvoice__details__total__billing" >
                     <dt
                       class="text-body2 viewInvoice__details__total__billing__title mobile">
                       Grand Total
@@ -342,10 +372,11 @@
                       Amount Due
                     </dt>
                     <dd
-                      class="text-h2 viewInvoice__details__total__billing__final" id="totalInvoicesPrices">
+                      class="text-h2 viewInvoice__details__total__billing__final"
+                      >
                       £ 556.00
                     </dd>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

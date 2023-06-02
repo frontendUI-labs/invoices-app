@@ -45,22 +45,38 @@
   padding-block: 13px;
   padding-inline: 17px;
   border-radius: 6px;
-  background-color: rgba(255, 143, 0, 0.06);
+
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 0.5rem;
 }
+.viewInvoice__summary__button--pending{
+  background-color: rgba(255, 143, 0, 0.1);
+}
+.viewInvoice__summary__button--paid{
+  background-color: rgba(51, 214, 159, 0.1);
+}
+.viewInvoice__summary__button--draft{
+  background-color: rgba(55, 59, 83, 0.1);
+}
 
 .viewInvoice__summary__title {
   color: var(--grey-300);
 }
-.viewInvoice__summary__button__icon {
-  content: '';
+.viewInvoice__summary__button__icon{
   block-size: 8px;
   inline-size: 8px;
   border-radius: 50%;
-  background-color: #ff8f00;
+}
+.list__status__point--pending{
+  background: var(--orange-400);
+}
+.list__status__point--draft{
+  background: var(--black-100);
+}
+.list__status__point--paid{
+  background: var(--green-400);
 }
 
 .viewInvoice__summary__status {

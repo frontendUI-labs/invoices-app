@@ -8,4 +8,3 @@ import './src/js/viewInvoice.js';
 window.addEventListener('DOMContentLoaded', () => {
   Router.init();
 });
-
