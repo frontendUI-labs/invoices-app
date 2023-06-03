@@ -5,6 +5,7 @@ const dropdownTextEl = dropDownEl.querySelector('.dropdown__text');
 const dropdownListButtonEl = dropDownEl.querySelectorAll(
   '.dropdown__list button'
 );
+const dropdownArrow = dropDownEl.querySelector('.dropdown__arrowrotate');
 
 function toogleMenu() {
   dropdownListEl.classList.toggle('flex');
@@ -13,7 +14,18 @@ function removeMenu() {
   dropdownListEl.classList.remove('flex');
 }
 
-dropdownButtonEl.addEventListener('click', toogleMenu);
+// rotacion del icono//
+function rotateArrowDrop() {
+  dropdownArrow.classList.toggle('rotate');
+}
+function dontRotateArrowDrop() {
+  dropdownArrow.classList.remove('rotate');
+}
+
+dropdownButtonEl.addEventListener('click', () => {
+  toogleMenu();
+  rotateArrowDrop();
+});
 //trae la eleccion escogida al campo/
 dropdownListButtonEl.forEach((button) => {
   button.addEventListener('click', (event) => {
@@ -28,5 +40,6 @@ document.body.addEventListener('click', (event) => {
   const isContained = dropdownButtonEl.contains(event.target);
   if (!isContained) {
     removeMenu();
+    dontRotateArrowDrop();
   }
 });

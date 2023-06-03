@@ -14,6 +14,19 @@ const invoiceRenderEl = listInvoiceEl.querySelector('.list__content__cards');
 const invoicesCountSelected = listInvoiceEl.querySelector('.counOfInvoices');
 const emptyEl = listInvoiceEl.querySelector('.empty');
 
+//agregar item
+const newInvoiceEl = listInvoiceEl.querySelector('.newInvoice');
+const listContentEl = listInvoiceEl.querySelector('.list__content');
+const buttonNewInvoiceEl = listInvoiceEl.querySelector('#button__newInvoice');
+
+function addNewInvoice() {
+  newInvoiceEl.classList.add('flex');
+}
+buttonNewInvoiceEl.addEventListener('click', () => {
+  addNewInvoice();
+  listContentEl.remove();
+});
+//final//
 function toggleCheckboxDropdown() {
   filterCheckboxEl.classList.toggle('flex');
 }
@@ -128,7 +141,6 @@ checkboxList.forEach((checbox) => {
   });
 });
 
-// loader
 fetch('https://invoice-services.onrender.com/api/invoice')
   .then((response) => {
     return response.json().then((data) => {

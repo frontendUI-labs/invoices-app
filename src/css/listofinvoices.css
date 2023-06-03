@@ -59,9 +59,11 @@ a {
 .list__content {
   padding-inline: 24px;
   position: relative;
+  padding-block-start: 32px;
+  /* display: none; */
 }
 .list__content__header {
-  margin-block: 32px;
+  margin-block-end: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -141,6 +143,10 @@ a {
   border: 1px solid var(--grey-200);
   background: var(--grey-200);
 }
+.button--icon--new {
+  padding-inline-end: 14px;
+  gap: 10px;
+}
 .checkbox__container:hover {
   border-color: var(--purple-400);
 }
@@ -170,6 +176,9 @@ a {
   position: absolute;
   inset-inline-start: -20px;
   display: none;
+}
+.filter__selected.flex {
+  display: flex;
 }
 .filter__selected__number {
   color: var(--white-100);
@@ -324,7 +333,7 @@ a {
 .list__status__statuspage--draft {
   color: var(--black-100);
 }
-.list__details__count span{
+.list__details__count span {
   color: var(--black-500);
 }
 .anchor {
@@ -356,15 +365,17 @@ a {
 @media (min-width: 640px) {
   .list__content {
     padding-inline: 140px;
+    margin-block-start: 72px;
   }
 }
 @media (min-width: 768px) {
   .list__content {
+    padding-block: 56px;
     padding-inline: 48px;
     align-self: center;
   }
   .list__content__header {
-    margin-block: 56px;
+    margin-block-end: 56px;
   }
   .content__header__title {
     font: var(--font-h1);
@@ -442,7 +453,7 @@ a {
     padding: unset;
   }
   .list__content__header {
-    margin-block: 70px;
+    margin-block-end: 70px;
   }
   .list__content__cards {
     margin-block-end: 70px;

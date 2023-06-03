@@ -1,0 +1,99 @@
+.newInvoice {
+  background: var(--white-100);
+  flex-direction: column;
+  display: none;
+}
+.newInvoice__form {
+  padding-block-start: 32px;
+  padding-inline: 24px;
+}
+.newInvoice__title {
+  margin-block-end: 24px;
+}
+.newInvoice__bill {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.bill__subtitle {
+  color: var(--purple-400);
+}
+.bill__cityCode {
+  display: flex;
+  gap: 24px;
+}
+.to {
+  margin-block-start: 40px;
+}
+.itemList {
+  margin-block-start: 65px;
+  margin-block-end: 24px;
+}
+.billItemList__title {
+  color: var(--grey-300);
+}
+.itemList__components {
+  margin: unset;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.itemList__calc {
+  display: grid;
+  grid-template-columns: 2fr 3fr 5fr;
+  gap: 16px;
+}
+.total__imput__borderColor {
+  border-color: transparent;
+}
+.total__imput__borderColor:hover {
+  border-color: transparent;
+}
+.total__imput {
+  display: flex;
+}
+.removeCalc {
+  background-color: transparent;
+  padding: unset;
+  border: none;
+  cursor: pointer;
+}
+.spaceDecorate {
+  inline-size: 100%;
+  block-size: 64px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0001) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+.newInvoice__buttons {
+  background-color: var(--white-100);
+  padding-inline: 24px;
+  padding-block: 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  position: fixed;
+  inset-block-end: 0;
+  inline-size: 100%;
+}
+.newInvoice__buttons__apart {
+  display: flex;
+  gap: 8px;
+}
+.flex {
+  display: flex;
+}
+.disabled:hover {
+  cursor: not-allowed;
+  border-color: #e0e3fa;
+}
+@media (min-width: 640px) {
+  .newInvoice__form {
+    margin-block-start: 72px;
+  }
+  .newInvoice__buttons {
+    justify-content: space-between;
+  }
+}

@@ -7,6 +7,7 @@
 @import url('./src/css/datepicker.css');
 @import url('./src/css/listofinvoices.css');
 @import url('./src/css/viewInvoice.css');
+@import url('./src/css/newinvoice.css');
 @import url('./src/css/modal.css');
 
 @media (prefers-color-scheme: dark) {
@@ -50,17 +51,16 @@
   .list__details__status--draft {
     background: rgba(41, 44, 70, 0.8);
   }
-  .button--secondary{
+  .button--secondary {
     background: var(--black-800);
   }
-  .button--secondary:hover{
+  .button--secondary:hover {
     background: #fff;
     color: var(--grey-200);
   }
-  .modal{
+  .modal {
     --white-100: var(--black-600);
-    --black-500:var(--white-200);
+    --black-500: var(--white-200);
     box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
-
   }
 }
