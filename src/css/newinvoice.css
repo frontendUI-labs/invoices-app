@@ -106,6 +106,7 @@
   display: flex;
   gap: 8px;
   justify-content: center;
+
 }
 .newInvoice__buttons__apart {
   display: flex;

@@ -418,10 +418,12 @@ a {
 @media (min-width: 640px) {
   .list__content {
     padding-inline: 140px;
+    margin-block-start: 72px;
   }
 }
 @media (min-width: 768px) {
   .list__content {
+    padding-block: 56px;
     padding-inline: 48px;
     align-self: center;
   }
