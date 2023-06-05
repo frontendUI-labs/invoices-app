@@ -64,7 +64,7 @@ function renderInvoices(invoices) {
         <li class="list__cards">
           <div class="list__code">
             <div class="text-body1">
-              <a class="link__details" href="/details">
+              <a class="link__details" href="/details/${invoice.id}">
                 <span class="list__code__numeral">#</span
                 ><span class="list__code__number">${upperCaseId}</span>
               </a>

@@ -1,39 +1,41 @@
 const Router = {
   init: () => {
-    document.querySelectorAll("a.navlink").forEach((a) => {
-      a.addEventListener("click", (event) => {
+    document.querySelectorAll('a.navlink').forEach((a) => {
+      a.addEventListener('click', (event) => {
         event.preventDefault();
-        const href = event.target.getAttribute("href");
+        const href = event.target.getAttribute('href');
         Router.go(href);
+        console.log(event);
       });
     });
     // It listen for history changes
-    window.addEventListener("popstate", (event) => {
+    window.addEventListener('popstate', (event) => {
       Router.go(event.state.route, false);
+      console.log(event);
     });
     // Process initial URL
     Router.go(location.pathname);
   },
   go: (route, addToHistory = true) => {
     if (addToHistory) {
-      history.pushState({ route }, "", route);
+      history.pushState({ route }, '', route);
     }
+    console.log(route);
     document
-      .querySelectorAll("section.page")
-      .forEach((s) => (s.style.display = "none"));
-    switch (route) {
-      case "/":
-        document.querySelector("section#home").style.display = "block";
-        break;
-      case "/details":
-        document.querySelector("section#details").style.display = "block";
-        break;
-      case "/styleguide":
-        document.querySelector("section#styleguide").style.display = "block";
-        break;
-      default:
-        break;
+      .querySelectorAll('section.page')
+      .forEach((s) => (s.style.display = 'none'));
+    if (route === '/') {
+      document.querySelector('section#home').style.display = 'block';
+      return;
     }
+    if (route.includes('/details')) {
+      document.querySelector('section#details').style.display = 'block';
+      return;
+    }
+    if (route === '/styleguide') {
+      document.querySelector('section#styleguide').style.display = 'block';
+    }
+
     window.scrollX = 0;
   },
 };
