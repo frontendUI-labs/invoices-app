@@ -1,5 +1,3 @@
-const ID_API = 'd618a117-46c0-4651-8246-a2d455c3b18e';
-
 const loading = document.querySelector('#loaderDetails');
 async function getInvoices() {
   const { pathname } = window.location;
@@ -19,15 +17,22 @@ async function getInvoices() {
   }
 }
 
+function createDOM(string) {
+  const parser = new DOMParser();
+  const HTML = parser.parseFromString(string, 'text/html');
+  return HTML.body.firstChild;
+}
+
 async function configInvoices() {
   const invoiceDetails = await getInvoices();
   if (invoiceDetails == null) {
     return;
   }
-  UserDetails(invoiceDetails);
+  getUserDetails(invoiceDetails);
+  deleteConfirm(invoiceDetails);
 }
 
-async function UserDetails(invoiceDetails) {
+export async function getUserDetails(invoiceDetails) {
   const itemCode = invoiceDetails.id.substr(0, 8).toUpperCase();
   const description = invoiceDetails.description;
   const address = invoiceDetails.streetAddress;
@@ -69,7 +74,10 @@ async function UserDetails(invoiceDetails) {
   };
   const statusInvoice = invoiceDetails.status.toLowerCase();
 
-  const HTMLUserInfo = `<div class="viewInvoice__summary">
+  const container = document.querySelector('#invoiceDetails');
+
+  const InvoiceDetailsDOM = createDOM(`<div class="viewInvoice__status">
+  <div class="viewInvoice__summary">
   <div class="viewInvoice__summary__main">
   <dt class="text-body1 viewInvoice__summary__title">Status</dt>
   <div class="viewInvoice__summary__button list__details__status--${statusInvoice}" >
@@ -83,7 +91,7 @@ async function UserDetails(invoiceDetails) {
   </div>
   <div class="viewInvoice__buttons">
     <button class="text-h4 button button--secondary">Edit</button>
-    <button class="text-h4 button button--danger">Delete</button>
+    <button class="text-h4 button button--danger" id="deleteInvoice">Delete</button>
     <button class="text-h4 button button--primary">
       Mark as Paid
     </button>
@@ -161,7 +169,6 @@ async function UserDetails(invoiceDetails) {
         <span class="Invoice__Address" id="userCity">${userCity}</span>
         <span class="Invoice__Address" id="userPostalcode">${userPostalCode}</span>
         <span class="Invoice__Address" id="userCountry">${userCountry}</span>
-        
       </dd>
     </div>
   </div>
@@ -217,7 +224,6 @@ async function UserDetails(invoiceDetails) {
       </dd>
     </li>
       </ul>
-
       <div class="viewInvoice__details__total__billing__section">
       <div class="viewInvoice__details__total__billing" >
       <dt
@@ -238,9 +244,80 @@ async function UserDetails(invoiceDetails) {
     </div>
   </div>
   </div>
-</div>`;
-  const prueba = document.querySelector('#invoiceDetails');
-  prueba.innerHTML = HTMLUserInfo;
+</div>
+</div>`);
+  container.append(InvoiceDetailsDOM);
+
+  const openModal = document.querySelector('#deleteInvoice');
+  const modal = document.querySelector('#modal');
+  const closeModal = document.querySelector('#closeModal');
+  const deleteInvoidebyID = document.querySelector('#deleteInvoidebyID');
+  const succefullDelete = document.querySelector('#succefullDelete')
+  const closeConfirmationDelete = document.querySelector('#succefullDelete')
+
+  async function deleteinvoiceID() {
+    // try{
+    //   const response = await fetch(
+    //     `https://invoice-services.onrender.com/api/invoice/${invoiceDetails.id}`, {
+    //       method: 'DELETE',
+    //     })
+    //     const data = await response.json();
+    //     console.log(data);
+
+    // }catch{
+
+    // }
+
+    closePopupConfirmation();
+    succefullDelete.style.display = 'flex'
+  }
+
+
+  deleteInvoidebyID.addEventListener('click', deleteinvoiceID);
+  openModal.addEventListener('click', openPopupConfirmation);
+  closeModal.addEventListener('click', closePopupConfirmation);
+  closeConfirmationDelete.addEventListener('click', closeConfirmatioDelete)
+
+  function openPopupConfirmation() {
+    modal.style.display = 'flex';
+    modal.showModal();
+  }
+  function closePopupConfirmation() {
+    modal.style.display = 'none';
+    modal.close();
+    setTimeout(function() {
+      succefullDelete.style.display = 'none'
+    }, 10000);
+  }
+  function closeConfirmatioDelete(){
+    succefullDelete.style.display = 'none'
+
+  }
+  
+
+
+
+
 }
 
+
+
 configInvoices();
+//MODAL
+
+
+
+function deleteConfirm(invoiceDetails) {
+  const deletePopup = document.querySelector('#deletePopup');
+  const itemCode = invoiceDetails.id.substr(0, 8).toUpperCase();
+
+  const popUpDOM = `<h2 class="text-h2 delete__title">Confirm Deletion</h2>
+  <p class="text-body2 delete__description">
+    Are you sure you want to delete invoice <span id="deleteCode">#${itemCode}</span>? This
+    action cannot be undone.
+  </p>`;
+  deletePopup.innerHTML = popUpDOM;
+}
+
+
+

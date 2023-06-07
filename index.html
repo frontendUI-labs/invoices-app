@@ -268,8 +268,25 @@
           </div>
           <div class="viewInvoice__status" id="invoiceDetails"></div>
         </dl>
+        <dialog class="modal" id="modal">
+          <div class="delete__text" id="deletePopup">
+            
+          </div>
+          <div class="buttons">
+            <button class="text-h4 button button--secondary" id="closeModal">
+              Cancel
+            </button>
+
+            <button class="text-h4 button button--danger" id="deleteInvoidebyID">Delete</button>
+          </div>
+        </dialog>
+        <div class="succefullDelete" id="succefullDelete">
+          <img src="./icon/+.svg" alt=""  class="close__icon">
+          <p class="text-body1 succedText">Your invoice was successfully eliminated </p>
+        </div>
       </article>
     </section>
+
     <script src="./main.js" type="module"></script>
   </body>
 </html>

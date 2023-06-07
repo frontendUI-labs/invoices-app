@@ -1,0 +1,70 @@
+.modal {
+  width: 327px;
+  height: 220px;
+  background: white;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  border: none;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.delete__text {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.succefullDelete {
+  position: relative;
+  background: var(--green-400);
+  max-width: 300px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  cursor: pointer;
+  top: -800px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.close__icon {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  transform: rotate(45deg);
+  color: #fff;
+  fill: currentColor;
+}
+
+.succedText {
+  color: var(--white-100);
+}
+
+@media screen and (min-width: 640px) {
+  .succefullDelete {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
