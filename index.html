@@ -12,7 +12,7 @@
       rel="stylesheet" />
     <title>Invoice App</title>
   </head>
-  <body>
+  <body id="body">
     <section class="page" id="styleguide">
       <div class="buttons">
         <button class="text-h4 button button--primary button--icon">
@@ -81,6 +81,12 @@
       </div>
     </section>
     <section class="page" id="home">
+      <div class="succefullDelete" id="succefullDelete">
+        <img src="./icon/close-notification.svg" alt="" class="close__icon" />
+        <p class="text-body1 succedText">
+          Your invoice was successfully eliminated
+        </p>
+      </div>
       <div class="listinvoice">
         <nav class="nav__bar">
           <div class="nav__background">
@@ -88,7 +94,11 @@
             <div class="nav__background--second"></div>
           </div>
           <div class="nav__profile">
-            <img class="profile__icon" src="./icon/dark-mode.svg" alt="" />
+            <img
+              class="profile__icon"
+              id="darkMode"
+              src="./icon/dark-mode.svg"
+              alt="" />
             <span class="nav__profile__line"></span>
             <img class="profile__icon icon2" src="./icon/profile.svg" alt="" />
           </div>
@@ -269,21 +279,18 @@
           <div class="viewInvoice__status" id="invoiceDetails"></div>
         </dl>
         <dialog class="modal" id="modal">
-          <div class="delete__text" id="deletePopup">
-            
-          </div>
+          <div class="delete__text" id="deletePopup"></div>
           <div class="buttons">
             <button class="text-h4 button button--secondary" id="closeModal">
               Cancel
             </button>
-
-            <button class="text-h4 button button--danger" id="deleteInvoidebyID">Delete</button>
+            <button
+              class="text-h4 button button--danger"
+              id="deleteInvoidebyID">
+              Delete
+            </button>
           </div>
         </dialog>
-        <div class="succefullDelete" id="succefullDelete">
-          <img src="./icon/+.svg" alt=""  class="close__icon">
-          <p class="text-body1 succedText">Your invoice was successfully eliminated </p>
-        </div>
       </article>
     </section>
 

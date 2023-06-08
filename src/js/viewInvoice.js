@@ -1,3 +1,5 @@
+import Router from '../utils/router.js';
+
 const loading = document.querySelector('#loaderDetails');
 async function getInvoices() {
   const { pathname } = window.location;
@@ -25,6 +27,7 @@ function createDOM(string) {
 
 async function configInvoices() {
   const invoiceDetails = await getInvoices();
+
   if (invoiceDetails == null) {
     return;
   }
@@ -80,8 +83,8 @@ export async function getUserDetails(invoiceDetails) {
   <div class="viewInvoice__summary">
   <div class="viewInvoice__summary__main">
   <dt class="text-body1 viewInvoice__summary__title">Status</dt>
-  <div class="viewInvoice__summary__button list__details__status--${statusInvoice}" >
-    <div class="viewInvoice__summary__button__icon list__status__point--${statusInvoice}"></div>
+  <div class="viewInvoice__summary__button list__details__status--${statusInvoice}" id="statusPaidBackground">
+    <div class="viewInvoice__summary__button__icon list__status__point--${statusInvoice}" id="buttonIcon"></div>
     <dd
       class="text-h4 list__status__statuspage--${statusInvoice}"
       id="statusInvoice">
@@ -92,7 +95,7 @@ export async function getUserDetails(invoiceDetails) {
   <div class="viewInvoice__buttons">
     <button class="text-h4 button button--secondary">Edit</button>
     <button class="text-h4 button button--danger" id="deleteInvoice">Delete</button>
-    <button class="text-h4 button button--primary">
+    <button class="text-h4 button button--primary" id="MarkAsPaid">
       Mark as Paid
     </button>
   </div>
@@ -252,31 +255,30 @@ export async function getUserDetails(invoiceDetails) {
   const modal = document.querySelector('#modal');
   const closeModal = document.querySelector('#closeModal');
   const deleteInvoidebyID = document.querySelector('#deleteInvoidebyID');
-  const succefullDelete = document.querySelector('#succefullDelete')
-  const closeConfirmationDelete = document.querySelector('#succefullDelete')
+  const succefullDelete = document.querySelector('#succefullDelete');
+  const closeConfirmationDelete = document.querySelector('#succefullDelete');
 
   async function deleteinvoiceID() {
-    // try{
-    //   const response = await fetch(
-    //     `https://invoice-services.onrender.com/api/invoice/${invoiceDetails.id}`, {
-    //       method: 'DELETE',
-    //     })
-    //     const data = await response.json();
-    //     console.log(data);
+    try{
+      const response = await fetch(
+        `https://invoice-services.onrender.com/api/invoice/${invoiceDetails.id}`, {
+          method: 'DELETE',
+        })
+        const data = await response.json();
 
-    // }catch{
-
-    // }
+    }catch(err){
+      console.log(err.message);
+    }
 
     closePopupConfirmation();
-    succefullDelete.style.display = 'flex'
+    Router.go('/');
+    showNotification();
   }
-
 
   deleteInvoidebyID.addEventListener('click', deleteinvoiceID);
   openModal.addEventListener('click', openPopupConfirmation);
   closeModal.addEventListener('click', closePopupConfirmation);
-  closeConfirmationDelete.addEventListener('click', closeConfirmatioDelete)
+  closeConfirmationDelete.addEventListener('click', closeConfirmatioDelete);
 
   function openPopupConfirmation() {
     modal.style.display = 'flex';
@@ -285,27 +287,53 @@ export async function getUserDetails(invoiceDetails) {
   function closePopupConfirmation() {
     modal.style.display = 'none';
     modal.close();
-    setTimeout(function() {
-      succefullDelete.style.display = 'none'
-    }, 10000);
+    setTimeout(function () {
+      succefullDelete.style.display = 'none';
+    }, 5000);
   }
-  function closeConfirmatioDelete(){
-    succefullDelete.style.display = 'none'
-
+  function closeConfirmatioDelete() {
+    succefullDelete.style.display = 'none';
   }
-  
 
+  function showNotification() {
+    succefullDelete.style.display = 'flex';
+    console.log('123');
+  }
+  const statusPaidBackground = document.querySelector('#statusPaidBackground');
+  const paidButton = document.querySelector('#MarkAsPaid');
+  const buttonIcon = document.querySelector('#buttonIcon');
+  paidButton.addEventListener('click', changeStatusInvoice);
+  const statusInvoices = document.querySelector('#statusInvoice');
 
-
-
+  async function changeStatusInvoice() {
+    try {
+      const response = await fetch(
+        `https://invoice-services.onrender.com/api/invoice`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: invoiceDetails.id,
+            status: 'PAID',
+          }), // Convert data to JSON string
+        }
+      );
+      const data = await response.json();
+    } catch (err) {
+      console.log(err.message);
+    }
+    window.location.href = `/details/${invoiceDetails.id}`;
+    // statusInvoices.style.color = '#33d69f';
+    // statusInvoices.textContent = 'PAID';
+    // buttonIcon.classList.add('list__status__point--paid');
+    // statusPaidBackground.style.backgroundColor = 'rgba(51, 214, 159, 0.1)';
+  }
 }
-
-
 
 configInvoices();
 //MODAL
-
-
 
 function deleteConfirm(invoiceDetails) {
   const deletePopup = document.querySelector('#deletePopup');
@@ -318,6 +346,3 @@ function deleteConfirm(invoiceDetails) {
   </p>`;
   deletePopup.innerHTML = popUpDOM;
 }
-
-
-

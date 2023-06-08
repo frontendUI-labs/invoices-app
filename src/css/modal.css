@@ -33,18 +33,20 @@
 }
 
 .succefullDelete {
-  position: relative;
+  position: fixed;
   background: var(--green-400);
-  max-width: 300px;
+  height: 50px;
+  width: 300px;
   padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   cursor: pointer;
-  top: -800px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  right: 50%;
+  top: 130px;
+  transform: translateX(50%);
+  z-index: 4;
   display: none;
 }
 
@@ -52,9 +54,8 @@
   position: absolute;
   top: 3px;
   right: 5px;
-  transform: rotate(45deg);
-  color: #fff;
-  fill: currentColor;
+  height: 13px;
+  fill: #FFF;
 }
 
 .succedText {
@@ -63,8 +64,19 @@
 
 @media screen and (min-width: 640px) {
   .succefullDelete {
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 100px;
+    right: 5px;
+    transform: translateX(0);
+
+  }
+}
+@media screen and (min-width: 1024px) {
+  .succefullDelete {
+    position: absolute;
+    top: 50px;
+    right: 1px;
+    transform: translateX(0);
+
   }
 }
