@@ -1,7 +1,18 @@
+.list__content__wraper {
+  position: relative;
+}
 .newInvoice {
+  max-inline-size: 768px;
   background: var(--white-100);
   flex-direction: column;
-  display: none;
+  position: absolute;
+  inset-block-start: 72px;
+  border: none;
+  padding-inline: unset;
+  padding-block-end: 100px;
+}
+.newInvoice::backdrop {
+  background: rgba(0, 0, 0, 0.2);
 }
 .newInvoice__form {
   padding-block-start: 32px;
@@ -18,12 +29,22 @@
 .bill__subtitle {
   color: var(--purple-400);
 }
-.bill__cityCode {
-  display: flex;
+.bill__cityCodeCountry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'city postCode' 'country country';
   gap: 24px;
+}
+.country {
+  grid-area: country;
 }
 .to {
   margin-block-start: 40px;
+}
+.newInvoice__dueDate {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 .itemList {
   margin-block-start: 65px;
@@ -41,7 +62,12 @@
 .itemList__calc {
   display: grid;
   grid-template-columns: 2fr 3fr 5fr;
-  gap: 16px;
+  grid-template-areas: 'itemName itemName itemName' 'Qty price total';
+  row-gap: 24px;
+  column-gap: 16px;
+}
+.itemName {
+  grid-area: itemName;
 }
 .total__imput__borderColor {
   border-color: transparent;
@@ -68,15 +94,16 @@
   );
 }
 .newInvoice__buttons {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   background-color: var(--white-100);
   padding-inline: 24px;
   padding-block: 20px;
   display: flex;
   gap: 8px;
   justify-content: center;
-  position: fixed;
-  inset-block-end: 0;
-  inline-size: 100%;
 }
 .newInvoice__buttons__apart {
   display: flex;
@@ -85,15 +112,73 @@
 .flex {
   display: flex;
 }
+.none {
+  display: none;
+}
 .disabled:hover {
   cursor: not-allowed;
   border-color: #e0e3fa;
 }
+.trash__icon:hover {
+  fill: #ec5757;
+}
+input.error {
+  border-color: red;
+}
+.error {
+  color: red;
+}
 @media (min-width: 640px) {
-  .newInvoice__form {
-    margin-block-start: 72px;
-  }
   .newInvoice__buttons {
     justify-content: space-between;
+  }
+}
+@media (min-width: 768px) {
+  .newInvoice__goBack,
+  .spaceDecorate {
+    display: none;
+  }
+  .newInvoice__form {
+    padding-inline: unset;
+  }
+  .newInvoice {
+    inline-size: 616px;
+    padding-inline: 45px;
+  }
+  .bill__cityCodeCountry {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'city postCode country';
+  }
+  .itemList__calc {
+    grid-template-columns: 4fr 1fr 2fr 3fr;
+    grid-template-areas: 'itemName Qty price total';
+  }
+  .newInvoice__dueDate {
+    flex-direction: row;
+  }
+  .newInvoice__buttons {
+    max-inline-size: 616px;
+  }
+}
+@media (min-width: 912px) {
+  .newInvoice {
+    inline-size: 719px;
+  }
+  .newInvoice__buttons {
+    max-inline-size: 719px;
+  }
+}
+@media (min-width: 1024px) {
+  .newInvoice {
+    padding-block-end: 50px;
+    padding-inline: 55px;
+    inset-block-start: 0;
+    inset-inline-start: 103px;
+  }
+  .newInvoice__footer {
+    position: absolute;
+  }
+  .newInvoice__buttons {
+    margin-inline-start: 103px;
   }
 }

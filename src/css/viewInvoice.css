@@ -324,11 +324,6 @@
   body {
     background: var(--grey);
   }
-  .nav__bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
   .viewInvoice__details__date__bill {
     width: 60%;
   }
@@ -496,11 +491,6 @@
   body {
     background: var(--grey);
     margin: auto;
-  }
-  .nav__bar {
-    position: fixed;
-    left: 0;
-    width: 103px;
   }
   .viewInvoice {
     padding: 0;

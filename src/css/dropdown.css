@@ -61,6 +61,6 @@
 .dropdown__list.flex {
   display: flex;
 }
-.rotate {
+.dropdown__arrowrotate.rotate {
   transform: rotate(180deg);
 }

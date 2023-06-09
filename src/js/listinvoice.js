@@ -8,24 +8,22 @@ const selectedOptions = listInvoiceEl.querySelector(
   '.filter__selected__number'
 );
 const checkboxList = listInvoiceEl.querySelectorAll('.checkbox');
-const errorEl = listInvoiceEl.querySelector('#error');
+const messageErrorEl = listInvoiceEl.querySelector('#messageError');
 const loaderEl = listInvoiceEl.querySelector('#loader');
 const invoiceRenderEl = listInvoiceEl.querySelector('.list__content__cards');
 const invoicesCountSelected = listInvoiceEl.querySelector('.counOfInvoices');
 const emptyEl = listInvoiceEl.querySelector('.empty');
 
 //agregar item
-const newInvoiceEl = listInvoiceEl.querySelector('.newInvoice');
 const listContentEl = listInvoiceEl.querySelector('.list__content');
 const buttonNewInvoiceEl = listInvoiceEl.querySelector('#button__newInvoice');
+const newInvoiceDialog = document.querySelector('#newInvoiceDialog');
 
-function addNewInvoice() {
-  newInvoiceEl.classList.add('flex');
-}
 buttonNewInvoiceEl.addEventListener('click', () => {
-  addNewInvoice();
-  listContentEl.remove();
+  document.body.style.overflow = 'hidden';
+  newInvoiceDialog.showModal();
 });
+
 //final//
 function toggleCheckboxDropdown() {
   filterCheckboxEl.classList.toggle('flex');
@@ -140,24 +138,26 @@ checkboxList.forEach((checbox) => {
     }
   });
 });
-
-fetch('https://invoice-services.onrender.com/api/invoice')
-  .then((response) => {
-    return response.json().then((data) => {
-      currentInvoices = data.data;
-      // currentInvoices = [];
-      renderInvoices(currentInvoices);
-      invoicesCountSelected.textContent = currentInvoices.length;
-      if (currentInvoices.length !== 0) {
-        emptyEl.classList.remove('flex');
-      } else {
-        emptyEl.classList.add('flex');
-      }
+export function loadInvoices() {
+  fetch('https://invoice-services.onrender.com/api/invoice')
+    .then((response) => {
+      return response.json().then((data) => {
+        currentInvoices = data.data;
+        // currentInvoices = [];
+        renderInvoices(currentInvoices);
+        invoicesCountSelected.textContent = currentInvoices.length;
+        if (currentInvoices.length !== 0) {
+          emptyEl.classList.remove('flex');
+        } else {
+          emptyEl.classList.add('flex');
+        }
+      });
+    })
+    .catch((error) => {
+      messageErrorEl.textContent = 'Ups, salio algo mal!';
+    })
+    .finally(() => {
+      loaderEl.remove();
     });
-  })
-  .catch((error) => {
-    errorEl.textContent = 'Ups, salio algo mal!';
-  })
-  .finally(() => {
-    loaderEl.remove();
-  });
+}
+loadInvoices();

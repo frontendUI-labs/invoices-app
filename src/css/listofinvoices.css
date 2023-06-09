@@ -8,13 +8,15 @@ a {
   flex-direction: column;
   min-block-size: 100%;
   position: relative;
+  padding-top: 72px;
 }
 .nav__bar {
   block-size: 72px;
   background: var(--black-100);
   display: flex;
   justify-content: space-between;
-  position: sticky;
+  position: fixed;
+  inline-size: 100%;
   inset-block-start: 0px;
   z-index: 3;
 }
@@ -339,7 +341,7 @@ a {
 .anchor {
   overflow: hidden;
 }
-.error {
+.messageError {
   text-align: center;
   color: var(--grey-300);
 }
@@ -362,15 +364,64 @@ a {
 .rotate {
   transform: rotate(180deg);
 }
+.succefullCreate {
+  position: fixed;
+  background: var(--green-400);
+  height: 50px;
+  width: 300px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  cursor: pointer;
+  right: 50%;
+  top: 130px;
+  transform: translateX(50%);
+  z-index: 4;
+  display: none;
+}
+/* .close__icon {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  height: 13px;
+  fill: #fff;
+} */
+.succedText {
+  color: var(--white-100);
+}
+@media screen and (min-width: 640px) {
+  .succefullCreate {
+    position: absolute;
+    top: 85px;
+    right: 5px;
+    transform: translateX(0);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .succefullCreate {
+    position: absolute;
+    padding: unset;
+    top: 60px;
+    right: -60px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .succefullCreate {
+    position: absolute;
+    padding: unset;
+    top: 0;
+    right: -65px;
+  }
+}
 @media (min-width: 640px) {
   .list__content {
     padding-inline: 140px;
-    margin-block-start: 72px;
   }
 }
 @media (min-width: 768px) {
   .list__content {
-    padding-block: 56px;
     padding-inline: 48px;
     align-self: center;
   }
@@ -418,7 +469,7 @@ a {
   }
   .nav__bar {
     border-radius: 0px 20px 20px 0px;
-    min-inline-size: 105px;
+    inline-size: 103px;
     flex-direction: column;
     block-size: 100vh;
   }
@@ -443,7 +494,7 @@ a {
     inline-size: 40px;
   }
   .list__content__wraper {
-    margin: 0;
+    margin: 72px;
     display: flex;
     justify-content: center;
     flex: 1;
