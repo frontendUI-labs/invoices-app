@@ -1,9 +1,12 @@
 import Router from '../utils/router.js';
+import { getDate } from 'date-fns'
+import { format } from 'date-fns'
+
+
 
 const loading = document.querySelector('#loaderDetails');
-async function getInvoices() {
+async function getInvoice() {
   const { pathname } = window.location;
-
   const paths = pathname.split('/');
   const invoiceId = paths[2];
   try {
@@ -25,9 +28,19 @@ function createDOM(string) {
   return HTML.body.firstChild;
 }
 
-async function configInvoices() {
-  const invoiceDetails = await getInvoices();
+function deleteConfirm(invoiceDetails) {
+  const deletePopup = document.querySelector('#deletePopup');
+  const itemCode = invoiceDetails.id.substr(0, 8).toUpperCase();
+  const popUpDOM = `<h2 class="text-h2 delete__title">Confirm Deletion</h2>
+  <p class="text-body2 delete__description">
+    Are you sure you want to delete invoice <span id="deleteCode">#${itemCode}</span>? This
+    action cannot be undone.
+  </p>`;
+  deletePopup.innerHTML = popUpDOM;
+}
 
+async function loadInvoice() {
+  const invoiceDetails = await getInvoice();
   if (invoiceDetails == null) {
     return;
   }
@@ -43,21 +56,12 @@ export async function getUserDetails(invoiceDetails) {
   const postalCode = invoiceDetails.postCode;
   const country = invoiceDetails.country;
   // fecha de inicial de invoice
-  const InvoiceDate = new Date(invoiceDetails.invoiceDate);
-  const getDay = InvoiceDate.getDate();
-  const $invoiceDate = InvoiceDate.toLocaleDateString('en-US', {
-    month: 'short',
-    year: 'numeric',
-  });
-  const allformatInvoice = getDay + 1 + ' ' + $invoiceDate;
+  const invoiceDate = new Date(invoiceDetails.invoiceDate);
+  const allformatInvoice = format(invoiceDate, 'd MMM YYY');
   // fecha final de invoice
-  const InvoiceDue = new Date(invoiceDetails.dueDate);
-  const getdueDate = InvoiceDue.getDate();
-  const $invoiceDue = InvoiceDue.toLocaleDateString('en-US', {
-    month: 'short',
-    year: 'numeric',
-  });
-  const allformatInvoiceDue = getdueDate + 1 + ' ' + $invoiceDue;
+  const invoiceDue = new Date(invoiceDetails.dueDate);
+  const allformatInvoiceDue = format(invoiceDue, 'd MMM YYY');
+;
   // client information
   const userName = invoiceDetails.clientName;
   const userAddress = invoiceDetails.clientStreetAddress;
@@ -65,10 +69,6 @@ export async function getUserDetails(invoiceDetails) {
   const userPostalCode = invoiceDetails.clientPostCode;
   const userCountry = invoiceDetails.clientCountry;
   const userMail = invoiceDetails.clientEmail;
-  const itemName = invoiceDetails.invoiceItems[0].name;
-  const itemQuantity = invoiceDetails.invoiceItems[0].quantity;
-  const itemPrice = invoiceDetails.invoiceItems[0].price;
-  const totalPriceNumber = parseInt(itemPrice * itemQuantity);
   const totalInvoicesPrice = invoiceDetails.amount;
   const statusClassNamesMap = {
     PENDING: 'pending',
@@ -76,10 +76,35 @@ export async function getUserDetails(invoiceDetails) {
     DRAFT: 'draft',
   };
   const statusInvoice = invoiceDetails.status.toLowerCase();
-
   const container = document.querySelector('#invoiceDetails');
+  const itemsEl = invoiceDetails.invoiceItems
+    .map((item) => {
+      return `<li class="viewInvoice__details__first__billing">
+    <p
+      class="text-h4 viewInvoice__details__first__billing__title" id="lala">
+      ${item.name}
+    </p>
+    <dd
+      class="text-h4 viewInvoice__details__first__billing__unit mobile">
+      ${item.quantity} x $ ${item.price}
+    </dd>
+    <dd
+      class="text-h4 viewInvoice__details__first__billing__cant desktop">
+      ${item.quantity}
+    </dd>
+    <dd
+      class="text-h4 viewInvoice__details__first__billing__price desktop">
+      $ ${item.price}
+    </dd>
+    <dd
+      class="text-h3 viewInvoice__details__first__billing__totalPrice" id="totalPrice">
+      $ ${parseInt(item.price * item.quantity)}
+    </dd>
+  </li>`;
+    })
+    .join('');
 
-  const InvoiceDetailsDOM = createDOM(`<div class="viewInvoice__status">
+  const invoiceDetailsDOM = createDOM(`<div class="viewInvoice__status">
   <div class="viewInvoice__summary">
   <div class="viewInvoice__summary__main">
   <dt class="text-body1 viewInvoice__summary__title">Status</dt>
@@ -204,28 +229,7 @@ export async function getUserDetails(invoiceDetails) {
         </h3>
       </div>
       <ul class="viewInvoice__details__billing__firstSecond">
-      <li class="viewInvoice__details__first__billing">
-      <p
-        class="text-h4 viewInvoice__details__first__billing__title" id="lala">
-        ${itemName}
-      </p>
-      <dd
-        class="text-h4 viewInvoice__details__first__billing__unit mobile">
-        ${itemQuantity} x £ ${itemPrice}
-      </dd>
-      <dd
-        class="text-h4 viewInvoice__details__first__billing__cant desktop">
-        ${itemQuantity}
-      </dd>
-      <dd
-        class="text-h4 viewInvoice__details__first__billing__price desktop">
-        £ ${itemPrice}
-      </dd>
-      <dd
-        class="text-h3 viewInvoice__details__first__billing__totalPrice" id="totalPrice">
-        £ ${totalPriceNumber}
-      </dd>
-    </li>
+      ${itemsEl}
       </ul>
       <div class="viewInvoice__details__total__billing__section">
       <div class="viewInvoice__details__total__billing" >
@@ -240,7 +244,7 @@ export async function getUserDetails(invoiceDetails) {
       <dd
         class="text-h2 viewInvoice__details__total__billing__final"
         >
-        £ ${totalInvoicesPrice}
+        $ ${totalInvoicesPrice}
       </dd>
     </div>
       </div>
@@ -249,7 +253,7 @@ export async function getUserDetails(invoiceDetails) {
   </div>
 </div>
 </div>`);
-  container.append(InvoiceDetailsDOM);
+  container.append(invoiceDetailsDOM);
 
   const openModal = document.querySelector('#deleteInvoice');
   const modal = document.querySelector('#modal');
@@ -257,27 +261,29 @@ export async function getUserDetails(invoiceDetails) {
   const deleteInvoidebyID = document.querySelector('#deleteInvoidebyID');
   const succefullDelete = document.querySelector('#succefullDelete');
   const closeConfirmationDelete = document.querySelector('#succefullDelete');
+  const listinvoice = document.querySelector('.list__content__wraper');
 
   async function deleteinvoiceID() {
-    try{
+    try {
       const response = await fetch(
-        `https://invoice-services.onrender.com/api/invoice/${invoiceDetails.id}`, {
+        `https://invoice-services.onrender.com/api/invoice/${invoiceDetails.id}`,
+        {
           method: 'DELETE',
-        })
-        const data = await response.json();
-
-    }catch(err){
+        }
+      );
+      const data = await response.json();
+      closePopupConfirmation();
+      Router.go('/');
+      showNotification();
+    } catch (err) {
       console.log(err.message);
     }
-
-    closePopupConfirmation();
-    Router.go('/');
-    showNotification();
   }
 
   deleteInvoidebyID.addEventListener('click', deleteinvoiceID);
   openModal.addEventListener('click', openPopupConfirmation);
   closeModal.addEventListener('click', closePopupConfirmation);
+  closeModal.addEventListener('keydown', closePopupConfirmationbyKey);
   closeConfirmationDelete.addEventListener('click', closeConfirmatioDelete);
 
   function openPopupConfirmation() {
@@ -291,19 +297,21 @@ export async function getUserDetails(invoiceDetails) {
       succefullDelete.style.display = 'none';
     }, 5000);
   }
+  function closePopupConfirmationbyKey(event) {
+    if (event.code === 'Escape') {
+      modal.style.display = 'none';
+    }
+  }
+
   function closeConfirmatioDelete() {
     succefullDelete.style.display = 'none';
   }
 
   function showNotification() {
     succefullDelete.style.display = 'flex';
-    console.log('123');
   }
-  const statusPaidBackground = document.querySelector('#statusPaidBackground');
   const paidButton = document.querySelector('#MarkAsPaid');
-  const buttonIcon = document.querySelector('#buttonIcon');
   paidButton.addEventListener('click', changeStatusInvoice);
-  const statusInvoices = document.querySelector('#statusInvoice');
 
   async function changeStatusInvoice() {
     try {
@@ -317,32 +325,15 @@ export async function getUserDetails(invoiceDetails) {
           body: JSON.stringify({
             id: invoiceDetails.id,
             status: 'PAID',
-          }), // Convert data to JSON string
+          }),
         }
       );
       const data = await response.json();
+      container.innerHTML = '';
+      await loadInvoice();
     } catch (err) {
       console.log(err.message);
     }
-    window.location.href = `/details/${invoiceDetails.id}`;
-    // statusInvoices.style.color = '#33d69f';
-    // statusInvoices.textContent = 'PAID';
-    // buttonIcon.classList.add('list__status__point--paid');
-    // statusPaidBackground.style.backgroundColor = 'rgba(51, 214, 159, 0.1)';
   }
 }
-
-configInvoices();
-//MODAL
-
-function deleteConfirm(invoiceDetails) {
-  const deletePopup = document.querySelector('#deletePopup');
-  const itemCode = invoiceDetails.id.substr(0, 8).toUpperCase();
-
-  const popUpDOM = `<h2 class="text-h2 delete__title">Confirm Deletion</h2>
-  <p class="text-body2 delete__description">
-    Are you sure you want to delete invoice <span id="deleteCode">#${itemCode}</span>? This
-    action cannot be undone.
-  </p>`;
-  deletePopup.innerHTML = popUpDOM;
-}
+loadInvoice();
