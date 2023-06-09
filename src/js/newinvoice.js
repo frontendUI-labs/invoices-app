@@ -315,7 +315,6 @@ imputsFieldsEl.forEach((input) => {
       },
     };
   });
-  console.log(item);
 });
 
 //object to backend//
