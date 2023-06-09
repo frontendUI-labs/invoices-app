@@ -2,7 +2,7 @@
   padding: 1.5rem;
   padding-top: 2.5rem;
   min-block-size: 100%;
-  background-color: #f2f2f2;
+  background: var(--grey);
   max-inline-size: 768px;
   margin: auto;
   margin-block: none;
@@ -61,10 +61,6 @@
 .viewInvoice__summary__button--draft{
   background-color: rgba(55, 59, 83, 0.1);
 }
-
-.viewInvoice__summary__title {
-  color: var(--grey-300);
-}
 .viewInvoice__summary__button__icon{
   block-size: 8px;
   inline-size: 8px;
@@ -84,7 +80,7 @@
   color: #ff8f00;
 }
 .viewInvoice__summary__title {
-  color: #858bb2;
+  color: var(--grey-500);
 }
 
 /* second part of viewinvoice details */
@@ -141,7 +137,10 @@
   line-height: 18px;
   width: 94px;
 }
-
+.viewInvoice__details__initialDate__text,
+.viewInvoice__details__dueDate__text{
+  color: var(--black-500);
+}
 
 /* dates */
 
@@ -233,9 +232,11 @@
 
 .viewInvoice__details__first__billing__title {
   grid-area: title;
+  color: var(--black-500);
 }
 
 .viewInvoice__details__first__billing__totalPrice {
+  color: var(--black-500);
   grid-area: price;
   text-align: right;
 }
@@ -321,7 +322,7 @@
 
 @media screen and (min-width: 640px) {
   body {
-    background: #f2f2f2;
+    background: var(--grey);
   }
   .nav__bar {
     position: fixed;
@@ -440,6 +441,7 @@
     grid-area: title;
   }
   .viewInvoice__details__first__billing__price {
+    color: var(--grey-400);
     text-align: right;
     grid-area: price;
   }
@@ -492,7 +494,7 @@
 
 @media screen and (min-width: 1024px) {
   body {
-    background-color: #f2f2f2;
+    background: var(--grey);
     margin: auto;
   }
   .nav__bar {
