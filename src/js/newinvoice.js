@@ -169,10 +169,7 @@ buttonAddNewItemEl.addEventListener('click', () => {
   itemsInputEl.forEach((input) => {
     input.value = '';
   });
-  console.log(item);
 });
-
-// console.log(items);
 
 cleanButtonEl.addEventListener('click', () => {
   itemsInputEl.forEach((input) => {
@@ -195,7 +192,7 @@ let allFields = {
   clientCity: '',
   clientPostCode: '',
   clientCountry: '',
-  invoiceDate: newInvoiceDatepicker.selectedDatepicker,
+  invoiceDate: '',
   dueDate: '',
   amount: 0,
   invoiceItems: items,
@@ -227,6 +224,7 @@ async function methodPost() {
 
   let formFields = {
     ...allFields,
+    invoiceDate: newInvoiceDatepicker.selectedDatepicker,
     amount: total,
     invoiceItems: itemsN,
     dueDate,

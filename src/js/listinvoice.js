@@ -69,7 +69,7 @@ function renderInvoices(invoices) {
       month: 'short',
       year: 'numeric',
     });
-    const allFormatDate = gettDay + 1 + ' ' + dueDatee;
+    const allFormatDate = gettDay + ' ' + dueDatee;
 
     return `
         <li class="list__cards">

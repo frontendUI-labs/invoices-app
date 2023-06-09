@@ -1,8 +1,8 @@
 import Router from '../utils/router.js';
-import { getDate } from 'date-fns'
-import { format } from 'date-fns'
+import { getDate } from 'date-fns';
+import { format } from 'date-fns';
 
-
+import { loadInvoices } from './listinvoice';
 
 const loading = document.querySelector('#loaderDetails');
 async function getInvoice() {
@@ -56,12 +56,12 @@ export async function getUserDetails(invoiceDetails) {
   const postalCode = invoiceDetails.postCode;
   const country = invoiceDetails.country;
   // fecha de inicial de invoice
-  const invoiceDate = new Date(invoiceDetails.invoiceDate);
-  const allformatInvoice = format(invoiceDate, 'd MMM YYY');
+  const $invoiceDate = new Date(invoiceDetails.invoiceDate);
+  const allformatInvoice = format($invoiceDate, 'd MMM YYY');
+  console.log(invoiceDetails);
   // fecha final de invoice
   const invoiceDue = new Date(invoiceDetails.dueDate);
   const allformatInvoiceDue = format(invoiceDue, 'd MMM YYY');
-;
   // client information
   const userName = invoiceDetails.clientName;
   const userAddress = invoiceDetails.clientStreetAddress;
@@ -275,6 +275,7 @@ export async function getUserDetails(invoiceDetails) {
       closePopupConfirmation();
       Router.go('/');
       showNotification();
+      loadInvoices();
     } catch (err) {
       console.log(err.message);
     }

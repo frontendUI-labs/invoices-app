@@ -5,13 +5,11 @@ const Router = {
         event.preventDefault();
         const href = event.target.getAttribute('href');
         Router.go(href);
-        console.log(event);
       });
     });
     // It listen for history changes
     window.addEventListener('popstate', (event) => {
       Router.go(event.state.route, false);
-      console.log(event);
     });
     // Process initial URL
     Router.go(location.pathname);
@@ -20,7 +18,6 @@ const Router = {
     if (addToHistory) {
       history.pushState({ route }, '', route);
     }
-    console.log(route);
     document
       .querySelectorAll('section.page')
       .forEach((s) => (s.style.display = 'none'));

@@ -23,9 +23,9 @@
   gap: 13px;
   transform: scale();
   color: var(--black-500);
-
 }
-.delete__title{
+.delete__title,
+.delete__description {
   color: var(--black-500);
 }
 
@@ -61,7 +61,7 @@
   top: 3px;
   right: 5px;
   height: 13px;
-  fill: #FFF;
+  fill: #fff;
 }
 
 .succedText {
@@ -74,7 +74,6 @@
     top: 100px;
     right: 5px;
     transform: translateX(0);
-
   }
 }
 @media screen and (min-width: 1024px) {
@@ -83,6 +82,5 @@
     top: 50px;
     right: 1px;
     transform: translateX(0);
-
   }
 }

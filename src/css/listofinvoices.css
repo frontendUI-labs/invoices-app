@@ -381,20 +381,20 @@ a {
   z-index: 4;
   display: none;
 }
-/* .close__icon {
+.close__icon {
   position: absolute;
   top: 3px;
   right: 5px;
   height: 13px;
   fill: #fff;
-} */
+}
 .succedText {
   color: var(--white-100);
 }
 @media screen and (min-width: 640px) {
   .succefullCreate {
     position: absolute;
-    top: 85px;
+    top: 100px;
     right: 5px;
     transform: translateX(0);
   }
@@ -402,17 +402,9 @@ a {
 @media screen and (min-width: 1024px) {
   .succefullCreate {
     position: absolute;
-    padding: unset;
-    top: 60px;
-    right: -60px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .succefullCreate {
-    position: absolute;
-    padding: unset;
-    top: 0;
-    right: -65px;
+    top: 50px;
+    right: 1px;
+    transform: translateX(0);
   }
 }
 @media (min-width: 640px) {
