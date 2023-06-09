@@ -235,7 +235,9 @@ async function methodPost() {
   imputsFieldsEl.forEach((input) => {
     input.value = '';
   });
-
+  succesfullCreate.addEventListener('click', () => {
+    succesfullCreate.style.display = 'none';
+  });
   try {
     const url = 'https://invoice-services.onrender.com/api/invoice';
     const response = await fetch(url, {
@@ -269,6 +271,12 @@ function succesNotificacion() {
   closeModal();
   succesfullCreate.style.display = 'flex';
 }
+
+buttonSaveEl.addEventListener('click', async () => {
+  setTime();
+  succesNotificacion();
+  methodPost();
+});
 buttonDraftEl.addEventListener('click', async () => {
   succesNotificacion();
   setTime();
@@ -278,15 +286,7 @@ buttonDraftEl.addEventListener('click', async () => {
   };
   methodPost();
 });
-buttonSaveEl.addEventListener('click', async () => {
-  setTime();
-  succesNotificacion();
-  methodPost();
-});
 
-succesfullCreate.addEventListener('click', () => {
-  succesfullCreate.style.display = 'none';
-});
 // const emailError = document.querySelector('#emailError');
 // const isEmailOk = validateCharacters.every((character) =>
 //   emailValue.includes(character)
