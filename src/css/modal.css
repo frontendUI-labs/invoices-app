@@ -1,0 +1,88 @@
+.modal {
+  width: 327px;
+  height: 220px;
+  background: var(--white-100);
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  border-radius: 8px;
+  border: none;
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.delete__text {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  transform: scale();
+  color: var(--black-500);
+
+}
+.delete__title{
+  color: var(--black-500);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.succefullDelete {
+  position: fixed;
+  background: var(--green-400);
+  height: 50px;
+  width: 300px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+  cursor: pointer;
+  right: 50%;
+  top: 130px;
+  transform: translateX(50%);
+  z-index: 4;
+  display: none;
+}
+
+.close__icon {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  height: 13px;
+  fill: #FFF;
+}
+
+.succedText {
+  color: var(--white-100);
+}
+
+@media screen and (min-width: 640px) {
+  .succefullDelete {
+    position: absolute;
+    top: 100px;
+    right: 5px;
+    transform: translateX(0);
+
+  }
+}
+@media screen and (min-width: 1024px) {
+  .succefullDelete {
+    position: absolute;
+    top: 50px;
+    right: 1px;
+    transform: translateX(0);
+
+  }
+}

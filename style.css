@@ -7,3 +7,60 @@
 @import url('./src/css/datepicker.css');
 @import url('./src/css/listofinvoices.css');
 @import url('./src/css/viewInvoice.css');
+@import url('./src/css/modal.css');
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --grey: var(--black-700);
+  }
+  .viewInvoice {
+    --black-500: #fff;
+    --white-300: var(--black-800);
+    --black-100: var(--black-900);
+    --white-100: var(--black-600);
+    --grey-400: var(--grey-200);
+    --grey-500: var(--grey-200);
+  }
+  .text-body2.viewInvoice__details__total__billing__title.desktop,
+  .text-h2.viewInvoice__details__total__billing__final {
+    color: white;
+  }
+  .listinvoice {
+    --white-100: var(--black-600);
+    --black-500: #fff;
+    --grey-300: var(--white-200);
+  }
+  .cirle-icon {
+    background: #fff;
+  }
+  .text-h4.button.button--primary.button--icon,
+  .filter__button span {
+    color: #fff;
+  }
+  .filter__checkbox {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+  }
+  .list__status__point--draft {
+    background: var(--grey-200);
+  }
+  .list__status__statuspage--draft {
+    color: var(--grey-200);
+  }
+  .list__details__status--draft {
+    background: rgba(41, 44, 70, 0.8);
+  }
+  .button--secondary{
+    background: var(--black-800);
+  }
+  .button--secondary:hover{
+    background: #fff;
+    color: var(--grey-200);
+  }
+  .modal{
+    --white-100: var(--black-600);
+    --black-500:var(--white-200);
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+
+  }
+}

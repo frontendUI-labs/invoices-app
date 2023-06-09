@@ -13,7 +13,6 @@ const loaderEl = listInvoiceEl.querySelector('#loader');
 const invoiceRenderEl = listInvoiceEl.querySelector('.list__content__cards');
 const invoicesCountSelected = listInvoiceEl.querySelector('.counOfInvoices');
 const emptyEl = listInvoiceEl.querySelector('.empty');
-console.log(emptyEl);
 
 function toggleCheckboxDropdown() {
   filterCheckboxEl.classList.toggle('flex');
@@ -65,7 +64,7 @@ function renderInvoices(invoices) {
         <li class="list__cards">
           <div class="list__code">
             <div class="text-body1">
-              <a class="link__details" href="/details">
+              <a class="link__details" href="/details/${invoice.id}">
                 <span class="list__code__numeral">#</span
                 ><span class="list__code__number">${upperCaseId}</span>
               </a>
