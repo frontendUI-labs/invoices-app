@@ -1,6 +1,6 @@
 .button {
   border: none;
-  color: var(--white-100);
+  color: var(--white);
   border-radius: 24px;
   padding-block: 17px;
   padding-inline: 20px;
@@ -27,7 +27,7 @@
   inline-size: 32px;
   block-size: 32px;
   border-radius: 50%;
-  background: var(--white-100);
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,8 +48,8 @@
 }
 .button--ternary {
   max-inline-size: 140px;
-  background: var(--black-100);
-  color: var(--grey-300);
+  background: var(--black-900);
+  color: var(--grey-400);
 }
 .button--ternary:hover {
   background: var(--black-500);

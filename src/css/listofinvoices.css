@@ -71,7 +71,7 @@ a {
   justify-content: space-between;
 }
 .content__header__p {
-  color: var(--grey-300);
+  color: var(--grey-400);
 }
 .list__content__buttons {
   display: flex;
@@ -96,7 +96,7 @@ a {
   display: none;
 }
 .filter__selected__number {
-  color: var(--white-100);
+  color: var(--white);
 }
 .filter__button {
   background: transparent;
@@ -105,6 +105,9 @@ a {
   align-items: center;
   cursor: pointer;
   border: none;
+}
+.filter__text {
+  color: var(--black-500);
 }
 .text__adition__desk {
   display: none;
@@ -183,7 +186,7 @@ a {
   display: flex;
 }
 .filter__selected__number {
-  color: var(--white-100);
+  color: var(--white);
 }
 .filter__button {
   background: transparent;
@@ -197,7 +200,7 @@ a {
   min-inline-size: 192px;
   padding: 24px;
   margin-block-start: 20px;
-  background: var(--white-100);
+  background: var(--white);
   box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
   border-radius: 8px;
   display: flex;
@@ -216,16 +219,6 @@ a {
   display: flex;
   align-items: flex-end;
   gap: 8px;
-}
-.checkbox__container {
-  inline-size: 16px;
-  block-size: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2px;
-  border: 1px solid var(--grey-200);
-  background: var(--grey-200);
 }
 .checkbox__container:hover {
   border-color: var(--purple-400);
@@ -269,13 +262,13 @@ a {
   justify-content: space-between;
 }
 .list__code__numeral {
-  color: var(--grey-400);
+  color: #858bb2;
 }
 .list__code__number {
   color: var(--black-500);
 }
 .list__code__name {
-  color: var(--grey-300);
+  color: var(--grey-400);
 }
 .link__details::before {
   content: ' ';
@@ -330,10 +323,10 @@ a {
   background: rgba(55, 59, 83, 0.1);
 }
 .list__status__point--draft {
-  background: var(--black-100);
+  background: var(--black-300);
 }
 .list__status__statuspage--draft {
-  color: var(--black-100);
+  color: var(--black-300);
 }
 .list__details__count span {
   color: var(--black-500);
@@ -364,6 +357,21 @@ a {
 .rotate {
   transform: rotate(180deg);
 }
+.rotate90 {
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.iconDarkMode {
+  display: none;
+}
 .succefullCreate {
   position: fixed;
   background: var(--green-400);
@@ -389,7 +397,7 @@ a {
   fill: #fff;
 }
 .succedText {
-  color: var(--white-100);
+  color: var(--white);
 }
 @media screen and (min-width: 640px) {
   .succefullCreate {
@@ -482,7 +490,7 @@ a {
   .nav__profile__line {
     inline-size: 100%;
   }
-  .icon2 {
+  .iconProfile {
     inline-size: 40px;
   }
   .list__content__wraper {

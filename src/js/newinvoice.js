@@ -6,8 +6,6 @@ const addImputsItemsEl =
   newInvoiceAllContentEl.querySelector('.addItemsImputs');
 const itemsInputEl = addImputsItemsEl.querySelectorAll('.input-fieldItem');
 const imputsFieldsEl = newInvoiceAllContentEl.querySelectorAll('.input-Rest');
-// const numberQtyEl = addImputsItemsEl.querySelector('#putQty');
-// const numberPriceEl = addImputsItemsEl.querySelector('#putPrice');
 const imputValueEl = newInvoiceAllContentEl.querySelector(
   '.total__imput__borderColor'
 );
@@ -17,15 +15,15 @@ const buttonDraftEl = newInvoiceAllContentEl.querySelector('.button__draft');
 const buttonSaveEl = newInvoiceAllContentEl.querySelector('.button__save');
 const buttonDiscardEl =
   newInvoiceAllContentEl.querySelector('.button__discard');
-const listInvoiceEl = document.querySelector('.listinvoice');
 const succesfullCreate = document.querySelector('#succefullCreate');
 
 import Datepicker from '../js/datepicker';
 const newInvoiceDatepicker = new Datepicker('#newInvoice-datepicker');
 newInvoiceDatepicker.render();
 
-import Dropdown from '../js/dropdown';
 import { loadInvoices } from './listinvoice';
+
+import Dropdown from '../js/dropdown';
 const newInvoiceDropdown = new Dropdown('#newInvoice-dropdown');
 newInvoiceDropdown.render();
 
@@ -41,46 +39,50 @@ function closeModal() {
 buttonDiscardEl.addEventListener('click', () => {
   closeModal();
 });
+
 let items = [];
 let item = {
-  name: '',
-  quantity: '',
-  price: '',
-  valid: '' ? false : true,
+  name: {
+    value: '',
+    valid: false,
+  },
+  quantity: {
+    value: '',
+    valid: false,
+  },
+  price: {
+    value: '',
+    valid: false,
+  },
 };
-//valid inputs//
-const prueba = newInvoiceAllContentEl.querySelector('#itemNameError');
+// valid inputs//
+const itemContainerElement = newInvoiceAllContentEl.querySelector(
+  '.itemList__components'
+);
 
-itemsInputEl.forEach((input) => {
-  buttonAddNewItemEl.addEventListener('click', () => {
-    // Verifica si el input está vacío después del clic
-    if (input.value === '') {
-      input.classList.add('error');
-      prueba.classList.add('error'); // Agrega la clase de error
-    } else {
-      input.classList.remove('error'); // Elimina la clase de error si el input está rellenado
-    }
-  });
-});
 // const validateCharacters = ['@', '.', 'com'];
-
+const divElement = document.createElement('div');
 itemsInputEl.forEach((input) => {
   input.addEventListener('input', (event) => {
+    const isValidInput = event.target.value !== '';
     item = {
       ...item,
-      [event.target.name]: event.target.value,
+      [event.target.name]: {
+        value: event.target.value,
+        valid: isValidInput,
+      },
     };
+    if (isValidInput) {
+      input.classList.remove('error');
+      divElement.style.display = 'none';
+    }
 
     //calculadora//
     if (event.target.name === 'quantity' || event.target.name === 'price') {
-      let amountTotalValue = item.quantity * item.price;
-      item = {
-        ...item,
-        price: parseInt(item.price),
-        quantity: parseInt(item.quantity),
-        amountTotal: amountTotalValue,
-      };
-
+      let amountTotalValue = item.quantity.value * item.price.value;
+      item.price.value = parseInt(item.price.value);
+      item.quantity.value = parseInt(item.quantity.value);
+      item.amountTotal = amountTotalValue;
       imputValueEl.textContent = amountTotalValue;
     }
   });
@@ -91,68 +93,83 @@ function createDom(string) {
   const inserToHTML = stringToNodo.parseFromString(string, 'text/html');
   return inserToHTML.body.firstChild;
 }
+
 const itemsLisEl = newInvoiceAllContentEl.querySelector('#items');
 buttonAddNewItemEl.addEventListener('click', () => {
+  const { amountTotal, ...rest } = item;
+  const isValidItem = Object.values(rest).every((item) => item.valid);
+  console.log(isValidItem);
+  divElement.textContent = 'required field';
+  if (isValidItem === false) {
+    itemsInputEl.forEach((input) => {
+      if (input.value === '') {
+        divElement.classList.add('error');
+        input.classList.add('error');
+      }
+    });
+    itemContainerElement.insertAdjacentElement('beforeend', divElement);
+    return;
+  } else {
+  }
   items.unshift(item);
   itemsLisEl.innerHTML = '';
   items.forEach((item) => {
     const itemEl = createDom(`
-       
-        <div class="itemList__calc">
-        <div class="textfield itemName">
-        <label class="text-body1 textfield__label"
-        >Item Name</label
-        >
-        <input
-        class="text-h4 textfield__input input-fieldItem disabled" disabled
-        name="name"
-        value = "${item.name}"
-        type="text" />     
-        </div> 
-        <div class="textfield Qty">
-        <label class="text-body1 textfield__label">Qty.</label>
-        <input
-        class="text-h4 textfield__input input-fieldItem disabled" disabled
-        id="putcuantity"
-        name="quantity"
-        value="${item.quantity}"
-        type="text" />
-        </div>
-        <div class="textfield price">
-        <label class="text-body1 textfield__label">Price</label>
-        <input
-        class="text-h4 textfield__input input-fieldItem disabled" disabled
-        id="putprice"
-        name="price"
-        value="${item.price}"
-        type="text" />
-        </div>
-        <div class="textfield total disabled">
-        <div class="text-body1 textfield__label">Total</div>
-        <div class="total__imput">
-        <div
-        class="text-h4 textfield__input total__imput__borderColor">${item.amountTotal}</div>
-        <button class="removeCalc">
-          <svg
-            class="trash__icon"
-            width="13"
-            height="16"
-            viewBox="0 0 13 16"
-            fill="#none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M8.47225 0L9.36117 0.888875H12.4722V2.66667H0.027832V0.888875H3.13892L4.02783 0H8.47225ZM2.6945 16C1.71225 16 0.916707 15.2045 0.916707 14.2222V3.55554H11.5834V14.2222C11.5834 15.2045 10.7878 16 9.80562 16H2.6945Z"
-              fill="#FFFFF" />
-          </svg>
-        </button>
-        </div>
-        <div id="items"></div>
-        </div>
-        </div>
-        `);
-
+      
+      <div class="itemList__calc">
+      <div class="textfield itemName">
+      <label class="text-body1 textfield__label"
+      >Item Name</label
+      >
+      <input
+      class="text-h4 textfield__input input-fieldItem disabled" disabled
+      name="name"
+      value = "${item.name.value}"
+      type="text" />     
+      </div> 
+      <div class="textfield Qty">
+      <label class="text-body1 textfield__label">Qty.</label>
+      <input
+      class="text-h4 textfield__input input-fieldItem disabled" disabled
+      id="putcuantity"
+      name="quantity"
+      value="${item.quantity.value}"
+      type="text" />
+      </div>
+      <div class="textfield price">
+      <label class="text-body1 textfield__label">Price</label>
+      <input
+      class="text-h4 textfield__input input-fieldItem disabled" disabled
+      id="putprice"
+      name="price"
+      value="${item.price.value}"
+      type="text" />
+      </div>
+      <div class="textfield total disabled">
+      <div class="text-body1 textfield__label">Total</div>
+      <div class="total__imput">
+      <div
+      class="text-h4 textfield__input total__imput__borderColor">${item.amountTotal}</div>
+      <button class="removeCalc">
+      <svg
+      class="trash__icon"
+      width="13"
+      height="16"
+      viewBox="0 0 13 16"
+      fill="#none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M8.47225 0L9.36117 0.888875H12.4722V2.66667H0.027832V0.888875H3.13892L4.02783 0H8.47225ZM2.6945 16C1.71225 16 0.916707 15.2045 0.916707 14.2222V3.55554H11.5834V14.2222C11.5834 15.2045 10.7878 16 9.80562 16H2.6945Z"
+      fill="#FFFFF" />
+      </svg>
+      </button>
+      </div>
+      <div id="items"></div>
+      </div>
+      </div>
+      `);
     const iconRemoveEl = itemEl.querySelector('button');
     iconRemoveEl.addEventListener('click', () => {
       items = items.filter((savedItem) => {
@@ -177,58 +194,142 @@ cleanButtonEl.addEventListener('click', () => {
   });
   imputValueEl.textContent = '';
 });
-// agregar imputs/items//
+
 let allFields = {
   status: 'PENDING',
-  description: '',
-  streetAddress: '',
-  city: '',
-  postCode: '',
-  country: '',
+  description: {
+    value: '',
+    valid: false,
+  },
+  streetAddress: {
+    value: '',
+    valid: false,
+  },
+  city: {
+    value: '',
+    valid: false,
+  },
+  postCode: {
+    value: '',
+    valid: false,
+  },
+  country: {
+    value: '',
+    valid: false,
+  },
   currencyCountry: 'USD',
-  clientName: '',
-  clientEmail: '',
-  clientStreetAddress: '',
-  clientCity: '',
-  clientPostCode: '',
-  clientCountry: '',
-  invoiceDate: '',
-  dueDate: '',
-  amount: 0,
-  invoiceItems: items,
+  clientName: {
+    value: '',
+    valid: false,
+  },
+  clientEmail: {
+    value: '',
+    valid: false,
+  },
+  clientStreetAddress: {
+    value: '',
+    valid: false,
+  },
+  clientCity: {
+    value: '',
+    valid: false,
+  },
+  clientPostCode: {
+    value: '',
+    valid: false,
+  },
+  clientCountry: {
+    value: '',
+    valid: false,
+  },
+  invoiceDate: {
+    value: '',
+    valid: false,
+  },
+  dueDate: {
+    value: '',
+    valid: false,
+  },
+  amount: {
+    value: 0,
+    valid: false,
+  },
+  invoiceItems: {
+    value: [],
+    valid: false,
+  },
 };
 
+const errorInputsEl = newInvoiceAllContentEl.querySelectorAll('#inputError');
+errorInputsEl.forEach((span) => {
+  if (imputsFieldsEl !== '') {
+    span.style.display = 'none';
+  }
+});
 imputsFieldsEl.forEach((input) => {
   input.addEventListener('input', (event) => {
+    input.classList.remove('error');
+    input.nextElementSibling.style.display = 'none';
+    const isValidFields = event.target.value !== '';
+    const separateObjct = event.target.name.split('-');
     allFields = {
       ...allFields,
-      [event.target.name]: event.target.value,
+      [separateObjct[1]]: {
+        value: event.target.value,
+        valid: isValidFields,
+      },
     };
   });
 });
+
+function formatInvoice(data, dueDate, amount, invoiceItems) {
+  return {
+    status: data.status,
+    description: data.description.value,
+    streetAddress: data.streetAddress.value,
+    city: data.city.value,
+    postCode: data.postCode.value,
+    country: data.country.value,
+    currencyCountry: data.currencyCountry,
+    clientName: data.clientName.value,
+    clientEmail: data.clientEmail.value,
+    clientStreetAddress: data.clientStreetAddress.value,
+    clientCity: data.clientCity.value,
+    clientPostCode: data.clientPostCode.value,
+    clientCountry: data.clientCountry.value,
+    invoiceDate: newInvoiceDatepicker.selectedDatepicker,
+    dueDate,
+    amount,
+    invoiceItems,
+  };
+}
+let formFields = {};
 async function methodPost() {
   const total = items
     .map((item) => item.amountTotal)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  // console.log(total, 'total');
 
   const itemsN = items.map((item) => ({
-    name: item.name,
-    quantity: item.quantity,
-    price: item.price,
+    name: item.name.value,
+    quantity: item.quantity.value,
+    price: item.price.value,
   }));
+  // console.log(itemsN, 'itemsN');
   const daysToPayment = parseInt(newInvoiceDropdown.selectedOption ?? 0);
   const dueDate = addDays(
     newInvoiceDatepicker.selectedDatepicker,
     daysToPayment
   );
-
-  let formFields = {
+  // console.log(dueDate, 'dueDate');
+  formFields = {
     ...allFields,
     invoiceDate: newInvoiceDatepicker.selectedDatepicker,
     amount: total,
     invoiceItems: itemsN,
     dueDate,
   };
+  // console.log(formFields, 'inicial');
 
   imputsFieldsEl.forEach((input) => {
     input.value = '';
@@ -236,6 +337,9 @@ async function methodPost() {
   succesfullCreate.addEventListener('click', () => {
     succesfullCreate.style.display = 'none';
   });
+
+  formFields = formatInvoice(allFields, dueDate, total, itemsN);
+  // console.log(formFields, 'final');
   try {
     const url = 'https://invoice-services.onrender.com/api/invoice';
     const response = await fetch(url, {
@@ -251,14 +355,13 @@ async function methodPost() {
     newInvoiceDialog.close();
     closeModal();
     loadInvoices();
+    setTime();
+    succesNotificacion();
     console.log('Respuesta:', data);
   } catch (error) {
     console.error('Error:', error);
   }
 }
-// setTimeout(function () {
-//   succesfullCreate.style.display = 'none';
-// });
 
 function setTime() {
   setTimeout(function () {
@@ -269,22 +372,52 @@ function succesNotificacion() {
   closeModal();
   succesfullCreate.style.display = 'flex';
 }
+function isCreatedInvoice() {
+  const {
+    status,
+    currencyCountry,
+    amount,
+    invoiceItems,
+    dueDate,
+    invoiceDate,
+    ...rest
+  } = allFields;
+  const validInput = Object.values(rest).every((allFields) => allFields.valid);
+  console.dir(validInput, 'hpladsad');
+  if (!validInput) {
+    isCleanFields.forEach((input) => {
+      if (input.value === '') {
+        input.classList.add('error');
+        input.nextElementSibling.style.display = 'block';
+      }
+    });
+  } else {
+    methodPost();
+  }
+}
+const isCleanFields = document.querySelectorAll('[name*= "clean"]');
+// buttonDiscardEl.addEventListener('click', () => {
+//   allFields = {
+//     ...allFields,
+//     status: 'DRAFT',
+//   };
+//   isCreatedInvoice();
+// });
 
 buttonSaveEl.addEventListener('click', async () => {
-  setTime();
-  succesNotificacion();
-  methodPost();
+  allFields = {
+    ...allFields,
+    status: 'PENDING',
+  };
+  isCreatedInvoice();
 });
 buttonDraftEl.addEventListener('click', async () => {
-  succesNotificacion();
-  setTime();
   allFields = {
     ...allFields,
     status: 'DRAFT',
   };
-  methodPost();
+  isCreatedInvoice();
 });
-
 // const emailError = document.querySelector('#emailError');
 // const isEmailOk = validateCharacters.every((character) =>
 //   emailValue.includes(character)

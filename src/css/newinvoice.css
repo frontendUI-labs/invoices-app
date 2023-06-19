@@ -3,7 +3,7 @@
 }
 .newInvoice {
   max-inline-size: 768px;
-  background: var(--white-100);
+  background: var(--white);
   flex-direction: column;
   position: absolute;
   inset-block-start: 72px;
@@ -19,6 +19,7 @@
   padding-inline: 24px;
 }
 .newInvoice__title {
+  color: var(--black-500);
   margin-block-end: 24px;
 }
 .newInvoice__bill {
@@ -51,15 +52,15 @@
   margin-block-end: 24px;
 }
 .billItemList__title {
-  color: var(--grey-300);
+  color: var(--grey-400);
 }
 .itemList__components {
   margin: unset;
   display: flex;
   flex-direction: column;
-  gap: 48px;
 }
 .itemList__calc {
+  margin-block-end: 10px;
   display: grid;
   grid-template-columns: 2fr 3fr 5fr;
   grid-template-areas: 'itemName itemName itemName' 'Qty price total';
@@ -71,6 +72,7 @@
 }
 .total__imput__borderColor {
   border-color: transparent;
+  background-color: var(--white);
 }
 .total__imput__borderColor:hover {
   border-color: transparent;
@@ -98,7 +100,7 @@
   inset-block-end: 0;
   inset-inline-start: 0;
   inset-inline-end: 0;
-  background-color: var(--white-100);
+  background-color: var(--white);
   padding-inline: 24px;
   padding-block: 20px;
   display: flex;
@@ -119,14 +121,18 @@
   cursor: not-allowed;
   border-color: #e0e3fa;
 }
+.trash__icon {
+  fill: var(--grey-400);
+}
 .trash__icon:hover {
-  fill: #ec5757;
+  fill: var(--red-100);
 }
 input.error {
-  border-color: red;
+  border-color: var(--red-100);
 }
 .error {
-  color: red;
+  color: var(--red-100);
+  font: var(--font-body1);
 }
 @media (min-width: 640px) {
   .newInvoice__buttons {

@@ -1,4 +1,5 @@
 import './style.css';
+import './src/js/darkmode';
 import Router from './src/utils/router.js';
 import './src/js/dropdown';
 import './src/js/datepicker';

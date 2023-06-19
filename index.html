@@ -19,9 +19,19 @@
         <div class="nav__background--second"></div>
       </div>
       <div class="nav__profile">
-        <img class="profile__icon" src="./icon/dark-mode.svg" alt="" />
+        <img
+          class="profile__icon iconLigthMode"
+          src="./icon/light-mode.svg"
+          alt="" />
+        <img
+          class="profile__icon iconDarkMode"
+          src="./icon/dark-mode.svg"
+          alt="" />
         <span class="nav__profile__line"></span>
-        <img class="profile__icon icon2" src="./icon/profile.svg" alt="" />
+        <img
+          class="profile__icon iconProfile"
+          src="./icon/profile.svg"
+          alt="" />
       </div>
     </nav>
     <section class="page" id="styleguide">
@@ -127,7 +137,7 @@
                     <span class="text-h4 filter__selected__number"></span>
                   </div>
                   <button class="filter__button">
-                    <span class="text-h4"
+                    <span class="text-h4 filter__text"
                       >Filter<span class="text__adition__desk">
                         by status</span
                       ></span
@@ -253,30 +263,34 @@
                   >
                   <input
                     class="text-h4 textfield__input input-Rest"
-                    name="streetAddress"
+                    name="clean-streetAddress"
                     type="text" />
+                  <span class="error" id="inputError">required fields</span>
                 </div>
                 <div class="bill__cityCodeCountry">
                   <div class="textfield city">
                     <label class="text-body1 textfield__label">City</label>
                     <input
                       class="text-h4 textfield__input input-Rest"
-                      name="city"
+                      name="clean-city"
                       type="text" />
+                    <span class="error" id="inputError">required fields</span>
                   </div>
                   <div class="textfield postCode">
                     <label class="text-body1 textfield__label">Post Code</label>
                     <input
                       class="text-h4 textfield__input input-Rest"
-                      name="postCode"
+                      name="clean-postCode"
                       type="text" />
+                    <span class="error" id="inputError">required fields</span>
                   </div>
                   <div class="textfield country">
                     <label class="text-body1 textfield__label">Country</label>
                     <input
                       class="text-h4 textfield__input input-Rest"
-                      name="country"
+                      name="clean-country"
                       type="text" />
+                    <span class="error" id="inputError">required fields</span>
                   </div>
                 </div>
               </div>
@@ -288,8 +302,9 @@
                   >
                   <input
                     class="text-h4 textfield__input input-Rest"
-                    name="clientName"
+                    name="clean-clientName"
                     type="text" />
+                  <span class="error" id="inputError">required fields</span>
                 </div>
                 <div class="textfield clientEmail">
                   <label class="text-body1 textfield__label"
@@ -297,9 +312,9 @@
                   >
                   <input
                     class="text-h4 textfield__input input-Rest"
-                    name="clientEmail"
+                    name="clean-clientEmail"
                     type="text" />
-                  <span class="error" id="emailError"></span>
+                  <span class="error" id="inputError">required fields</span>
                 </div>
                 <div class="textfield streetAddress">
                   <label class="text-body1 textfield__label"
@@ -307,30 +322,34 @@
                   >
                   <input
                     class="text-h4 textfield__input input-Rest"
-                    name="clientStreetAddress"
+                    name="clean-clientStreetAddress"
                     type="text" />
+                  <span class="error" id="inputError">required fields</span>
                 </div>
                 <div class="bill__cityCodeCountry">
                   <div class="textfield city">
                     <label class="text-body1 textfield__label">City</label>
                     <input
                       class="text-h4 textfield__input input-Rest"
-                      name="clientCity"
+                      name="clean-clientCity"
                       type="text" />
+                    <span class="error" id="inputError">required fields</span>
                   </div>
                   <div class="textfield postCode">
                     <label class="text-body1 textfield__label">Post Code</label>
                     <input
                       class="text-h4 textfield__input input-Rest"
-                      name="clientPostCode"
+                      name="clean-clientPostCode"
                       type="text" />
+                    <span class="error" id="inputError">required fields</span>
                   </div>
                   <div class="textfield country">
                     <label class="text-body1 textfield__label">Country</label>
                     <input
                       class="text-h4 textfield__input input-Rest"
-                      name="clientCountry"
+                      name="clean-clientCountry"
                       type="text" />
+                    <span class="error" id="inputError">required fields</span>
                   </div>
                 </div>
                 <div class="newInvoice__dueDate">
@@ -413,8 +432,9 @@
                   >
                   <input
                     class="text-h4 textfield__input input-Rest"
-                    name="description"
+                    name="clean-description"
                     type="text" />
+                  <span class="error" id="inputError">required fields</span>
                 </div>
               </div>
               <div class="newInvoice__bill itemList">
@@ -430,7 +450,6 @@
                           class="text-h4 textfield__input input-fieldItem"
                           name="name"
                           type="text" />
-                        <span class="error" id="itemNameError"></span>
                       </div>
                       <div class="textfield Qty">
                         <label class="text-body1 textfield__label">Qty.</label>

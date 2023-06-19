@@ -65,7 +65,7 @@
 }
 
 .succedText {
-  color: var(--white-100);
+  color: var(--white);
 }
 
 @media screen and (min-width: 640px) {

@@ -21,7 +21,7 @@
   padding-inline: 20px;
   border-radius: 4px;
   background: var(--white-100);
-  border: 1px solid var(--grey-200);
+  border: 1px solid var(--grey-600);
   font: var(--font-h4);
   color: var(--black-500);
   cursor: pointer;
@@ -33,10 +33,13 @@
 }
 
 /* calendar */
+.calendar__title {
+  color: var(--black-500);
+}
 .datepicker__calendar {
   max-inline-size: 350px;
   inline-size: 100%;
-  background: var(--white-100);
+  background: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +73,7 @@
   cursor: pointer;
 }
 .datepicker__weekdays {
-  color: var(--grey-300);
+  color: var(--purple-100);
   margin-block-end: 5px;
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -88,6 +91,7 @@
   inline-size: 100%;
 }
 .datepicker-day {
+  color: var(--black-500);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +111,7 @@
   background: #4b556334;
 }
 .datepicker-day.is-inactive {
-  color: var(--grey-200);
+  color: var(--grey-300);
   cursor: not-allowed;
 }
 
@@ -116,7 +120,7 @@
   opacity: 0.5;
 }
 .datepicker__button:disabled:hover {
-  border-color: var(--grey-200);
+  border-color: var(--grey-300);
   cursor: not-allowed;
 }
 /* estilo que ayuda en js */

@@ -9,6 +9,7 @@ async function getInvoice() {
   const { pathname } = window.location;
   const paths = pathname.split('/');
   const invoiceId = paths[2];
+  if (!invoiceId) return;
   try {
     const response = await fetch(
       `https://invoice-services.onrender.com/api/invoice/${invoiceId}`
