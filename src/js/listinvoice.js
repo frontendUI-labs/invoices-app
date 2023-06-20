@@ -1,5 +1,3 @@
-import { doc } from 'prettier';
-
 const listInvoiceEl = document.querySelector('.listinvoice');
 const filterButtonEl = listInvoiceEl.querySelector('.filter__button');
 const filterCheckboxEl = listInvoiceEl.querySelector('.filter__checkbox');

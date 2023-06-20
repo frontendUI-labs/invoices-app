@@ -27,19 +27,20 @@ import Dropdown from '../js/dropdown';
 const newInvoiceDropdown = new Dropdown('#newInvoice-dropdown');
 newInvoiceDropdown.render();
 
+function closeModal() {
+  newInvoiceDialog.close();
+  document.body.style.overflow = 'auto';
+}
 newInvoiceAllContentEl.addEventListener('keydown', (event) => {
   if (event.code === 'Escape') {
     closeModal();
   }
 });
-function closeModal() {
-  newInvoiceDialog.close();
-  document.body.style.overflow = 'auto';
-}
 buttonDiscardEl.addEventListener('click', () => {
   closeModal();
 });
 
+//items//
 let items = [];
 let item = {
   name: {
@@ -55,12 +56,19 @@ let item = {
     valid: false,
   },
 };
-// valid inputs//
+// valid inputs items//
 const itemContainerElement = newInvoiceAllContentEl.querySelector(
   '.itemList__components'
 );
 
-// const validateCharacters = ['@', '.', 'com'];
+const numeroInputs = document.querySelectorAll('.numeroInput');
+numeroInputs.forEach(function (input) {
+  input.addEventListener('input', function () {
+    const valor = input.value;
+    input.value = valor.replace(/\D/g, '');
+  });
+});
+
 const divElement = document.createElement('div');
 itemsInputEl.forEach((input) => {
   input.addEventListener('input', (event) => {
@@ -87,7 +95,7 @@ itemsInputEl.forEach((input) => {
     }
   });
 });
-
+//create DOM for items//
 function createDom(string) {
   const stringToNodo = new DOMParser();
   const inserToHTML = stringToNodo.parseFromString(string, 'text/html');
@@ -98,9 +106,8 @@ const itemsLisEl = newInvoiceAllContentEl.querySelector('#items');
 buttonAddNewItemEl.addEventListener('click', () => {
   const { amountTotal, ...rest } = item;
   const isValidItem = Object.values(rest).every((item) => item.valid);
-  console.log(isValidItem);
   divElement.textContent = 'required field';
-  if (isValidItem === false) {
+  if (!isValidItem) {
     itemsInputEl.forEach((input) => {
       if (input.value === '') {
         divElement.classList.add('error');
@@ -108,14 +115,12 @@ buttonAddNewItemEl.addEventListener('click', () => {
       }
     });
     itemContainerElement.insertAdjacentElement('beforeend', divElement);
-    return;
+    // return;
   } else {
-  }
-  items.unshift(item);
-  itemsLisEl.innerHTML = '';
-  items.forEach((item) => {
-    const itemEl = createDom(`
-      
+    items.unshift(item);
+    itemsLisEl.innerHTML = '';
+    items.forEach((item) => {
+      const itemEl = createDom(`
       <div class="itemList__calc">
       <div class="textfield itemName">
       <label class="text-body1 textfield__label"
@@ -170,33 +175,63 @@ buttonAddNewItemEl.addEventListener('click', () => {
       </div>
       </div>
       `);
-    const iconRemoveEl = itemEl.querySelector('button');
-    iconRemoveEl.addEventListener('click', () => {
-      items = items.filter((savedItem) => {
-        if (savedItem.name === item.name) {
-          return false;
-        }
-        return true;
+      const iconRemoveEl = itemEl.querySelector('button');
+      iconRemoveEl.addEventListener('click', () => {
+        items = items.filter((savedItem) => {
+          if (savedItem.name === item.name) {
+            return false;
+          }
+          return true;
+        });
+        itemEl.remove();
       });
-      itemEl.remove();
+      itemsLisEl.append(itemEl);
+      //clean values of items//
     });
-    itemsLisEl.append(itemEl);
-  });
-  imputValueEl.textContent = '';
-  itemsInputEl.forEach((input) => {
-    input.value = '';
-  });
+    item = {
+      name: {
+        value: '',
+        valid: false,
+      },
+      quantity: {
+        value: '',
+        valid: false,
+      },
+      price: {
+        value: '',
+        valid: false,
+      },
+    };
+    imputValueEl.textContent = '';
+    itemsInputEl.forEach((input) => {
+      input.value = '';
+    });
+  }
 });
-
 cleanButtonEl.addEventListener('click', () => {
-  itemsInputEl.forEach((input) => {
-    input.value = '';
+  item = {
+    name: {
+      value: '',
+      valid: false,
+    },
+    quantity: {
+      value: '',
+      valid: false,
+    },
+    price: {
+      value: '',
+      valid: false,
+    },
+  };
+  itemsInputEl.forEach((item) => {
+    item.value = '';
   });
   imputValueEl.textContent = '';
 });
 
+//rest fields//
 let allFields = {
-  status: 'PENDING',
+  status: '',
   description: {
     value: '',
     valid: false,
@@ -282,6 +317,7 @@ imputsFieldsEl.forEach((input) => {
   });
 });
 
+//object to backend//
 function formatInvoice(data, dueDate, amount, invoiceItems) {
   return {
     status: data.status,
@@ -303,25 +339,35 @@ function formatInvoice(data, dueDate, amount, invoiceItems) {
     invoiceItems,
   };
 }
+
 let formFields = {};
+function setTime() {
+  setTimeout(function () {
+    succesfullCreate.style.display = 'none';
+  }, 4000);
+}
+function succesNotificacion() {
+  closeModal();
+  succesfullCreate.style.display = 'flex';
+}
+
 async function methodPost() {
   const total = items
     .map((item) => item.amountTotal)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  // console.log(total, 'total');
 
   const itemsN = items.map((item) => ({
     name: item.name.value,
     quantity: item.quantity.value,
     price: item.price.value,
   }));
-  // console.log(itemsN, 'itemsN');
+
   const daysToPayment = parseInt(newInvoiceDropdown.selectedOption ?? 0);
   const dueDate = addDays(
     newInvoiceDatepicker.selectedDatepicker,
     daysToPayment
   );
-  // console.log(dueDate, 'dueDate');
+
   formFields = {
     ...allFields,
     invoiceDate: newInvoiceDatepicker.selectedDatepicker,
@@ -329,17 +375,17 @@ async function methodPost() {
     invoiceItems: itemsN,
     dueDate,
   };
-  // console.log(formFields, 'inicial');
 
   imputsFieldsEl.forEach((input) => {
     input.value = '';
   });
+
   succesfullCreate.addEventListener('click', () => {
     succesfullCreate.style.display = 'none';
   });
 
   formFields = formatInvoice(allFields, dueDate, total, itemsN);
-  // console.log(formFields, 'final');
+  //fecth//
   try {
     const url = 'https://invoice-services.onrender.com/api/invoice';
     const response = await fetch(url, {
@@ -363,16 +409,9 @@ async function methodPost() {
   }
 }
 
-function setTime() {
-  setTimeout(function () {
-    succesfullCreate.style.display = 'none';
-  }, 4000);
-}
-function succesNotificacion() {
-  closeModal();
-  succesfullCreate.style.display = 'flex';
-}
-function isCreatedInvoice() {
+//valid all inputs//
+const isCleanFields = document.querySelectorAll('[name*= "clean"]');
+function isAllComplete() {
   const {
     status,
     currencyCountry,
@@ -383,43 +422,39 @@ function isCreatedInvoice() {
     ...rest
   } = allFields;
   const validInput = Object.values(rest).every((allFields) => allFields.valid);
-  console.dir(validInput, 'hpladsad');
-  if (!validInput) {
+  console.log(validInput);
+  if (validInput & (itemsLisEl.children.length > 0)) {
+    methodPost();
+  } else {
     isCleanFields.forEach((input) => {
       if (input.value === '') {
         input.classList.add('error');
         input.nextElementSibling.style.display = 'block';
       }
     });
-  } else {
-    methodPost();
+    divElement.textContent = 'required field';
+    itemContainerElement.insertAdjacentElement('beforeend', divElement);
+    itemsInputEl.forEach((input) => {
+      if (input.value === '') {
+        divElement.classList.add('error');
+        input.classList.add('error');
+      }
+    });
   }
 }
-const isCleanFields = document.querySelectorAll('[name*= "clean"]');
-// buttonDiscardEl.addEventListener('click', () => {
-//   allFields = {
-//     ...allFields,
-//     status: 'DRAFT',
-//   };
-//   isCreatedInvoice();
-// });
 
+//events//
 buttonSaveEl.addEventListener('click', async () => {
   allFields = {
     ...allFields,
     status: 'PENDING',
   };
-  isCreatedInvoice();
+  isAllComplete();
 });
 buttonDraftEl.addEventListener('click', async () => {
   allFields = {
     ...allFields,
     status: 'DRAFT',
   };
-  isCreatedInvoice();
+  isAllComplete();
 });
-// const emailError = document.querySelector('#emailError');
-// const isEmailOk = validateCharacters.every((character) =>
-//   emailValue.includes(character)
-// );
-// emailError.textContent = emailValue && isEmailOk ? '' : 'email required';

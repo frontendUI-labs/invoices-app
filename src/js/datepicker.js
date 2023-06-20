@@ -86,28 +86,6 @@ export default class Datepicker {
 
     //(...) junta a los dias previos + actuales + posteriores//
     const allDays = [...prevDays, ...currentDays, ...nextDays];
-    // this.cleanSpans();
-    // function cleanSpans() {
-    //   const allSpans = document.querySelectorAll('.datepicker-day');
-    //   allSpans.forEach((span) => {
-    //     span.classList.remove('current');
-    //   });
-    // }
-
-    // function handleSpanElClick(isInactiveDay, item, event) {
-    //   if (isInactiveDay) {
-    //     // no permitir escogerprevDays ni nextDays//
-    //     return;
-    //   }
-    //   const month = format(currentDateCalendar, 'M');
-    //   const year = format(currentDateCalendar, 'yyyy');
-    //   currentDateUserSelected = new Date(year, month - 1, item);
-    // renderCalendaValue(currentDateUserSelected);
-
-    // cleanSpans();
-    //   //integrar la clase current
-    //   event.target.classList.add('current');
-    // }
 
     const daysEl = this.datepickerEl.querySelector('.datepicker__days');
 
@@ -171,8 +149,6 @@ export default class Datepicker {
 
     //TITLE CALENDAR//
     const calendarDate = null;
-    // let this.selectedDatepicker = new Date() ?? calendarDate; // nullish operator// compara si es nulo o undefined el primer elemento
-    // let currentDateCalendar = this.selectedDatepicker; //bota el dia actual//
 
     //TOGGLE CALENDAR//
     function toogleCalendar() {
@@ -190,18 +166,6 @@ export default class Datepicker {
         removeCalendar();
       }
     });
-
-    //DAYS FUNCTION//
-
-    // this.renderCalendaValue();
-    // function renderCalendaValue(date) {
-    //   const datepickerTitleEl =
-    //     datepickerEl.querySelector('.datepicker__value');
-    //   const allFormattedCurrentDate = format(date, 'd MMM yyyy'); //formato de dia mes y a~o//
-    //   datepickerTitleEl.textContent = allFormattedCurrentDate;
-    // }
-
-    //DAYS//
 
     //ARROWS//
 
