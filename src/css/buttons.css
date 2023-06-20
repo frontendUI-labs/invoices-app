@@ -1,9 +1,9 @@
 .button {
   border: none;
-  color: var(--white-100);
+  color: var(--white);
   border-radius: 24px;
   padding-block: 17px;
-  padding-inline: 24px;
+  padding-inline: 20px;
   text-align: center;
   cursor: pointer;
 }
@@ -14,10 +14,11 @@
 .button--primary {
   background: var(--purple-400);
   color: #fff;
+  max-inline-size: 200px;
 }
 .button--icon {
   padding: 8px;
-  min-inline-size: 95px;
+  max-inline-size: 150px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -26,7 +27,7 @@
   inline-size: 32px;
   block-size: 32px;
   border-radius: 50%;
-  background: var(--white-100);
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +40,6 @@
   background: var(--purple-100);
 }
 .button--secondary {
-  min-inline-size: 73px;
   background: var(--white-300);
   color: var(--grey-400);
 }
@@ -47,9 +47,9 @@
   background: var(--grey-200);
 }
 .button--ternary {
-  min-inline-size: 133px;
-  background: var(--black-100);
-  color: var(--grey-300);
+  max-inline-size: 140px;
+  background: var(--black-900);
+  color: var(--grey-400);
 }
 .button--ternary:hover {
   background: var(--black-500);

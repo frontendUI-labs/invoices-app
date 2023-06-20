@@ -1,0 +1,190 @@
+.list__content__wraper {
+  position: relative;
+}
+.newInvoice {
+  max-inline-size: 768px;
+  background: var(--white);
+  flex-direction: column;
+  position: absolute;
+  inset-block-start: 72px;
+  border: none;
+  padding-inline: unset;
+  padding-block-end: 100px;
+}
+.newInvoice::backdrop {
+  background: rgba(0, 0, 0, 0.2);
+}
+.newInvoice__form {
+  padding-block-start: 32px;
+  padding-inline: 24px;
+}
+.newInvoice__title {
+  color: var(--black-500);
+  margin-block-end: 24px;
+}
+.newInvoice__bill {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.bill__subtitle {
+  color: var(--purple-400);
+}
+.bill__cityCodeCountry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'city postCode' 'country country';
+  gap: 24px;
+}
+.country {
+  grid-area: country;
+}
+.to {
+  margin-block-start: 40px;
+}
+.newInvoice__dueDate {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.itemList {
+  margin-block-start: 65px;
+  margin-block-end: 24px;
+}
+.billItemList__title {
+  color: var(--grey-400);
+}
+.itemList__components {
+  margin: unset;
+  display: flex;
+  flex-direction: column;
+}
+.itemList__calc {
+  margin-block-end: 10px;
+  display: grid;
+  grid-template-columns: 2fr 3fr 5fr;
+  grid-template-areas: 'itemName itemName itemName' 'Qty price total';
+  row-gap: 24px;
+  column-gap: 16px;
+}
+.itemName {
+  grid-area: itemName;
+}
+.total__imput__borderColor {
+  border-color: transparent;
+  background-color: var(--white);
+}
+.total__imput__borderColor:hover {
+  border-color: transparent;
+}
+.total__imput {
+  display: flex;
+}
+.removeCalc {
+  background-color: transparent;
+  padding: unset;
+  border: none;
+  cursor: pointer;
+}
+.spaceDecorate {
+  inline-size: 100%;
+  block-size: 64px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.0001) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+.newInvoice__buttons {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  background-color: var(--white);
+  padding-inline: 24px;
+  padding-block: 20px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.newInvoice__buttons__apart {
+  display: flex;
+  gap: 8px;
+}
+.flex {
+  display: flex;
+}
+.none {
+  display: none;
+}
+.disabled:hover {
+  cursor: not-allowed;
+  border-color: #e0e3fa;
+}
+.trash__icon {
+  fill: var(--grey-400);
+}
+.trash__icon:hover {
+  fill: var(--red-100);
+}
+input.error {
+  border-color: var(--red-100);
+}
+.error {
+  color: var(--red-100);
+  font: var(--font-body1);
+}
+@media (min-width: 640px) {
+  .newInvoice__buttons {
+    justify-content: space-between;
+  }
+}
+@media (min-width: 768px) {
+  .newInvoice__goBack,
+  .spaceDecorate {
+    display: none;
+  }
+  .newInvoice__form {
+    padding-inline: unset;
+  }
+  .newInvoice {
+    inline-size: 616px;
+    padding-inline: 45px;
+  }
+  .bill__cityCodeCountry {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'city postCode country';
+  }
+  .itemList__calc {
+    grid-template-columns: 4fr 1fr 2fr 3fr;
+    grid-template-areas: 'itemName Qty price total';
+  }
+  .newInvoice__dueDate {
+    flex-direction: row;
+  }
+  .newInvoice__buttons {
+    max-inline-size: 616px;
+  }
+}
+@media (min-width: 912px) {
+  .newInvoice {
+    inline-size: 719px;
+  }
+  .newInvoice__buttons {
+    max-inline-size: 719px;
+  }
+}
+@media (min-width: 1024px) {
+  .newInvoice {
+    padding-block-end: 50px;
+    padding-inline: 55px;
+    inset-block-start: 0;
+    inset-inline-start: 103px;
+  }
+  .newInvoice__footer {
+    position: absolute;
+  }
+  .newInvoice__buttons {
+    margin-inline-start: 103px;
+  }
+}

@@ -8,7 +8,7 @@
   margin-block: none;
 }
 
-.Invoice__Address{
+.Invoice__Address {
   display: block;
 }
 
@@ -21,7 +21,6 @@
 .viewInvoice__returnButton__icon {
   height: 4.23px;
   transform: rotate(90deg);
-  
 }
 
 .viewInvoice__summary {
@@ -46,33 +45,32 @@
   padding-block: 13px;
   padding-inline: 17px;
   border-radius: 6px;
-
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 0.5rem;
 }
-.viewInvoice__summary__button--pending{
+.viewInvoice__summary__button--pending {
   background-color: rgba(255, 143, 0, 0.1);
 }
-.viewInvoice__summary__button--paid{
+.viewInvoice__summary__button--paid {
   background-color: rgba(51, 214, 159, 0.1);
 }
-.viewInvoice__summary__button--draft{
+.viewInvoice__summary__button--draft {
   background-color: rgba(55, 59, 83, 0.1);
 }
-.viewInvoice__summary__button__icon{
+.viewInvoice__summary__button__icon {
   block-size: 8px;
   inline-size: 8px;
   border-radius: 50%;
 }
-.list__status__point--pending{
+.list__status__point--pending {
   background: var(--orange-400);
 }
-.list__status__point--draft{
-  background: var(--black-100);
+.list__status__point--draft {
+  background: var(--black-300);
 }
-.list__status__point--paid{
+.list__status__point--paid {
   background: var(--green-400);
 }
 
@@ -132,13 +130,13 @@
   line-height: 18px;
   width: 94px;
 }
-.viewInvoice__ditails__address{
+.viewInvoice__ditails__address {
   color: var(--grey-400);
   line-height: 18px;
   width: 94px;
 }
 .viewInvoice__details__initialDate__text,
-.viewInvoice__details__dueDate__text{
+.viewInvoice__details__dueDate__text {
   color: var(--black-500);
 }
 
@@ -270,7 +268,7 @@
 }
 
 .viewInvoice__details__total__billing__section {
-  background-color: var(--black-100);
+  background-color: var(--black-700);
   border-radius: 0px 0px 8px 8px;
   padding: 1.5rem;
 }
@@ -283,7 +281,7 @@
 
 .viewInvoice__details__total__billing__title,
 .viewInvoice__details__total__billing__final {
-  color: var(--white-100);
+  color: #fff;
 }
 
 /* final-buttons */
@@ -323,11 +321,6 @@
 @media screen and (min-width: 640px) {
   body {
     background: var(--grey);
-  }
-  .nav__bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
   }
   .viewInvoice__details__date__bill {
     width: 60%;
@@ -496,11 +489,6 @@
   body {
     background: var(--grey);
     margin: auto;
-  }
-  .nav__bar {
-    position: fixed;
-    left: 0;
-    width: 103px;
   }
   .viewInvoice {
     padding: 0;
