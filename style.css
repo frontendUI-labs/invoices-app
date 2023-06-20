@@ -9,6 +9,7 @@
 @import url('./src/css/viewInvoice.css');
 @import url('./src/css/newinvoice.css');
 @import url('./src/css/modal.css');
+@import url('./src/css/editInvoice.css');
 
 .dark {
   --black-500: #fff;

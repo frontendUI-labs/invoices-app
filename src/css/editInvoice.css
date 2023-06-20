@@ -1,9 +1,13 @@
+body {
+  overflow: auto;
+}
 .list__content__wraper {
   position: relative;
 }
-.newInvoice {
-  max-inline-size: 768px;
-  background: var(--white);
+.editInvoice {
+  max-inline-size: 719px;
+  background: var(--white-100);
+  height: 100vh;
   flex-direction: column;
   position: absolute;
   inset-block-start: 72px;
@@ -11,18 +15,26 @@
   padding-inline: unset;
   padding-block-end: 100px;
 }
-.newInvoice::backdrop {
+.editInvoice::backdrop {
   background: rgba(0, 0, 0, 0.2);
 }
-.newInvoice__form {
+.editInvoice__form {
   padding-block-start: 32px;
   padding-inline: 24px;
 }
-.newInvoice__title {
-  color: var(--black-500);
+.editInvoice__title {
   margin-block-end: 24px;
+  display: flex;
+  color: var(--black-500);
 }
-.newInvoice__bill {
+.editInvoice__maintitle {
+  margin-right: 5px;
+}
+.editInvoice__details__hash {
+  color: var(--grey-300);
+}
+
+.editInvoice__bill {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -42,25 +54,32 @@
 .to {
   margin-block-start: 40px;
 }
-.newInvoice__dueDate {
+.editInvoice__dueDate {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-block-start: 40px;
+}
+.textfield.project {
+  margin-top: 40px;
+}
+.datepicker__button {
+  width: 100%;
 }
 .itemList {
   margin-block-start: 65px;
-  margin-block-end: 24px;
+  margin-block-end: 34px;
 }
 .billItemList__title {
-  color: var(--grey-400);
+  color: var(--grey-300);
 }
 .itemList__components {
   margin: unset;
   display: flex;
   flex-direction: column;
+  gap: 48px;
 }
 .itemList__calc {
-  margin-block-end: 10px;
   display: grid;
   grid-template-columns: 2fr 3fr 5fr;
   grid-template-areas: 'itemName itemName itemName' 'Qty price total';
@@ -72,7 +91,6 @@
 }
 .total__imput__borderColor {
   border-color: transparent;
-  background-color: var(--white);
 }
 .total__imput__borderColor:hover {
   border-color: transparent;
@@ -95,20 +113,19 @@
     rgba(0, 0, 0, 0.1) 100%
   );
 }
-.newInvoice__buttons {
+.editInvoice__buttons {
   position: fixed;
   inset-block-end: 0;
   inset-inline-start: 0;
   inset-inline-end: 0;
-  background-color: var(--white);
+  background-color: var(--white-100);
   padding-inline: 24px;
   padding-block: 20px;
   display: flex;
   gap: 8px;
-  justify-content: center;
-  cursor: po;
+  justify-content: flex-end;
 }
-.newInvoice__buttons__apart {
+.editInvoice__buttons__apart {
   display: flex;
   gap: 8px;
 }
@@ -122,73 +139,43 @@
   cursor: not-allowed;
   border-color: #e0e3fa;
 }
-.trash__icon {
-  fill: var(--grey-400);
-}
 .trash__icon:hover {
-  fill: var(--red-100);
+  fill: #ec5757;
 }
-input.error {
-  border-color: var(--red-100);
+input::placeholder {
+  color: red;
 }
 .error {
   color: var(--red-100);
   font: var(--font-body1);
-}
-.emptyInput{
-display: none
+  border-color: var(--red-100);
 }
 @media (min-width: 640px) {
-  .newInvoice__buttons {
-    justify-content: space-between;
+  .editInvoice__buttons {
+    max-width: 719px;
+    justify-content: flex-end;
   }
-}
-@media (min-width: 768px) {
-  .newInvoice__goBack,
-  .spaceDecorate {
-    display: none;
-  }
-  .newInvoice__form {
-    padding-inline: unset;
-  }
-  .newInvoice {
-    inline-size: 616px;
-    padding-inline: 45px;
-  }
-  .bill__cityCodeCountry {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 'city postCode country';
-  }
-  .itemList__calc {
-    grid-template-columns: 4fr 1fr 2fr 3fr;
-    grid-template-areas: 'itemName Qty price total';
-  }
-  .newInvoice__dueDate {
+  .editInvoice__dueDate {
+    display: flex;
     flex-direction: row;
   }
-  .newInvoice__buttons {
-    max-inline-size: 616px;
-  }
 }
-@media (min-width: 912px) {
-  .newInvoice {
-    inline-size: 719px;
-  }
-  .newInvoice__buttons {
-    max-inline-size: 719px;
-  }
-}
+
 @media (min-width: 1024px) {
-  .newInvoice {
+  .editInvoice {
     padding-block-end: 50px;
     padding-inline: 55px;
     inset-block-start: 0;
     inset-inline-start: 103px;
   }
-  .newInvoice__footer {
+  .editInvoice__footer {
     position: absolute;
   }
-  .newInvoice__buttons {
+  .editInvoice__buttons {
     margin-inline-start: 103px;
+  }
+  .editInvoice__dueDate {
+    display: flex;
+    flex-direction: row;
   }
 }

@@ -355,6 +355,7 @@ async function methodPost() {
   const total = items
     .map((item) => item.amountTotal)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  console.log(total);
 
   const itemsN = items.map((item) => ({
     name: item.name.value,

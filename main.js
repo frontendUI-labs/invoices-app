@@ -6,6 +6,7 @@ import './src/js/datepicker';
 import './src/js/listinvoice';
 import './src/js/viewInvoice.js';
 import './src/js/newinvoice';
+import './src/js/editInvoice.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   Router.init();

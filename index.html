@@ -520,6 +520,12 @@
       </div>
     </section>
     <section class="page" id="details">
+      <div class="succefullDelete" id="succefullSaved">
+        <img src="./icon/close-notification.svg" alt="" class="close__icon" />
+        <p class="text-body1 succedText">
+          Your invoice was successfully saved
+        </p>
+      </div>
       <article>
         <dl class="viewInvoice">
           <a href="/" class="text-h4 viewInvoice__returnButton__title">
@@ -570,6 +576,280 @@
               id="deleteInvoidebyID">
               Delete
             </button>
+          </div>
+        </dialog>
+        <dialog class="editInvoice" id="editInvoiceDialog">
+          <div class="editInvoice__form" id="editInvoice__form">
+            <a
+              href="/"
+              class="text-h4 viewInvoice__returnButton__title editInvoice__goBack">
+              <img
+                class="viewInvoice__returnButton__icon"
+                src="./icon/arrowdown.svg"
+                alt="" />
+              Go back
+            </a>
+             <div id="testDeInputs">
+             <!--  <div class="text-h2 editInvoice__title" id="editInvoiceCode">
+                <h1 class="text-h2 editInvoice__maintitle">Edit</h1>
+                <dd class="text-h2 editInvoice__details__hash">#</dd>
+                <dd class="text-h2">XM9141</dd>
+              </div>
+
+              <div class="editInvoice__bill form">
+                <h2 class="text-h4 bill__subtitle">Bill From</h2>
+                <div class="textfield streetAddress" id="testInputValue">
+                  <label class="text-body1 textfield__label"
+                    >Street Address</label
+                  >
+                  <input
+                    class="text-h4 textfield__input input-Rest"
+                    name="streetAddress"
+                    type="text" />
+                </div>
+                <div class="bill__cityCodeCountry">
+                  <div class="textfield city">
+                    <label class="text-body1 textfield__label">City</label>
+                    <input
+                      class="text-h4 textfield__input input-Rest"
+                      name="city"
+                      type="text" />
+                  </div>
+                  <div class="textfield postCode">
+                    <label class="text-body1 textfield__label">Post Code</label>
+                    <input
+                      class="text-h4 textfield__input input-Rest"
+                      name="postCode"
+                      type="text" />
+                  </div>
+                  <div class="textfield country">
+                    <label class="text-body1 textfield__label">Country</label>
+                    <input
+                      class="text-h4 textfield__input input-Rest"
+                      name="country"
+                      type="text" />
+                  </div>
+                </div>
+              </div>
+              <div class="editInvoice__bill to">
+                <h2 class="text-h4 bill__subtitle">Bill To</h2>
+                <div class="textfield clientName">
+                  <label class="text-body1 textfield__label"
+                    >Client’s Name</label
+                  >
+                  <input
+                    class="text-h4 textfield__input input-Rest"
+                    name="clientName"
+                    type="text" />
+                </div>
+                <div class="textfield clientEmail">
+                  <label class="text-body1 textfield__label"
+                    >Client’s Email</label
+                  >
+                  <input
+                    class="text-h4 textfield__input input-Rest"
+                    name="clientEmail"
+                    type="text" />
+                  <span class="error" id="emailError"></span>
+                </div>
+                <div class="textfield streetAddress">
+                  <label class="text-body1 textfield__label"
+                    >Street Address</label
+                  >
+                  <input
+                    class="text-h4 textfield__input input-Rest"
+                    name="clientStreetAddress"
+                    type="text" />
+                </div>
+                <div class="bill__cityCodeCountry">
+                  <div class="textfield city">
+                    <label class="text-body1 textfield__label">City</label>
+                    <input
+                      class="text-h4 textfield__input input-Rest"
+                      name="clientCity"
+                      type="text" />
+                  </div>
+                  <div class="textfield postCode">
+                    <label class="text-body1 textfield__label">Post Code</label>
+                    <input
+                      class="text-h4 textfield__input input-Rest"
+                      name="clientPostCode"
+                      type="text" />
+                  </div>
+                  <div class="textfield country">
+                    <label class="text-body1 textfield__label">Country</label>
+                    <input
+                      class="text-h4 textfield__input input-Rest"
+                      name="clientCountry"
+                      type="text" />
+                  </div>
+                </div>
+              </div> -->
+            
+            <!-- HOLAAAA -->
+            <!-- <div class="editInvoice__dueDate">
+              <div class="datepicker" id="editInvoice-datepicker">
+                <div class="datepicker__form">
+                  <span class="text-body1 datepicker__label">Issue Date</span>
+                  <button class="text-h4 datepicker__button input-Rest">
+                    <span class="datepicker__value"></span>
+                    <img src="./icon/calendar.svg" alt="boton-de-calendario" />
+                  </button>
+                </div>
+                <div class="datepicker__calendar">
+                  <div class="datepicker__month">
+                    <button
+                      class="datepicker__monthButton datepicker__prevButton">
+                      <img
+                        class="datepicker__prevButtonImg"
+                        src="./icon/arrowdown.svg"
+                        alt="boton-de-calendario" />
+                    </button>
+                    <span class="text-h4 calendar__title"></span>
+                    <button
+                      class="datepicker__monthButton datepicker__nextButton">
+                      <img
+                        class="datepicker__nextButtonImg"
+                        src="./icon/arrowdown.svg"
+                        alt="boton-de-calendario" />
+                    </button>
+                  </div>
+                  <div class="text-h4 datepicker__weekdays">
+                    <span class="text-h4">Sun</span
+                    ><span class="text-h4">Mon</span
+                    ><span class="text-h4">Tue</span
+                    ><span class="text-h4">Wed</span
+                    ><span class="text-h4">Thu</span
+                    ><span class="text-h4">Fri</span
+                    ><span class="text-h4">Sat</span>
+                  </div>
+                  <div class="datepicker__days"></div>
+                </div>
+              </div>
+              <div class="dropdown" id="editInvoice-dropdown">
+                <div class="dropdown__form">
+                  <span class="text-body1 dropdown__label">Payment Terms</span>
+                  <button class="text-h4 dropdown__button input-Rest" id="menu">
+                    <span class="dropdown__text">Select an Option</span>
+                    <img
+                      class="dropdown__arrowrotate"
+                      src="./icon/arrowdown.svg"
+                      alt="" />
+                  </button>
+                </div>
+                <div class="dropdown__list">
+                  <button class="dropdown__option" data-day="1">
+                    Next 1 Day
+                  </button>
+                  <button class="dropdown__option" data-day="7">
+                    Next 7 Days
+                  </button>
+                  <button class="dropdown__option" data-day="14">
+                    Next 14 Days
+                  </button>
+                  <button class="dropdown__option" data-day="30">
+                    Next 30 Days
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="textfield project">
+              <label class="text-body1 textfield__label"
+                >Project Description</label
+              >
+              <input
+                class="text-h4 textfield__input input-Rest"
+                name="description"
+                type="text" />
+            </div> -->
+
+          </div>
+  
+
+           <div class="editInvoice__bill itemList" id="editItemEl">
+              <h2 class="text-h2 billItemList__title">Item List</h2>
+              <div class="itemList__components">
+                <div
+                  class="editInvoice__bill addItemsImputs"
+                  id="editItemsInput">
+                  <div class="itemList__calc">
+                    <div class="textfield itemName">
+                      <label class="text-body1 textfield__label"
+                        >Item Name</label
+                      >
+                      <input
+                        class="text-h4 textfield__input input-fieldItem"
+                        name="name"
+                        type="text" />
+                      <span class="error" id="editItemNameError"></span>
+                    </div>
+                    <div class="textfield Qty">
+                      <label class="text-body1 textfield__label">Qty.</label>
+                      <input
+                        class="text-h4 textfield__input input-fieldItem"
+                        id="putQty"
+                        name="quantity"
+                        type="text" />
+                    </div>
+                    <div class="textfield price">
+                      <label class="text-body1 textfield__label">Price</label>
+                      <input
+                        class="text-h4 textfield__input input-fieldItem"
+                        id="putPrice"
+                        name="price"
+                        type="text" />
+                    </div>
+                    <div class="textfield total">
+                      <div class="text-body1 textfield__label">Total</div>
+                      <div class="total__imput">
+                        <div
+                          class="text-h4 textfield__input total__imput__borderColor total__imput__hover"
+                          id="totalInputBorderColor"></div>
+                        <button class="removeCalc cleanCalc" id="cleanCalc">
+                          <svg
+                            class="trash__icon"
+                            width="13"
+                            height="16"
+                            viewBox="0 0 13 16"
+                            fill="#none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M8.47225 0L9.36117 0.888875H12.4722V2.66667H0.027832V0.888875H3.13892L4.02783 0H8.47225ZM2.6945 16C1.71225 16 0.916707 15.2045 0.916707 14.2222V3.55554H11.5834V14.2222C11.5834 15.2045 10.7878 16 9.80562 16H2.6945Z"
+                              fill="#OOOOO" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              <button
+                class="text-h4 button button--secondary button__addItem"
+                id="buttonEditItem">
+                + Add New Item
+              </button>
+              <div id="editNewItems"></div>
+              <div id="keepNewItems"></div>
+            </div> 
+            <!-- HOLAAAA -->
+          </div>
+
+          <div class="editInvoice__footer">
+            <div class="spaceDecorate"></div>
+            <div class="editInvoice__buttons">
+              <button
+                class="text-h4 button button--secondary button__discard"
+                id="buttonDiscard">
+                Discard
+              </button>
+              <button
+                class="text-h4 button button--primary button__save"
+                id="buttonSaveEdit">
+                Save & Send
+              </button>
+            </div>
           </div>
         </dialog>
       </article>
