@@ -6,7 +6,7 @@ body {
 }
 .editInvoice {
   max-inline-size: 719px;
-  background: var(--white-100);
+  background: var(--white);
   height: 100vh;
   flex-direction: column;
   position: absolute;
@@ -16,7 +16,10 @@ body {
   padding-block-end: 100px;
 }
 .editInvoice::backdrop {
-  background: rgba(0, 0, 0, 0.2);
+  background: red;
+}
+.textfield__input {
+  border-color: var(--grey-600);
 }
 .editInvoice__form {
   padding-block-start: 32px;
@@ -71,7 +74,7 @@ body {
   margin-block-end: 34px;
 }
 .billItemList__title {
-  color: var(--grey-300);
+  color: #777f98;
 }
 .itemList__components {
   margin: unset;
@@ -91,6 +94,7 @@ body {
 }
 .total__imput__borderColor {
   border-color: transparent;
+  background-color: transparent;
 }
 .total__imput__borderColor:hover {
   border-color: transparent;
@@ -124,6 +128,7 @@ body {
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+  background: var(--white);
 }
 .editInvoice__buttons__apart {
   display: flex;
@@ -142,9 +147,7 @@ body {
 .trash__icon:hover {
   fill: #ec5757;
 }
-input::placeholder {
-  color: red;
-}
+
 .error {
   color: var(--red-100);
   font: var(--font-body1);
@@ -158,6 +161,10 @@ input::placeholder {
   .editInvoice__dueDate {
     display: flex;
     flex-direction: row;
+  }
+  .itemList__calc {
+    grid-template-columns: 4fr 1fr 2fr 3fr;
+    grid-template-areas: 'itemName Qty price total';
   }
 }
 

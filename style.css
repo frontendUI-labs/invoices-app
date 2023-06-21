@@ -25,19 +25,3 @@
   --grey-600: var(--black-600);
   --grey: var(--black-700);
 }
-/* @media (prefers-color-scheme: dark) {
-  body {
-    --black-500: #fff;
-    --black-300: var(--white-200);
-    --black-100: var(--black-200);
-    --white-100: var(--black-600);
-    --white-300: var(--black-800);
-    --white-400: var(--black-900);
-    --white: var(--black-400);
-    --grey-300: #343856;
-    --grey-400: var(--grey-200);
-    --grey-500: var(--grey-200);
-    --grey-600: var(--black-600);
-    --grey: var(--black-700);
-  }
-} */

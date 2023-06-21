@@ -135,8 +135,8 @@ input.error {
   color: var(--red-100);
   font: var(--font-body1);
 }
-.emptyInput{
-display: none
+.emptyInput {
+  display: none;
 }
 @media (min-width: 640px) {
   .newInvoice__buttons {

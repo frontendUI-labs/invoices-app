@@ -18,7 +18,7 @@ a {
   position: fixed;
   inline-size: 100%;
   inset-block-start: 0px;
-  z-index: 3;
+  z-index: 10;
 }
 .nav__background {
   block-size: 72px;
@@ -53,6 +53,9 @@ a {
 }
 .profile__icon {
   cursor: pointer;
+}
+.content__header__title {
+  color: var(--black-500);
 }
 .nav__profile__line {
   block-size: 100%;
